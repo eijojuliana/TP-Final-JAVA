@@ -17,7 +17,7 @@ public class Esqueleto extends Hostil {
 
     @Override
     public String ataque(int IDMob) {
-        return "Le tira una flecha al mob "+IDMob +" quitandole " +danio +".";
+        return "Le tira una flecha al mob "+IDMob +" quitandole " +danio +" puntos de vida.";
     }
 
 }
