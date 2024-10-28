@@ -1,5 +1,8 @@
 package PackageModelo;
-public abstract class Hostil extends Mob{
+
+import PackageInterfaces.IAtacar;
+
+public abstract class Hostil extends Mob implements IAtacar {
     //Todo.ATRIBUTOS//
     protected boolean nocturno;
 
@@ -24,7 +27,8 @@ public abstract class Hostil extends Mob{
                 "nocturno=" + nocturno +
                 "} " + super.toString();
     }
-
     @Override
     public abstract String emitirSonido();
+    @Override
+    public abstract String ataque(int IDMob);
 }
