@@ -9,4 +9,8 @@ public class Pasivo extends Mob{
     //GETTER AND SETTER
 
     //SOBREESCRITURA - MÉTODOS
+    @Override
+    public String emitirSonido() {
+        return null;
+    }
 }

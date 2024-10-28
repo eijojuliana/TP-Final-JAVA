@@ -34,4 +34,9 @@ public class Zombie extends Hostil{
     public String emitirSonido() {
         return "ROOAWR ROOAWR";
     }
+
+    @Override
+    public String ataque(int IDMob) {
+        return "Golpea al mob "+IDMob+", quitandole"+danio+"puntos de vida";
+    }
 }
