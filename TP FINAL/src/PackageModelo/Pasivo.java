@@ -12,7 +12,6 @@ public class Pasivo extends Mob{
     }
 
     public Pasivo() {
-
     }
 
     //GETTER AND SETTER
@@ -21,5 +20,12 @@ public class Pasivo extends Mob{
     @Override
     public String emitirSonido() {
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return "Pasivo{" +
+                "esBebe=" + esBebe +
+                "} " + super.toString();
     }
 }
