@@ -29,7 +29,17 @@ public class Zombie extends Mob implements IAtacar {
     public void setTipoZombie(TipoZombie tipoZombie) {
         this.tipoZombie = tipoZombie;
     }
-    public void setTipoZombie(String tipoZombie) {tipoZombie = tipoZombie;}
+    public void setTipoZombie(String tipoZombie) {
+
+        if (
+                tipoZombie.equals(TipoZombie.COMUN.name()) ||
+                tipoZombie.equals(TipoZombie.MOMIFICADO.name()) ||
+                tipoZombie.equals(TipoZombie.CHIQUITO.name()) ||
+                tipoZombie.equals(TipoZombie.ALDEANO.name()) ||
+                tipoZombie.equals(TipoZombie.AHOGADO.name())
+        ) this.tipoZombie = TipoZombie.valueOf(tipoZombie);
+        
+    }
 
     ///todo.TO STRING///
     @Override
