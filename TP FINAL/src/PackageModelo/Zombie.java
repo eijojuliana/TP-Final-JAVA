@@ -25,10 +25,10 @@ public class Zombie extends Mob implements IAtacar {
     public TipoZombie getTipoZombie() {
         return tipoZombie;
     }
-
     public void setTipoZombie(TipoZombie tipoZombie) {
         this.tipoZombie = tipoZombie;
     }
+    public void setTipoZombie(String tipoZombie) {tipoZombie = tipoZombie;}
 
     ///todo.TO STRING///
     @Override
@@ -75,7 +75,7 @@ public class Zombie extends Mob implements IAtacar {
             zombie.setDanio(jsonObject.getDouble("danio"));
             //zombie.setDrops(jsonObject.getString("drops"));
             zombie.setEsBebe(jsonObject.getBoolean("esBebe"));
-            //zombie.setTipoZombie(jsonObject.get("tipoZombie"));
+            zombie.setTipoZombie(jsonObject.getString("tipoZombie"));
         } catch (JSONException exc) {
             exc.printStackTrace();
         }
