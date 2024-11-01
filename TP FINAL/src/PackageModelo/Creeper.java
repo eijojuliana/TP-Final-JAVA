@@ -2,15 +2,19 @@ package PackageModelo;
 
 import PackageInterfaces.IAtacar;
 
-public class Creeper extends Hostil implements IAtacar {
+import java.util.ArrayList;
+
+public class Creeper extends Mob implements IAtacar {
     //todo.ATRIBUTOS
     protected boolean esElectrico;
 
     //todo.CONSTRUCTORES
-    public Creeper(String nombre, double vida, double danio, boolean nocturno, boolean esElectrico) {
-        super(nombre, vida, danio, nocturno);
+
+    public Creeper(String nombre, double vida, double danio, ArrayList<String> drops, boolean esBebe, boolean esElectrico) {
+        super(nombre, vida, danio, drops, esBebe);
         this.esElectrico = esElectrico;
     }
+
     public Creeper() {}
 
     //GETTER AND SETTER
