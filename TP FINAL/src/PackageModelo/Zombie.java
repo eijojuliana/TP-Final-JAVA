@@ -1,15 +1,21 @@
 package PackageModelo;
 
 import PackageEnum.TipoZombie;
-public class Zombie extends Hostil{
+import PackageInterfaces.IAtacar;
+
+import java.util.ArrayList;
+
+public class Zombie extends Mob implements IAtacar {
     ///todo.ATRIBUTOS///
     protected TipoZombie tipoZombie;
 
     ///todo.CONSTRUCTORES///
-    public Zombie(String nombre, double vida, double danio, boolean nocturno, TipoZombie tipoZombie) {
-        super(nombre, vida, danio, nocturno);
+
+    public Zombie(String nombre, double vida, double danio, ArrayList<String> drops, boolean esBebe, TipoZombie tipoZombie) {
+        super(nombre, vida, danio, drops, esBebe);
         this.tipoZombie = tipoZombie;
     }
+
     public Zombie() {
     }
 
