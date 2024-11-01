@@ -2,7 +2,6 @@ package PackageModelo;
 
 import PackageEnum.Gen_Panda;
 import PackageEnum.TipoAlimentacion;
-import PackageEnum.TipoHabitat;
 
 import java.util.ArrayList;
 
@@ -12,8 +11,8 @@ public class Panda extends Animal{
     protected String color;
     ///todo.CONSTRUCTOR
 
-    public Panda(String nombre, double vida, double danio, ArrayList<String> drops, boolean esBebe, TipoHabitat tipoHabitat, TipoAlimentacion tipoAlimentacion, Gen_Panda gen, String color) {
-        super(nombre, vida, danio, drops, esBebe, tipoHabitat, tipoAlimentacion);
+    public Panda(String nombre, double vida, double danio, ArrayList<String> drops, boolean esBebe, TipoAlimentacion tipoAlimentacion, Gen_Panda gen, String color) {
+        super(nombre, vida, danio, drops, esBebe, tipoAlimentacion);
         this.gen = gen;
         this.color = color;
     }

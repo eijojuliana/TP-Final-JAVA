@@ -1,7 +1,6 @@
 package PackageModelo;
 
 import PackageEnum.TipoAlimentacion;
-import PackageEnum.TipoHabitat;
 
 import java.util.ArrayList;
 
@@ -11,8 +10,8 @@ public class Lobo extends Animal{
     protected int IDduenio;
 
     ///todo.CONSTRUCTORES///
-    public Lobo(String nombre, double vida, double danio, ArrayList<String> drops, boolean esBebe, TipoHabitat tipoHabitat, TipoAlimentacion tipoAlimentacion, boolean domesticado, int IDduenio) {
-        super(nombre, vida, danio, drops, esBebe, tipoHabitat, tipoAlimentacion);
+    public Lobo(String nombre, double vida, double danio, ArrayList<String> drops, boolean esBebe, TipoAlimentacion tipoAlimentacion, boolean domesticado, int IDduenio) {
+        super(nombre, vida, danio, drops, esBebe, tipoAlimentacion);
         this.domesticado = domesticado;
         this.IDduenio = IDduenio;
     }
