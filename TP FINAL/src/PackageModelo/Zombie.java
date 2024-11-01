@@ -2,6 +2,7 @@ package PackageModelo;
 
 import PackageEnum.TipoZombie;
 import PackageInterfaces.IAtacar;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -70,10 +71,17 @@ public class Zombie extends Mob implements IAtacar {
         Zombie zombie = new Zombie();
 
         try {
+            JSONArray jsonArray = new JSONArray();
+            ArrayList<String> dropsAux = new ArrayList<>();
+
+            for (int i=0; i<jsonArray.length();i++){
+                dropsAux.add(jsonArray.getString(i));
+            }
+            
+            zombie.setDrops(dropsAux);
             zombie.setNombre(jsonObject.getString("nombre"));
             zombie.setVida(jsonObject.getDouble("vida"));
             zombie.setDanio(jsonObject.getDouble("danio"));
-            //zombie.setDrops(jsonObject.getString("drops"));
             zombie.setEsBebe(jsonObject.getBoolean("esBebe"));
             zombie.setTipoZombie(jsonObject.getString("tipoZombie"));
         } catch (JSONException exc) {
