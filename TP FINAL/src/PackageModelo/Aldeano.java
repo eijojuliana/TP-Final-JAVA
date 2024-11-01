@@ -11,12 +11,14 @@ public class Aldeano extends Mob{
     protected int nivel;
 
     //todo.CONSTRUCTOR
-    public Aldeano(String nombre, double vida, double danio, boolean esBebe, Profesion profesion, ArrayList<String> tradeos, int nivel) {
-        super(nombre, vida, danio, esBebe);
+
+    public Aldeano(String nombre, double vida, double danio, ArrayList<String> drops, boolean esBebe, Profesion profesion, ArrayList<String> tradeos, int nivel) {
+        super(nombre, vida, danio, drops, esBebe);
         this.profesion = profesion;
         this.tradeos = tradeos;
         this.nivel = nivel;
     }
+
     public Aldeano() {
     }
     //todo.GET Y SET
@@ -53,5 +55,10 @@ public class Aldeano extends Mob{
     //Habria que rellenarla y hacer otra en donde entre por parametro un string (item)
     public String tradea(int esmeraldas, int libro){
         return " ";
-    }   
+    }
+
+    @Override
+    public String emitirSonido() {
+        return "MHHH (Te critica en aldeano)";
+    }
 }

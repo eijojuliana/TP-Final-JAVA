@@ -8,12 +8,15 @@ public abstract class Mob extends Entidad {
 
     //todo.ATRIBUTOS//
     protected ArrayList<String> drops;
+    protected boolean esBebe;
 
     //todo.CONSTRUCTORES//
-    public Mob(String nombre, double vida, double danio) {
+    public Mob(String nombre, double vida, double danio, ArrayList<String> drops, boolean esBebe) {
         super(nombre, vida, danio);
-        drops = new ArrayList<>();
+        this.drops = drops;
+        this.esBebe = esBebe;
     }
+
     public Mob() {
         drops = new ArrayList<>();
     }
