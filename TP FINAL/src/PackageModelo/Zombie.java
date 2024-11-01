@@ -30,7 +30,6 @@ public class Zombie extends Mob implements IAtacar {
         this.tipoZombie = tipoZombie;
     }
     public void setTipoZombie(String tipoZombie) {
-
         if (
                 tipoZombie.equals(TipoZombie.COMUN.name()) ||
                 tipoZombie.equals(TipoZombie.MOMIFICADO.name()) ||
@@ -38,7 +37,6 @@ public class Zombie extends Mob implements IAtacar {
                 tipoZombie.equals(TipoZombie.ALDEANO.name()) ||
                 tipoZombie.equals(TipoZombie.AHOGADO.name())
         ) this.tipoZombie = TipoZombie.valueOf(tipoZombie);
-        
     }
 
     ///todo.TO STRING///
