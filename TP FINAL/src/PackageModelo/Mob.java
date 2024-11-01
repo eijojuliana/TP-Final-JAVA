@@ -21,6 +21,23 @@ public abstract class Mob extends Entidad {
         drops = new ArrayList<>();
     }
 
+    //todo.GETTER AND SETTER//
+    public ArrayList<String> getDrops() {
+        return drops;
+    }
+
+    public void setDrops(ArrayList<String> drops) {
+        this.drops = drops;
+    }
+
+    public boolean isEsBebe() {
+        return esBebe;
+    }
+
+    public void setEsBebe(boolean esBebe) {
+        this.esBebe = esBebe;
+    }
+
     //todo.Metodos//
     @Override
     public String toString() {

@@ -21,7 +21,19 @@ public class Entidad {
     }
     public Entidad() {
     }
-    ///todo.GETS///
+
+
+
+    ///todo.GETS AND SETS///
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    public void setVida(double vida) {
+        this.vida = vida;
+    }
+    public void setDanio(double danio) {
+        this.danio = danio;
+    }
     public String getNombre() {
         return nombre;
     }
