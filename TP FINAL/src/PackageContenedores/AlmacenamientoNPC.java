@@ -43,7 +43,8 @@ public class AlmacenamientoNPC<T> {
         Iterator<T> iterator = arrayNPC.iterator();
 
         while(iterator.hasNext()){
-            sb.append(iterator.next().toString()).append("\n");
+            sb.append(iterator.next().toString());
+            sb.append("\n");
         }
         return sb.toString();
     }
