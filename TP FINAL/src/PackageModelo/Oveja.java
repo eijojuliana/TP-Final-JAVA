@@ -1,18 +1,17 @@
 package PackageModelo;
 
-public class Oveja extends Animal{
+public class Oveja extends Pasivo{
     ///todo.ATRIBUTO
     public String color;
 
     public boolean tieneLana;
 
     ///todo.CONSTRUCTOR
-
-    public Oveja(String color, boolean tieneLana) {
+    public Oveja(String nombre, double vida, double danio, boolean esBebe, String color, boolean tieneLana) {
+        super(nombre, vida, danio, esBebe);
         this.color = color;
         this.tieneLana = tieneLana;
     }
-
     public Oveja() {}
 
     ///todo.GET Y SET
@@ -39,11 +38,6 @@ public class Oveja extends Animal{
                 "} " + super.toString();
     }
 
-    @Override
-    public String emitirSonido() {
-        return "MEEE (Traduccion automatica a ingles lanudo:yoyoyoyoyo)";
-    }
-
     public String esquilar(){
         tieneLana = false;
         return "shuck shuck *cae la lana*";
@@ -52,6 +46,4 @@ public class Oveja extends Animal{
         tieneLana = true;
         return "Tiene lanita crecida";
     }
-
-
 }

@@ -1,23 +1,17 @@
 package PackageModelo;
 
 import PackageEnum.Gen_Panda;
-import PackageEnum.TipoAlimentacion;
-import PackageEnum.TipoHabitat;
 
-import java.util.ArrayList;
-
-public class Panda extends Animal{
+public class Panda extends Pasivo{
     ///todo.ATRIBUTOS
     protected Gen_Panda gen;
     protected String color;
     ///todo.CONSTRUCTOR
-
-    public Panda(String nombre, double vida, double danio, ArrayList<String> drops, boolean esBebe, TipoHabitat tipoHabitat, TipoAlimentacion tipoAlimentacion, Gen_Panda gen, String color) {
-        super(nombre, vida, danio, drops, esBebe, tipoHabitat, tipoAlimentacion);
-        this.gen = gen;
+    public Panda(String nombre, double vida, double danio, boolean esBebe, String color, Gen_Panda gen) {
+        super(nombre, vida, danio, esBebe);
         this.color = color;
+        this.gen = gen;
     }
-
     public Panda(){}
 
     ///todo.GET Y SET

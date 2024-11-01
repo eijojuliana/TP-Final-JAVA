@@ -1,22 +1,16 @@
 package PackageModelo;
 
-import PackageEnum.TipoAlimentacion;
-import PackageEnum.TipoHabitat;
-
-import java.util.ArrayList;
-
-public class Lobo extends Animal{
+public class Lobo extends Neutro{
     ///todo.ATRIBUTOS///
     protected boolean domesticado;
     protected int IDduenio;
 
     ///todo.CONSTRUCTORES///
-    public Lobo(String nombre, double vida, double danio, ArrayList<String> drops, boolean esBebe, TipoHabitat tipoHabitat, TipoAlimentacion tipoAlimentacion, boolean domesticado, int IDduenio) {
-        super(nombre, vida, danio, drops, esBebe, tipoHabitat, tipoAlimentacion);
+    public Lobo(String nombre, double vida, double danio, boolean fueAtacado, boolean domesticado, int IDduenio) {
+        super(nombre, vida, danio, fueAtacado);
         this.domesticado = domesticado;
         this.IDduenio = IDduenio;
     }
-
     public Lobo() {
     }
 
