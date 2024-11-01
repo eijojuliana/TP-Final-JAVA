@@ -4,7 +4,7 @@ import PackageEnum.Profesion;
 
 import java.util.ArrayList;
 
-public class Aldeano extends Pasivo{
+public class Aldeano extends Mob{
     //todo.ATRIBUTOS
     protected Profesion profesion;
     protected ArrayList<String> tradeos;
