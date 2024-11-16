@@ -70,8 +70,7 @@ public class Entidad {
     }
 
     //todo.JSON
-    public JSONObject toJSON(){
-        JSONObject j = new JSONObject();
+    protected void toJSONEntidad(JSONObject j){
 
         try {
             j.put("nombre", nombre);
@@ -82,6 +81,5 @@ public class Entidad {
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
-        return j;
     }
 }

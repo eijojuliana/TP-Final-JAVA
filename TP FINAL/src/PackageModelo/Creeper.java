@@ -34,10 +34,10 @@ public class Creeper extends Mob implements IAtacar {
     // todo SOBREESCRITURA
     @Override
     public String toString() {
-        return  "Creeper{" +
+        return  "Creeper { " +
                 super.toString() +
-                "esElectrico=" + esElectrico +
-                "} " ;
+                ", esElectrico=" + esElectrico +
+                " } " ;
     }
 
     @Override
@@ -57,6 +57,7 @@ public class Creeper extends Mob implements IAtacar {
         JSONObject j = new JSONObject();
 
         try {
+            toJSONMob(j);
             j.put("esElectrico",esElectrico);
 
         } catch (JSONException e) {

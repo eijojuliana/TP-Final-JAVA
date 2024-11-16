@@ -40,24 +40,21 @@ public abstract class Mob extends Entidad {
     @Override
     public String toString() {
         return  super.toString() +
-                "drops=" + drops;
+                ", drops=" + drops;
     }
 
     public abstract String emitirSonido();
 
     //todo.JSON
-    public JSONObject toJSON(){
-        JSONObject j = new JSONObject();
-
+    protected void toJSONMob(JSONObject j){
         try {
+            toJSONEntidad(j);
             j.put("drops",drops);
             j.put("esBebe",esBebe);
 
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
-
-        return j;
     }
 
 }
