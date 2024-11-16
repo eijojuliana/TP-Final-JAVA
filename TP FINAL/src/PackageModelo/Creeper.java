@@ -8,10 +8,12 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class Creeper extends Mob implements IAtacar {
-    //todo.ATRIBUTOS
+    // todo ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+    //todo ATRIBUTOS
     protected boolean esElectrico;
 
-    //todo.CONSTRUCTORES
+    // todo ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+    //todo CONSTRUCTORES
 
     public Creeper(String nombre, double vida, double danio, boolean esBebe, boolean esElectrico) {
         super(nombre, vida, danio, esBebe);
@@ -19,7 +21,8 @@ public class Creeper extends Mob implements IAtacar {
     }
     public Creeper() {}
 
-    //GETTER AND SETTER
+    // todo ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+    // todo GETTER AND SETTER
     public boolean isEsElectrico() {
         return esElectrico;
     }
@@ -27,12 +30,14 @@ public class Creeper extends Mob implements IAtacar {
         this.esElectrico = esElectrico;
     }
 
-    //SOBREESCRITURA
+    // todo ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+    // todo SOBREESCRITURA
     @Override
     public String toString() {
-        return "Creeper{" +
+        return  "Creeper{" +
+                super.toString() +
                 "esElectrico=" + esElectrico +
-                "} " + super.toString();
+                "} " ;
     }
 
     @Override
@@ -45,7 +50,9 @@ public class Creeper extends Mob implements IAtacar {
         return "Le explota en toda la cabeza al mod" + IDMob + ", quitándole " + danio;
     }
 
-    //todo.JSON
+    // todo ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+    // todo JSON
+
     public JSONObject toJSON(){
         JSONObject j = new JSONObject();
 

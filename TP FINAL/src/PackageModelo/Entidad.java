@@ -63,12 +63,10 @@ public class Entidad {
     }
     @Override
     public String toString() {
-        return "PackageModelo.Entidad{" +
-                "nombre='" + nombre + '\'' +
+        return  "nombre='" + nombre + '\'' +
                 ", vida=" + vida +
                 ", danio=" + danio +
-                ", id=" + id +
-                '}';
+                ", id=" + id ;
     }
 
     //todo.JSON

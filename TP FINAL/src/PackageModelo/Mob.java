@@ -39,9 +39,8 @@ public abstract class Mob extends Entidad {
     //todo.Metodos//
     @Override
     public String toString() {
-        return "Mob{" +
-                "drops=" + drops +
-                "} " + super.toString();
+        return  super.toString() +
+                "drops=" + drops;
     }
 
     public abstract String emitirSonido();
