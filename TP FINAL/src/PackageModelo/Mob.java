@@ -1,6 +1,8 @@
 package PackageModelo;
 
 import PackageModelo.Entidad;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -16,7 +18,6 @@ public abstract class Mob extends Entidad {
         this.drops = drops;
         this.esBebe = esBebe;
     }
-
     public Mob() {
         drops = new ArrayList<>();
     }
@@ -25,15 +26,12 @@ public abstract class Mob extends Entidad {
     public ArrayList<String> getDrops() {
         return drops;
     }
-
     public void setDrops(ArrayList<String> drops) {
         this.drops = drops;
     }
-
     public boolean isEsBebe() {
         return esBebe;
     }
-
     public void setEsBebe(boolean esBebe) {
         this.esBebe = esBebe;
     }
@@ -47,4 +45,20 @@ public abstract class Mob extends Entidad {
     }
 
     public abstract String emitirSonido();
+
+    //todo.JSON
+    public JSONObject toJSON(){
+        JSONObject j = new JSONObject();
+
+        try {
+            j.put("drops",drops);
+            j.put("esBebe",esBebe);
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+
+        return j;
+    }
+
 }

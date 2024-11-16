@@ -1,5 +1,8 @@
 package PackageModelo;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -66,5 +69,21 @@ public class Entidad {
                 ", danio=" + danio +
                 ", id=" + id +
                 '}';
+    }
+
+    //todo.JSON
+    public JSONObject toJSON(){
+        JSONObject j = new JSONObject();
+
+        try {
+            j.put("nombre", nombre);
+            j.put("vida", vida);
+            j.put("danio", danio);
+            j.put("id", id);
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+        return j;
     }
 }
