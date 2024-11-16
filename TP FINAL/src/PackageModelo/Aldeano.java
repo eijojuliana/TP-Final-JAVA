@@ -12,8 +12,8 @@ public class Aldeano extends Mob{
 
     //todo.CONSTRUCTOR
 
-    public Aldeano(String nombre, double vida, double danio, ArrayList<String> drops, boolean esBebe, Profesion profesion, ArrayList<String> tradeos, int nivel) {
-        super(nombre, vida, danio, drops, esBebe);
+    public Aldeano(String nombre, double vida, double danio, boolean esBebe, Profesion profesion, ArrayList<String> tradeos, int nivel) {
+        super(nombre, vida, danio, esBebe);
         this.profesion = profesion;
         this.tradeos = tradeos;
         this.nivel = nivel;

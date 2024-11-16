@@ -12,8 +12,8 @@ public class Panda extends Animal{
     protected Gen_Panda gen;
     ///todo.CONSTRUCTOR
 
-    public Panda(String nombre, double vida, double danio, ArrayList<String> drops, boolean esBebe, TipoAlimentacion tipoAlimentacion, Gen_Panda gen ) {
-        super(nombre, vida, danio, drops, esBebe, tipoAlimentacion);
+    public Panda(String nombre, double vida, double danio, boolean esBebe, TipoAlimentacion tipoAlimentacion, Gen_Panda gen ) {
+        super(nombre, vida, danio, esBebe, tipoAlimentacion);
         this.gen = gen;
     }
 
@@ -23,7 +23,6 @@ public class Panda extends Animal{
     public Gen_Panda getGen() {
         return gen;
     }
-
     public void setGen(Gen_Panda gen) {
         this.gen = gen;
     }

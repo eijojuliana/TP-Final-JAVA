@@ -8,8 +8,8 @@ public abstract class Animal extends Mob{
     protected TipoAlimentacion tipoAlimentacion;
 
     ///todo.CONSTRUCTORES///
-    public Animal(String nombre, double vida, double danio, ArrayList<String> drops, boolean esBebe, TipoAlimentacion tipoAlimentacion) {
-        super(nombre, vida, danio, drops, esBebe);
+    public Animal(String nombre, double vida, double danio, boolean esBebe, TipoAlimentacion tipoAlimentacion) {
+        super(nombre, vida, danio, esBebe);
         this.tipoAlimentacion = tipoAlimentacion;
     }
     public Animal() {

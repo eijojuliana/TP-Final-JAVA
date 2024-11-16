@@ -14,8 +14,8 @@ public class Zombie extends Mob implements IAtacar {
 
     ///todo.CONSTRUCTORES///
 
-    public Zombie(String nombre, double vida, double danio, ArrayList<String> drops, boolean esBebe, TipoZombie tipoZombie) {
-        super(nombre, vida, danio, drops, esBebe);
+    public Zombie(String nombre, double vida, double danio, boolean esBebe, TipoZombie tipoZombie) {
+        super(nombre, vida, danio, esBebe);
         this.tipoZombie = tipoZombie;
     }
 

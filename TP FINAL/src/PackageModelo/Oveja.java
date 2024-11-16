@@ -1,5 +1,6 @@
 package PackageModelo;
 
+import PackageEnum.TipoAlimentacion;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,12 +14,14 @@ public class Oveja extends Animal{
 
     public boolean tieneLana;
 
-    ///todo.CONSTRUCTOR
-
-    public Oveja(String color, boolean tieneLana) {
+    public Oveja(String nombre, double vida, double danio, boolean esBebe, TipoAlimentacion tipoAlimentacion, String color, boolean tieneLana) {
+        super(nombre, vida, danio, esBebe, tipoAlimentacion);
         this.color = color;
         this.tieneLana = tieneLana;
     }
+
+    ///todo.CONSTRUCTOR
+
 
     public Oveja() {}
 
