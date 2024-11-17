@@ -6,10 +6,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Player extends Entidad{
+    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     ///todo.ATRIBUTOS///
     protected boolean esPremium;
     protected TipoPlayer tipoPlayer;
+    protected int contrasenia;
 
+    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     ///todo.CONSTRUCTORES///
     public Player(String nombre, double vida, double danio, boolean esPremium, TipoPlayer tipoPlayer) {
         super(nombre, vida, danio, Player.class.getSimpleName());
@@ -19,15 +22,23 @@ public class Player extends Entidad{
     public Player() {
     }
 
+    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     ///todo.GETS Y SETS///
     public boolean isEsPremium() {
         return esPremium;
     }
-    public void setEsPremium(boolean esPremium) {
-        this.esPremium = esPremium;
-    }
     public TipoPlayer getTipoPlayer() {
         return tipoPlayer;
+    }
+    public int getContrasenia() {
+        return contrasenia;
+    }
+
+    public void setContrasenia(int contrasenia) {
+        this.contrasenia = contrasenia;
+    }
+    public void setEsPremium(boolean esPremium) {
+        this.esPremium = esPremium;
     }
     public void setTipoPlayer(String tipoPlayer) {
         if (
@@ -36,8 +47,8 @@ public class Player extends Entidad{
                         tipoPlayer.equals(TipoPlayer.ESPECTADOR.name())
         ) this.tipoPlayer = TipoPlayer.valueOf(tipoPlayer);
     }
-
-    ///todo.TO STRING///
+    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+    /// ///todo.TO STRING///
     @Override
     public String toString() {
         return "Player{" +
@@ -56,6 +67,7 @@ public class Player extends Entidad{
             j = super.toJSON();
             j.put("esPremium", esPremium);
             j.put("tipoPlayer", tipoPlayer);
+            j.put("contrasenia", contrasenia);
 
         } catch (JSONException e) {
             throw new RuntimeException(e);
@@ -71,6 +83,7 @@ public class Player extends Entidad{
             super.fromJSON(j);
             setEsPremium(j.getBoolean("esPremium"));
             setTipoPlayer(j.getString("tipoPlayer"));
+            setContrasenia(j.getInt("Contrasenia"));
 
             exito = true;
 
