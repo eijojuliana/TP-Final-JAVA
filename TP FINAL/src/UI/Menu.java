@@ -3,9 +3,12 @@ package UI;
 import PackageContenedores.AlmacenamientoNPC;
 import PackageExceptions.Atributo_vacio_Exception;
 import PackageExceptions.Formato_no_valido_Exception;
+import PackageExceptions.Valor_de_atributo_no_valido_Exception;
 import PackageJSON.JSONUtiles;
+import PackageModelo.Animal;
 import PackageModelo.Creeper;
 import PackageModelo.Entidad;
+import PackageModelo.Panda;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -143,6 +146,21 @@ public class Menu {
 
         return e;
     }
+
+
+    private Panda crearPanda(){
+      Panda p=new Panda();
+      Scanner s=new Scanner(System.in);
+
+      crearEntidad();
+
+        System.out.print("Ingrese el tipo de alimentacion que tiene su panda: ");
+        String tipoalimentacion=s.next();
+        p.setTipoAlimentacion(tipoalimentacion);
+
+          return p;
+    }
+
 
 
 
