@@ -5,10 +5,7 @@ import PackageExceptions.Atributo_vacio_Exception;
 import PackageExceptions.Formato_no_valido_Exception;
 import PackageExceptions.Valor_de_atributo_no_valido_Exception;
 import PackageJSON.JSONUtiles;
-import PackageModelo.Animal;
-import PackageModelo.Creeper;
-import PackageModelo.Entidad;
-import PackageModelo.Panda;
+import PackageModelo.*;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -159,6 +156,23 @@ public class Menu {
         p.setTipoAlimentacion(tipoalimentacion);
 
           return p;
+    }
+
+    private Lobo crearLobo(){
+    Lobo l= new Lobo();
+    Scanner s=new Scanner(System.in);
+
+    crearEntidad();
+    System.out.println("Desea domesticar al lobo: \n 1-SIP \n 0-NOP ");
+    int decision =s.nextInt();
+
+    if (decision ==1 ){
+        System.out.println("Ingrese su id :");
+        int id=s.nextInt();
+        String mensaje =l.domesticarLobo(id);
+        System.out.println(mensaje);
+    }
+      return l;
     }
 
 

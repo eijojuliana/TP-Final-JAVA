@@ -2,6 +2,7 @@ package PackageModelo;
 
 import PackageEnum.TipoAlimentacion;
 
+import javax.management.MalformedObjectNameException;
 import java.util.ArrayList;
 
 public class Lobo extends Animal{
@@ -34,13 +35,21 @@ public class Lobo extends Animal{
         this.IDduenio = IDduenio;
     }
 
-    ///todo.TO STRING///
+    ///todo.Metodoss///
     @Override
     public String toString() {
         return "Lobo{" +
                 "domesticado=" + domesticado +
                 ", IDduenio=" + IDduenio +
                 "} " + super.toString();
+    }
+
+    public String domesticarLobo(int id){
+         String mensaje;
+            setDomesticado(true);
+            setIDduenio(id);
+            mensaje="FELICIDADES!! A DOMESTICADO A SU NUEVO LOBO";
+        return mensaje;
     }
 
     ///todo.METODOS ABSTRACTOS///
