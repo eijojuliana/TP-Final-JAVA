@@ -2,6 +2,7 @@ package UI;
 
 import PackageContenedores.AlmacenamientoNPC;
 import PackageExceptions.Atributo_vacio_Exception;
+import PackageExceptions.Formato_no_valido_Exception;
 import PackageJSON.JSONUtiles;
 import PackageModelo.Creeper;
 import PackageModelo.Entidad;
@@ -9,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
@@ -107,28 +109,37 @@ public class Menu {
     }
 
     private Creeper crearCreeper(){
-        Creeper c = new Creeper();
+        Creeper c;
         Scanner s = new Scanner(System.in);
 
+        c = (Creeper) crearEntidad();
 
+        c.setEsBebe(false);
+        ArrayList<String> drops = new ArrayList<>();
+        drops.add("Polvora");
+        c.setDrops(drops);
+        c.setVida(10);
+        c.setDanio(21.5);
 
-
+        System.out.print("Está cargado? [Y - N]: ");
+        if(s.next().charAt(0) == 'Y') c.setEsElectrico(true);
+        else if (s.next().charAt(0) == 'N') c.setEsElectrico(false);
+        else throw new Formato_no_valido_Exception("Caracter ingresado incorrecto.");
+        
         return c;
     }
-    private Entidad crearEntidad(){
+    private Entidad crearEntidad() {
         Entidad e = new Entidad();
         Scanner s = new Scanner(System.in);
 
 
-        double vida, danio;
-
         System.out.print("Ingrese un nombre: ");
         String nombre = s.next();
-        if (nombre.isBlank()) throw new Atributo_vacio_Exception();
+        if (nombre.isBlank()) throw new Atributo_vacio_Exception("No se puede cargar un atributo vacio");
+        else e.setNombre(nombre);
 
-        e.setNombre(nombre);
-        e.setVida(vida);
-        e.setDanio(danio);
+        e.setVida(10);
+        e.setDanio(0);
 
         return e;
     }
