@@ -2,13 +2,14 @@ package PackageModelo;
 
 import PackageEnum.TipoZombie;
 import PackageInterfaces.IAtacar;
+import PackageInterfaces.IConversionJSON;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Zombie extends Mob implements IAtacar {
+public class Zombie extends Mob implements IAtacar, IConversionJSON {
     ///todo.ATRIBUTOS///
     protected TipoZombie tipoZombie;
 
@@ -58,44 +59,35 @@ public class Zombie extends Mob implements IAtacar {
     }
 
     ///todo.JSON///
-    public JSONObject convertirAJSON () {
-        JSONObject jsonObject = new JSONObject();
+    @Override
+    public JSONObject toJSON(){
+        JSONObject j;
 
         try {
-            jsonObject.put("nombre", nombre);
-            jsonObject.put("vida", vida);
-            jsonObject.put("danio", danio);
-            jsonObject.put("drops", drops);
-            jsonObject.put("esBebe", esBebe);
-            jsonObject.put("tipoZombie", tipoZombie);
-        } catch (JSONException exc) {
-            exc.printStackTrace();
+            j = super.toJSON();
+            j.put("esBebe", esBebe);
+            j.put("tipoZombie", tipoZombie);
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
         }
 
-        return jsonObject;
+        return j;
     }
 
-    public Zombie convertirAZombie (JSONObject jsonObject) {
-        Zombie zombie = new Zombie();
-
+    @Override
+    public boolean fromJSON(JSONObject j) {
+        boolean exito = false;
         try {
-            JSONArray jsonArray = new JSONArray();
-            ArrayList<String> dropsAux = new ArrayList<>();
+            super.fromJSON(j);
+            setEsBebe(j.getBoolean("esBebe"));
+            setTipoZombie(j.getString("tipoZombie"));
 
-            for (int i=0; i<jsonArray.length();i++){
-                dropsAux.add(jsonArray.getString(i));
-            }
-            
-            zombie.setDrops(dropsAux);
-            zombie.setNombre(jsonObject.getString("nombre"));
-            zombie.setVida(jsonObject.getDouble("vida"));
-            zombie.setDanio(jsonObject.getDouble("danio"));
-            zombie.setEsBebe(jsonObject.getBoolean("esBebe"));
-            zombie.setTipoZombie(jsonObject.getString("tipoZombie"));
-        } catch (JSONException exc) {
-            exc.printStackTrace();
+            exito = true;
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
         }
-
-        return zombie;
+        return exito;
     }
 }
