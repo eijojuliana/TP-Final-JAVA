@@ -163,7 +163,7 @@ public class Menu {
     Scanner s=new Scanner(System.in);
 
     crearEntidad();
-    System.out.println("Desea domesticar al lobo: \n 1-SIP \n 0-NOP ");
+    System.out.println("Desea domesticar al lobo? : \n 1-SIP \n 0-NOP ");
     int decision =s.nextInt();
 
     if (decision ==1 ){
@@ -173,6 +173,26 @@ public class Menu {
         System.out.println(mensaje);
     }
       return l;
+    }
+
+    private Oveja crearOveja(){
+     Oveja o= new Oveja();
+     Scanner s=new Scanner(System.in);
+     String mensaje;
+
+     crearEntidad();
+        System.out.println("Desea esquilar a la ovejita?: \n 1-SIP \n 0-NOP");
+        int esquilar=s.nextInt();
+
+        if (esquilar==1){
+            mensaje=o.esquilar();
+            System.out.println(mensaje);
+        }
+        else{
+            mensaje=o.crecerLana();
+            System.out.println(mensaje);
+        }
+        return o;
     }
 
 
