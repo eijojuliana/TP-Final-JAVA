@@ -8,6 +8,8 @@ import PackageExceptions.Formato_no_valido_Exception;
 import PackageExceptions.Valor_de_atributo_no_valido_Exception;
 import PackageJSON.JSONUtiles;
 import PackageModelo.*;
+import com.github.freva.asciitable.AsciiTable;
+import com.github.freva.asciitable.Column;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,13 +29,23 @@ public class Menu {
         Creeper c2 = new Creeper("Creeper2",10,5,false,false);
         Creeper c3 = new Creeper("Creeper3",10,5,false,false);
         Zombie z = new Zombie ("Zombie1", 10.6, 5.0, false, TipoZombie.ALDEANO);
+        Zombie z2 = new Zombie ("Zombieasda2", 10.6, 5.0, false, TipoZombie.AHOGADO);
+        Zombie z3 = new Zombie ("Zombie3aaaaaaaaa", 10.6, 5.0, false, TipoZombie.CHIQUITO);
 
         AlmacenamientoNPC<Entidad> carcel = new AlmacenamientoNPC<>();
+        //Probandop
+        ArrayList<Zombie> zombies = new ArrayList<>();
+        zombies.add(z);
+        zombies.add(z2);
+        zombies.add(z3);
+
 
         while(bucle) {
             System.out.println(z.toStringCuadrito());
             System.out.printf("\n\n");
             System.out.println(z.toAsciiTable());
+            System.out.printf("\n\n");
+            System.out.println(arrayToAsciiTable(zombies));
 
             printMenu();
             menu1 = s.nextInt();
@@ -207,7 +219,28 @@ public class Menu {
     }
 
 
+    public static String arrayToAsciiTable(ArrayList<Zombie> zombies) {
+        // Verificar si el ArrayList está vacío
+        if (zombies == null || zombies.isEmpty()) {
+            return "No hay zombies para mostrar";
+        }
 
+        // Crear los datos para la tabla
+        String[][] data = new String[zombies.size() + 1][6];
+        data[0] = new String[]{"Nombre", "Vida", "Daño", "¿Es bebé?", "Tipo Zombie"};
+
+        for (int i = 0; i < zombies.size(); i++) {
+            Zombie zombie = zombies.get(i);
+            data[i + 1] = new String[]{
+                    zombie.getNombre(),
+                    String.format("%.2f", zombie.getVida()),
+                    String.format("%.2f", zombie.getDanio()),
+                    zombie.isEsBebe()? "Sí" : "No",
+                    zombie.getTipoZombie().name()
+            };
+        }
+        return AsciiTable.getTable(data);
+    }
 
 
 

@@ -73,16 +73,14 @@ public class Zombie extends Mob implements IAtacar, IConversionJSON {
 
     public String toAsciiTable() {
         // Crear la tabla usando la biblioteca AsciiTable
-        String[][] data = {
+        return AsciiTable.getTable(new String[][] {
                 {"Atributo", "Valor"},
                 {"Nombre", getNombre()},
                 {"Vida", String.format("%.2f", getVida())},
                 {"Daño", String.format("%.2f", getDanio())},
                 {"¿Es bebé?", esBebe ? "Sí" : "No"},
                 {"Tipo Zombie", tipoZombie.name()}
-        };
-
-        return AsciiTable.getTable(data);
+        });
     }
 
     @Override
