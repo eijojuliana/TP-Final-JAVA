@@ -2,6 +2,7 @@ package UI;
 
 import PackageContenedores.AlmacenamientoNPC;
 import PackageEnum.Gen_Panda;
+import PackageEnum.TipoZombie;
 import PackageExceptions.Atributo_vacio_Exception;
 import PackageExceptions.Formato_no_valido_Exception;
 import PackageExceptions.Valor_de_atributo_no_valido_Exception;
@@ -25,11 +26,12 @@ public class Menu {
         Creeper c = new Creeper("Creeper1",10,5,false,false);
         Creeper c2 = new Creeper("Creeper2",10,5,false,false);
         Creeper c3 = new Creeper("Creeper3",10,5,false,false);
+        Zombie z = new Zombie ("Zombie1", 10.6, 5.0, false, TipoZombie.ALDEANO);
 
         AlmacenamientoNPC<Entidad> carcel = new AlmacenamientoNPC<>();
 
         while(bucle) {
-
+            System.out.println(z.toStringCuadrito());
             printMenu();
             menu1 = s.nextInt();
             switch (menu1) {

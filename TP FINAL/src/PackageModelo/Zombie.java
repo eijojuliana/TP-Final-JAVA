@@ -48,6 +48,29 @@ public class Zombie extends Mob implements IAtacar, IConversionJSON {
                 "} " + super.toString();
     }
 
+    public String toStringCuadrito() {
+        String formato =
+                """
+                        +-----------------------------------+
+                        | %-33s |
+                        +-----------------------------------+
+                        | Nombre: %-25s |
+                        | Vida: %-27.2f |
+                        | Daño: %-27.2f |
+                        | ¿Es bebé?: %-22s |
+                        | Tipo Zombie: %-21s |
+                        +-----------------------------------+""";
+        return String.format(
+                formato,
+                "Información del Zombie",
+                getNombre(),
+                getVida(),
+                getDanio(),
+                esBebe ? "Sí" : "No",
+                tipoZombie.name()
+        );
+    }
+
     @Override
     public String emitirSonido() {
         return "ROOAWR ROOAWR";
