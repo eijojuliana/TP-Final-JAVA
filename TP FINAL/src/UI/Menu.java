@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public void iniciarMenu(){
+    public void iniciarMenu(String tipoUsuario){
         boolean bucle = true;
         Scanner s = new Scanner(System.in);
 
@@ -221,7 +221,7 @@ public class Menu {
 
     }
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-    //Menu
+    //todo MENU
     private void printMenu(){
         System.out.print("""
                 GESTIÓN MINECRAFT:
@@ -273,7 +273,7 @@ public class Menu {
     }
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-    //Cargar
+    //todo CARGAR
 
     private Entidad crearEntidad() {
         Entidad e = new Entidad();
@@ -376,6 +376,8 @@ public class Menu {
         return o;
     }
 
+
+    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
     public static String ZombiesToTable(ArrayList<Zombie> zombies) throws Atributo_vacio_Exception {
         // Verificar si el ArrayList está vacío

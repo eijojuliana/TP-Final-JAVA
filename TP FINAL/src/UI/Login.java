@@ -11,12 +11,11 @@ import java.util.Scanner;
 public class Login {
 
 
-    public boolean Login(){
-
+    public String iniciarLogin(){
         Scanner s = new Scanner(System.in);
         String usuario;
         int contrasenia;
-        boolean exito = false;
+        String tipoUsuario = null;
 
         System.out.print("Usuario: ");
         usuario = s.next();
@@ -27,15 +26,18 @@ public class Login {
             JSONArray jArrray = new JSONArray( JSONUtiles.leer("jugadores") );
             for (int i=0; i<jArrray.length() ; i++){
                 JSONObject jObject = new JSONObject();
-                if ( jObject.getString("nombre").equals(usuario) && jObject.getInt("contrasenia") == contrasenia ) exito = true;
+                if ( jObject.getString("nombre").equals(usuario) && jObject.getInt("contrasenia") == contrasenia ){
+                    tipoUsuario = jObject.getString("tipoPlayer");
+                    break;
+                }
             }
-            if (!exito) throw new Usuario_no_encontrado_Exception("Nombre o contraseña incorrectos.");
+            if ( tipoUsuario == null ) throw new Usuario_no_encontrado_Exception("Nombre o contraseña incorrectos.");
 
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
 
-        return exito;
+        return tipoUsuario;
     }
 
 }
