@@ -44,8 +44,10 @@ public abstract class Mob extends Entidad implements IConversionJSON {
     //todo.Metodos//
     @Override
     public String toString() {
-        return  super.toString() +
-                ", drops=" + drops;
+        return "Mob{" +
+                "drops=" + drops +
+                ", esBebe=" + esBebe +
+                "} " + super.toString();
     }
 
     public abstract String emitirSonido();

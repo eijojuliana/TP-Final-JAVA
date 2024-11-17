@@ -42,6 +42,7 @@ public class Aldeano extends Mob{
         this.nivel = nivel;
     }
 
+
     //todo.METODOS
     @Override
     public String toString() {
@@ -51,6 +52,7 @@ public class Aldeano extends Mob{
                 ", nivel=" + nivel +
                 "} " + super.toString();
     }
+
 
     //Habria que rellenarla y hacer otra en donde entre por parametro un string (item)
     public String tradea(int esmeraldas, int libro){

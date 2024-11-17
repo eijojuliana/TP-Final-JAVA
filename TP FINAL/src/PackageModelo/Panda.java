@@ -28,7 +28,14 @@ public class Panda extends Animal{
     }
 
 
-    ///todo.METODO
+    @Override
+    public String toString() {
+        return "Panda{" +
+                "gen=" + gen +
+                "} " + super.toString();
+    }
+    ///todo.METODO///
+
     public String Rodar(){
         return "*Giro ,me caigo, me levanto, vuelvo a girar*";
     }

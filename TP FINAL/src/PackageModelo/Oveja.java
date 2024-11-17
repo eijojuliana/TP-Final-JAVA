@@ -40,7 +40,6 @@ public class Oveja extends Animal{
         this.tieneLana = tieneLana;
     }
 
-    ///todo.METODOS
     @Override
     public String toString() {
         return "Oveja{" +
@@ -48,6 +47,9 @@ public class Oveja extends Animal{
                 ", tieneLana=" + tieneLana +
                 "} " + super.toString();
     }
+
+    ///todo.METODOS
+
 
     @Override
     public String emitirSonido() {

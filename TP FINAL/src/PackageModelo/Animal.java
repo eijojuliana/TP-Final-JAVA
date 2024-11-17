@@ -22,4 +22,11 @@ public abstract class Animal extends Mob{
     public void setTipoAlimentacion(TipoAlimentacion tipoAlimentacion) {
         this.tipoAlimentacion = tipoAlimentacion;
     }
+    ///todo.METODOS///
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "tipoAlimentacion=" + tipoAlimentacion +
+                "} " + super.toString();
+    }
 }
