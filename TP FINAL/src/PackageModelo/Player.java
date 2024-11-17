@@ -9,7 +9,7 @@ public class Player extends Entidad{
 
     ///todo.CONSTRUCTORES///
     public Player(String nombre, double vida, double danio, boolean esPremium, TipoPlayer tipoPlayer) {
-        super(nombre, vida, danio);
+        super(nombre, vida, danio, Player.class.getName());
         this.esPremium = esPremium;
         this.tipoPlayer = tipoPlayer;
     }

@@ -1,20 +1,23 @@
 package PackageModelo;
 
+import PackageInterfaces.IConversionJSON;
 import PackageModelo.Entidad;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public abstract class Mob extends Entidad {
-
+public abstract class Mob extends Entidad implements IConversionJSON {
+    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     //todo.ATRIBUTOS//
     protected ArrayList<String> drops;
     protected boolean esBebe;
 
+    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     //todo.CONSTRUCTORES//
-    public Mob(String nombre, double vida, double danio, boolean esBebe) {
-        super(nombre, vida, danio);
+    public Mob(String nombre, double vida, double danio, String tipo, boolean esBebe) {
+        super(nombre, vida, danio, tipo);
         this.drops = new ArrayList<>();
         this.esBebe = esBebe;
     }
@@ -22,6 +25,7 @@ public abstract class Mob extends Entidad {
         drops = new ArrayList<>();
     }
 
+    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     //todo.GETTER AND SETTER//
     public ArrayList<String> getDrops() {
         return drops;
@@ -36,6 +40,7 @@ public abstract class Mob extends Entidad {
         this.esBebe = esBebe;
     }
 
+    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     //todo.Metodos//
     @Override
     public String toString() {
@@ -45,16 +50,39 @@ public abstract class Mob extends Entidad {
 
     public abstract String emitirSonido();
 
+    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     //todo.JSON
-    protected void toJSONMob(JSONObject j){
+    @Override
+    public JSONObject toJSON(){
+        JSONObject j;
         try {
-            toJSONEntidad(j);
+            j = super.toJSON();
             j.put("drops",drops);
             j.put("esBebe",esBebe);
 
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
+        return j;
     }
 
+    @Override
+    public boolean fromJSON(JSONObject j) {
+        boolean exito = false;
+
+        try {
+            super.fromJSON(j);
+            setEsBebe(j.getBoolean("esBebe"));
+
+            JSONArray jsonArray = j.getJSONArray("drops");
+            for (int i=0; i< jsonArray.length(); i++){
+                drops.add(jsonArray.getString(i));
+            }
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+
+        return exito;
+    }
 }

@@ -13,7 +13,7 @@ public class Panda extends Animal{
     ///todo.CONSTRUCTOR
 
     public Panda(String nombre, double vida, double danio, boolean esBebe, TipoAlimentacion tipoAlimentacion, Gen_Panda gen ) {
-        super(nombre, vida, danio, esBebe, tipoAlimentacion);
+        super(nombre, vida, danio, Panda.class.getName(), esBebe, tipoAlimentacion);
         this.gen = gen;
     }
 

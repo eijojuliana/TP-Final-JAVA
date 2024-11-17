@@ -2,13 +2,9 @@ package PackageJSON;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONTokener;
-
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import org.json.JSONObject;
 import java.io.FileWriter;
 import java.io.IOException;
-
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -16,7 +12,7 @@ public class JSONUtiles {
 
     public static void grabarUnJson(JSONArray jsonArray, String archivo){
         try {
-            FileWriter file = new FileWriter(archivo);
+            FileWriter file = new FileWriter(archivo+".json");
             file.write(jsonArray.toString(4));
             file.close();
         } catch (IOException | JSONException e) {
@@ -24,20 +20,16 @@ public class JSONUtiles {
         }
     }
 
-    public static JSONTokener leerUnJson(String archivo){
-        JSONTokener tokener = null;
-
-        try{
-            tokener = new JSONTokener(new FileReader(archivo));
-
-        }catch (FileNotFoundException e){
+    public static void grabarUnJson(JSONObject j, String archivo){
+        try {
+            FileWriter file = new FileWriter(archivo+".json");
+            file.write(j.toString(4));
+            file.close();
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
-
-        return tokener;
     }
 
-    //Otra forma
     public static String leer(String archivo)
     {
         String contenido = "";

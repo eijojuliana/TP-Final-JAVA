@@ -1,27 +1,28 @@
 package PackageModelo;
 
 import PackageInterfaces.IAtacar;
+import PackageInterfaces.IConversionJSON;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Creeper extends Mob implements IAtacar {
-    // todo ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+public class Creeper extends Mob implements IAtacar, IConversionJSON {
+    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     //todo ATRIBUTOS
     protected boolean esElectrico;
 
-    // todo ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     //todo CONSTRUCTORES
 
     public Creeper(String nombre, double vida, double danio, boolean esBebe, boolean esElectrico) {
-        super(nombre, vida, danio, esBebe);
+        super(nombre, vida, danio, Creeper.class.getName(), esBebe);
         this.esElectrico = esElectrico;
     }
     public Creeper() {}
 
-    // todo ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     // todo GETTER AND SETTER
     public boolean isEsElectrico() {
         return esElectrico;
@@ -30,7 +31,7 @@ public class Creeper extends Mob implements IAtacar {
         this.esElectrico = esElectrico;
     }
 
-    // todo ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     // todo SOBREESCRITURA
     @Override
     public String toString() {
@@ -50,14 +51,15 @@ public class Creeper extends Mob implements IAtacar {
         return "Le explota en toda la cabeza al mod" + IDMob + ", quitándole " + danio;
     }
 
-    // todo ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     // todo JSON
 
+    @Override
     public JSONObject toJSON(){
-        JSONObject j = new JSONObject();
+        JSONObject j;
 
         try {
-            toJSONMob(j);
+            j = super.toJSON();
             j.put("esElectrico",esElectrico);
 
         } catch (JSONException e) {
@@ -67,28 +69,19 @@ public class Creeper extends Mob implements IAtacar {
         return j;
     }
 
-    public static Creeper JSONtoCreeper(JSONObject j){
-        Creeper c = new Creeper();
+    @Override
+    public boolean fromJSON(JSONObject j) {
+        boolean exito = false;
+        try {
+            super.fromJSON(j);
+            setEsElectrico(j.getBoolean("esElectrico"));
 
-        try{
-            c.setNombre(j.getString("nombre"));
-            c.setVida(j.getDouble("vida"));
-            c.setDanio(j.getDouble("danio"));
-            c.setEsBebe(j.getBoolean("esBebe"));
-            c.setEsElectrico(j.getBoolean("esElectrico"));
-
-            JSONArray jsonArray = j.getJSONArray("drops");
-            ArrayList<String> drops = new ArrayList<>();
-            for (int i=0; i< jsonArray.length(); i++){
-                drops.add(jsonArray.getString(i));
-            }
-            c.setDrops(drops);
+            exito = true; //Si llegó hasta acá sin tirar una Exception funcionó
 
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
-
-        return c;
+        return exito;
     }
 
 }
