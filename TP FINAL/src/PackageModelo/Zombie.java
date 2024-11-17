@@ -58,7 +58,8 @@ public class Zombie extends Mob implements IAtacar, IConversionJSON {
         return "Golpea al mob "+IDMob+", quitandole"+danio+"puntos de vida";
     }
 
-    ///todo.JSON///
+    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+    // todo JSON
     @Override
     public JSONObject toJSON(){
         JSONObject j;
