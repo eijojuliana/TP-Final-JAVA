@@ -1,6 +1,7 @@
 package UI;
 
 import PackageContenedores.AlmacenamientoNPC;
+import PackageEnum.Gen_Panda;
 import PackageExceptions.Atributo_vacio_Exception;
 import PackageExceptions.Formato_no_valido_Exception;
 import PackageExceptions.Valor_de_atributo_no_valido_Exception;
@@ -154,6 +155,15 @@ public class Menu {
         System.out.print("Ingrese el tipo de alimentacion que tiene su panda: ");
         String tipoalimentacion=s.next();
         p.setTipoAlimentacion(tipoalimentacion);
+
+        p.setVida(20);
+
+        if (p.getGen() == Gen_Panda.AGRESIVO){
+            p.setDanio(6);
+        }
+        else {
+            p.setDanio(0);
+        }
 
           return p;
     }
