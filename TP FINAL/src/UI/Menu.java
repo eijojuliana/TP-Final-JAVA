@@ -5,14 +5,8 @@ import PackageEnum.Gen_Panda;
 import PackageEnum.TipoZombie;
 import PackageExceptions.Atributo_vacio_Exception;
 import PackageExceptions.Formato_no_valido_Exception;
-import PackageExceptions.Valor_de_atributo_no_valido_Exception;
-import PackageJSON.JSONUtiles;
 import PackageModelo.*;
 import com.github.freva.asciitable.AsciiTable;
-import com.github.freva.asciitable.Column;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -23,7 +17,7 @@ public class Menu {
         boolean bucle = true;
         Scanner s = new Scanner(System.in);
 
-        int menu1;
+        int menu1 = 0, menu2 = 0;
 
         Creeper c = new Creeper("Creeper1",10,5,false,false);
         Creeper c2 = new Creeper("Creeper2",10,5,false,false);
@@ -39,60 +33,176 @@ public class Menu {
         zombies.add(z2);
         zombies.add(z3);
 
+        /*
+        System.out.println(z.toAsciiTable());
+        System.out.printf("\n\n");
+        System.out.println(ZombiesToTable(zombies));
+        */
+        /*
+        carcel.agregar(c);
+        carcel.agregar(c2);
+        carcel.agregar(c3);
+
+        JSONUtiles.grabarUnJson(carcel.toJSON(),"carcel");
+
+        try {
+            JSONArray jsonArray = new JSONArray(JSONUtiles.leer("carcel"));
+            for ( int i=0; i< jsonArray.length() ; i++ ){
+                JSONObject jObject = jsonArray.getJSONObject(i);
+
+                Entidad e;
+
+                if (jObject.getString("tipo").equals("Creeper")){
+                    e = new Creeper();
+                    e.fromJSON(jObject);
+                } else {
+                    e = null;
+                }
+                carcel.agregar( e );
+            }
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+
+        } finally {
+            System.out.println("Cárcel:\n"+carcel);
+        }
+         */
+
 
         while(bucle) {
-            System.out.println(z.toStringCuadrito());
-            System.out.printf("\n\n");
-            System.out.println(z.toAsciiTable());
-            System.out.printf("\n\n");
-            System.out.println(arrayToAsciiTable(zombies));
 
             printMenu();
             menu1 = s.nextInt();
+            System.out.println();
+
+            if ( menu1 != 0 ){
+                printMenu2(menu1);
+                menu2 = s.nextInt();
+            }
+
             switch (menu1) {
-                case 1: {
-
-                    carcel.agregar(c);
-                    carcel.agregar(c2);
-                    carcel.agregar(c3);
-
-                    JSONUtiles.grabarUnJson(carcel.toJSON(),"carcel");
-                    break;
-                }
-                case 2: {
-
-
-                    try {
-                        JSONArray jsonArray = new JSONArray(JSONUtiles.leer("carcel"));
-                        for ( int i=0; i< jsonArray.length() ; i++ ){
-                            JSONObject jObject = jsonArray.getJSONObject(i);
-
-                            Entidad e;
-
-                            if (jObject.getString("tipo").equals("Creeper")){
-                                e = new Creeper();
-                                e.fromJSON(jObject);
-                            } else {
-                                e = null;
-                            }
-                            carcel.agregar( e );
+                //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+                case 1:{
+                    switch (menu2){
+                        case 1:{
+                            //cargarAldeano();
+                            break;
                         }
-
-                    } catch (JSONException e) {
-                        throw new RuntimeException(e);
-
-                    } finally {
-                        System.out.println("Cárcel:\n"+carcel);
+                        case 2:{
+                            //verAldeanos();
+                            break;
+                        }
+                        case 3:{
+                            //modificarAldeano();
+                            break;
+                        }
+                        case 4:{
+                            //eliminarAldeano
+                            break;
+                        }
+                        case 5:{
+                            //Buscar por
+                            break;
+                        }
                     }
-                    break;
-                }
-                case 3: {
+                    break;} //ALDEANOS
+                //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+                case 2:{
+                    switch (menu2){
+                        case 1:{
+                            //cargarAnimal();
+                            break;
+                        }
+                        case 2:{
+                            //verAnimales();
+                            break;
+                        }
+                        case 3:{
+                            //modificarAnimal();
+                            break;
+                        }
+                        case 4:{
+                            //eliminarAnimal()
+                            break;
+                        }
+                        case 5:{
+                            //Buscar por
+                            break;
+                        }
+                    }
+                    break;} //ANIMALES
+                //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+                case 3:{
+                    switch (menu2){
+                        case 1:{
+                            //cargarMob();
+                            break;
+                        }
+                        case 2:{
+                            //verCarcel();
+                            break;
+                        }
+                        case 3:{
+                            //modificarMob();
+                            break;
+                        }
+                        case 4:{
+                            //eliminarMob
+                            break;
+                        }
+                        case 5:{
+                            //Buscar por
+                            break;
+                        }
+                    }
+                    break;} //CARCEL
+                //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+                case 4:{
+                    switch (menu2){
+                        case 1:{
+                            //agregarJugador();
+                            break;
+                        }
+                        case 2:{
+                            //verJugadores();
+                            break;
+                        }
+                        case 3:{
+                            //modificarJugador();
+                            break;
+                        }
+                        case 4:{
+                            //banearJugador
+                            break;
+                        }
+                        case 5:{
+                            //Buscar por
+                            break;
+                        }
+                    }
+                    break;} //JUGADORES
+                //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+                case 5:{
+                    //mostrarAldeanos();
+                    //------
+                    //mostrarAnimales();
+                    //------
+                    //mostrarCarcel();
+                    break;} //Mostrar todos los mobs
+                //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+                case 6:{
+                    //buscar por() (general);
+                    break;} //Buscar por
+                //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
-                    break;
-                }
+
+
+
 
 
                 case 0: {
+                    System.out.println("Saliendo...");
                     bucle = false;
                     break;
                 }
@@ -102,7 +212,7 @@ public class Menu {
                     break;
                 }
             }
-            if ( bucle ){
+            if ( menu1 != 0 ){ //Si no eligió salir...
                 System.out.println();
                 pausa();
                 System.out.println("\n");
@@ -110,22 +220,77 @@ public class Menu {
         }
 
     }
+    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+    //Menu
     private void printMenu(){
         System.out.print("""
                 GESTIÓN MINECRAFT:
-                1. Agregar creepers y grabarlos.
-                2. Leer archivo de creepers
-                0. Salir
+                
+                --  ALDEA  --
+                [1] Aldeanos
+                [2] Animales
+                [3] Cárcel
+        
+                -- USUARIOS --
+                [4] Jugadores
+                
+                --  TODOS  --
+                [5] Mostrar todos los mobs.
+                [6] Buscar mob por id/nombre.
+                
+                -- SISTEMA --
+                [0] Salir
+                
+                ¿Qué registro desea modificar? Ingrese una opción:""");
+        System.out.print(" ");
+    }
+    private void printMenu2(int menu1){
+
+        System.out.print(" GESTIÓN ");
+        switch (menu1){
+            case 1: System.out.println("ALDEANOS:"); break;
+            case 2: System.out.println("ANIMALES:"); break;
+            case 3: System.out.println("CÁRCEL:"); break;
+            case 4: System.out.println("JUGADORES:"); break;
+        }
+        System.out.println("""   
+            
+                [1] Cargar elemento
+                [2] Ver todos
+                [3] Modificar un elemento
+                [4] Eliminar una entidad
+                [5] Buscar por id/nombre
+                
+                [0] Salir
+                
                 Ingrese una opción:""");
         System.out.print(" ");
     }
-
     private void pausa(){
         Scanner s = new Scanner(System.in);
         System.out.print("Ingrese un caracter para continuar... ");
         s.nextLine();
     }
 
+    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+    //Cargar
+
+    private Entidad crearEntidad() {
+        Entidad e = new Entidad();
+        Scanner s = new Scanner(System.in);
+
+
+        System.out.print("Ingrese un nombre: ");
+        String nombre = s.next();
+        if (nombre.isBlank()) throw new Atributo_vacio_Exception("No se puede cargar un atributo vacio");
+        else e.setNombre(nombre);
+
+        e.setVida(10);
+        e.setDanio(0);
+
+        return e;
+    }
+    //Mobs
     private Creeper crearCreeper(){
         Creeper c;
         Scanner s = new Scanner(System.in);
@@ -146,26 +311,19 @@ public class Menu {
 
         return c;
     }
-    private Entidad crearEntidad() {
-        Entidad e = new Entidad();
-        Scanner s = new Scanner(System.in);
 
-
-        System.out.print("Ingrese un nombre: ");
-        String nombre = s.next();
-        if (nombre.isBlank()) throw new Atributo_vacio_Exception("No se puede cargar un atributo vacio");
-        else e.setNombre(nombre);
-
-        e.setVida(10);
-        e.setDanio(0);
-
-        return e;
+    //Animales
+    private Animal crearAnimal(){
+        Animal a = null;
+        //Un switch de cada crear animal
+        //case 1: a = crearOveja()
+        return a;
     }
     private Panda crearPanda(){
       Panda p=new Panda();
       Scanner s=new Scanner(System.in);
 
-      crearEntidad();
+         crearEntidad();
 
         System.out.print("Ingrese el tipo de alimentacion que tiene su panda: ");
         String tipoalimentacion=s.next();
@@ -219,24 +377,22 @@ public class Menu {
     }
 
 
-    public static String arrayToAsciiTable(ArrayList<Zombie> zombies) {
+    public static String ZombiesToTable(ArrayList<Zombie> zombies) throws Atributo_vacio_Exception {
         // Verificar si el ArrayList está vacío
-        if (zombies == null || zombies.isEmpty()) {
-            return "No hay zombies para mostrar";
-        }
+        if (zombies == null || zombies.isEmpty()) throw new Atributo_vacio_Exception("La lista de zombies está vacía.");
 
         // Crear los datos para la tabla
         String[][] data = new String[zombies.size() + 1][6];
         data[0] = new String[]{"Nombre", "Vida", "Daño", "¿Es bebé?", "Tipo Zombie"};
 
         for (int i = 0; i < zombies.size(); i++) {
-            Zombie zombie = zombies.get(i);
+            Zombie z = zombies.get(i);
             data[i + 1] = new String[]{
-                    zombie.getNombre(),
-                    String.format("%.2f", zombie.getVida()),
-                    String.format("%.2f", zombie.getDanio()),
-                    zombie.isEsBebe()? "Sí" : "No",
-                    zombie.getTipoZombie().name()
+                    z.getNombre(),
+                    String.format("%.2f", z.getVida()),
+                    String.format("%.2f", z.getDanio()),
+                    z.isEsBebe()? "Sí" : "No",
+                    z.getTipoZombie().name()
             };
         }
         return AsciiTable.getTable(data);
