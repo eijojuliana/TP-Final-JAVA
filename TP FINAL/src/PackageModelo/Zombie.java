@@ -3,11 +3,11 @@ package PackageModelo;
 import PackageEnum.TipoZombie;
 import PackageInterfaces.IAtacar;
 import PackageInterfaces.IConversionJSON;
-import org.json.JSONArray;
+import com.github.freva.asciitable.*;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 
 public class Zombie extends Mob implements IAtacar, IConversionJSON {
     ///todo.ATRIBUTOS///
@@ -69,6 +69,20 @@ public class Zombie extends Mob implements IAtacar, IConversionJSON {
                 esBebe ? "Sí" : "No",
                 tipoZombie.name()
         );
+    }
+
+    public String toAsciiTable() {
+        // Crear la tabla usando la biblioteca AsciiTable
+        String[][] data = {
+                {"Atributo", "Valor"},
+                {"Nombre", getNombre()},
+                {"Vida", String.format("%.2f", getVida())},
+                {"Daño", String.format("%.2f", getDanio())},
+                {"¿Es bebé?", esBebe ? "Sí" : "No"},
+                {"Tipo Zombie", tipoZombie.name()}
+        };
+
+        return AsciiTable.getTable(data);
     }
 
     @Override

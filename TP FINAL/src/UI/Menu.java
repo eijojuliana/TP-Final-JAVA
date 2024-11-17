@@ -32,6 +32,9 @@ public class Menu {
 
         while(bucle) {
             System.out.println(z.toStringCuadrito());
+            System.out.printf("\n\n");
+            System.out.println(z.toAsciiTable());
+
             printMenu();
             menu1 = s.nextInt();
             switch (menu1) {
@@ -146,8 +149,6 @@ public class Menu {
 
         return e;
     }
-
-
     private Panda crearPanda(){
       Panda p=new Panda();
       Scanner s=new Scanner(System.in);
@@ -169,7 +170,6 @@ public class Menu {
 
           return p;
     }
-
     private Lobo crearLobo(){
     Lobo l= new Lobo();
     Scanner s=new Scanner(System.in);
@@ -186,7 +186,6 @@ public class Menu {
     }
       return l;
     }
-
     private Oveja crearOveja(){
      Oveja o= new Oveja();
      Scanner s=new Scanner(System.in);

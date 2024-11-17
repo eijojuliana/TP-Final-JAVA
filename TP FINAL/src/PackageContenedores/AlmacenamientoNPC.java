@@ -1,15 +1,11 @@
 package PackageContenedores;
 
 import PackageInterfaces.IConversionJSON;
-import PackageModelo.Creeper;
-import PackageModelo.Entidad;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
