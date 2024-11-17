@@ -11,7 +11,7 @@ public class Lobo extends Animal{
 
     ///todo.CONSTRUCTORES///
     public Lobo(String nombre, double vida, double danio, boolean esBebe, TipoAlimentacion tipoAlimentacion, boolean domesticado, int IDduenio) {
-        super(nombre, vida, danio, Lobo.class.getName(), esBebe, tipoAlimentacion);
+        super(nombre, vida, danio, Lobo.class.getSimpleName(), esBebe, tipoAlimentacion);
         this.domesticado = domesticado;
         this.IDduenio = IDduenio;
     }

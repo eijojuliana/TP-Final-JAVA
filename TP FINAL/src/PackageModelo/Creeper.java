@@ -17,7 +17,7 @@ public class Creeper extends Mob implements IAtacar, IConversionJSON {
     //todo CONSTRUCTORES
 
     public Creeper(String nombre, double vida, double danio, boolean esBebe, boolean esElectrico) {
-        super(nombre, vida, danio, Creeper.class.getName(), esBebe);
+        super(nombre, vida, danio, Creeper.class.getSimpleName(), esBebe);
         this.esElectrico = esElectrico;
     }
     public Creeper() {}
