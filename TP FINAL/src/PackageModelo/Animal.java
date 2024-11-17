@@ -1,6 +1,8 @@
 package PackageModelo;
 import PackageEnum.TipoAlimentacion;
 import PackageEnum.TipoZombie;
+import PackageExceptions.Atributo_vacio_Exception;
+import PackageExceptions.Valor_de_atributo_no_valido_Exception;
 import PackageInterfaces.IConversionJSON;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,9 +25,13 @@ public abstract class Animal extends Mob implements IConversionJSON {
     public TipoAlimentacion getTipoAlimentacion() {
         return tipoAlimentacion;
     }
-    public void setTipoAlimentacion(String tipoAlimentacion) {
-        if (
-                tipoAlimentacion.equals(TipoAlimentacion.CARNIVORO.name()) ||
+    public void setTipoAlimentacion(String tipoAlimentacion) throws Atributo_vacio_Exception{
+        if (tipoAlimentacion == null)
+        {
+            throw new Atributo_vacio_Exception("El tipo de alimentación no puede estar vacío.");
+        }
+
+        if (  tipoAlimentacion.equals(TipoAlimentacion.CARNIVORO.name()) ||
                         tipoAlimentacion.equals(TipoAlimentacion.HERBIVORO.name()) ||
                         tipoAlimentacion.equals(TipoAlimentacion.OMNIVORO.name())
         ) this.tipoAlimentacion = TipoAlimentacion.valueOf(tipoAlimentacion);
