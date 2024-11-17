@@ -2,18 +2,20 @@ package PackageContenedores;
 import PackageModelo.Aldeano;
 import PackageModelo.Animal;
 import PackageModelo.Entidad;
+import PackageModelo.Mob;
+import java.util.HashMap;
 
 public class Aldea {
     /// todo.Atributos///
     protected AlmacenamientoNPC<Animal> ArrayAnimales;
     protected AlmacenamientoNPC<Aldeano> ArrayAldeanos;
-    protected AlmacenamientoNPC<Entidad> ArrayCarcel;
+    protected AlmacenamientoNPC<Entidad> ArrayEntidad;
 
     ///todo.Constructores///
     public Aldea() {
         ArrayAnimales = new AlmacenamientoNPC<>();
         ArrayAldeanos = new AlmacenamientoNPC<>();
-        ArrayCarcel = new AlmacenamientoNPC<>();
+        ArrayEntidad = new AlmacenamientoNPC<>();
     }
     /// todo.Metodos//
     @Override
@@ -21,7 +23,7 @@ public class Aldea {
         return "Aldea{" +
                 "ArrayAnimales=" + ArrayAnimales +
                 ", ArrayAldeanos=" + ArrayAldeanos +
-                ", ArrayEntidad=" + ArrayCarcel +
+                ", ArrayEntidad=" + ArrayEntidad +
                 '}';
     }
 }
