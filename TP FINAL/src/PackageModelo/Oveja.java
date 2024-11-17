@@ -1,17 +1,13 @@
 package PackageModelo;
 
 import PackageEnum.TipoAlimentacion;
-import org.json.JSONArray;
+import PackageInterfaces.IConversionJSON;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
-public class Oveja extends Animal{
+public class Oveja extends Animal implements IConversionJSON {
     ///todo.ATRIBUTO
     public String color;
-
     public boolean tieneLana;
 
     public Oveja(String nombre, double vida, double danio, boolean esBebe, TipoAlimentacion tipoAlimentacion, String color, boolean tieneLana) {
@@ -21,8 +17,6 @@ public class Oveja extends Animal{
     }
 
     ///todo.CONSTRUCTOR
-
-
     public Oveja() {}
 
     ///todo.GET Y SET
@@ -65,47 +59,37 @@ public class Oveja extends Animal{
         return "Tiene lanita crecida";
     }
 
-    //todo.METODOS JSON//
-    public JSONObject convertirAJSON () {
-        JSONObject jsonObject = new JSONObject();
+    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+    // todo JSON
+    @Override
+    public JSONObject toJSON(){
+        JSONObject j;
 
         try {
-            jsonObject.put("nombre", nombre);
-            jsonObject.put("vida", vida);
-            jsonObject.put("danio", danio);
-            jsonObject.put("drops", drops);
-            jsonObject.put("esBebe", esBebe);
-            jsonObject.put("tipoAlimentacion", tipoAlimentacion);
-            jsonObject.put("color", color);
-            jsonObject.put("tieneLana", tieneLana);
+            j = super.toJSON();
+            j.put("color", color);
+            j.put("tieneLana", tieneLana);
 
-        } catch (JSONException exc) {
-            exc.printStackTrace();
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
         }
-        return jsonObject;
+
+        return j;
     }
 
-    public Oveja convertirAOveja (JSONObject jsonObject) {
-        Oveja oveja = new Oveja();
-
+    @Override
+    public boolean fromJSON(JSONObject j) {
+        boolean exito = false;
         try {
-            JSONArray jsonArray = new JSONArray();
-            ArrayList<String> dropsAux = new ArrayList<>();
+            super.fromJSON(j);
+            setColor(j.getString("color"));
+            setTieneLana(j.getBoolean("tieneLana"));
 
-            for (int i=0; i<jsonArray.length();i++){dropsAux.add(jsonArray.getString(i));}
+            exito = true;
 
-            oveja.setDrops(dropsAux);
-            oveja.setNombre(jsonObject.getString("nombre"));
-            oveja.setVida(jsonObject.getDouble("vida"));
-            oveja.setDanio(jsonObject.getDouble("danio"));
-            oveja.setEsBebe(jsonObject.getBoolean("esBebe"));
-            //oveja.setTipoAlimentacion();
-            oveja.setColor(jsonObject.getString("color"));
-            oveja.setTieneLana(jsonObject.getBoolean("tieneLana"));
-        } catch (JSONException exc) {
-            exc.printStackTrace();
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
         }
-
-        return oveja;
+        return exito;
     }
 }

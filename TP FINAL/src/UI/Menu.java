@@ -125,7 +125,7 @@ public class Menu {
         if(s.next().charAt(0) == 'Y') c.setEsElectrico(true);
         else if (s.next().charAt(0) == 'N') c.setEsElectrico(false);
         else throw new Formato_no_valido_Exception("Caracter ingresado incorrecto.");
-        
+
         return c;
     }
     private Entidad crearEntidad() {
