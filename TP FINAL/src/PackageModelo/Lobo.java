@@ -1,10 +1,13 @@
 package PackageModelo;
 
 import PackageEnum.TipoAlimentacion;
+import PackageInterfaces.IConversionJSON;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Lobo extends Animal{
+public class Lobo extends Animal implements IConversionJSON {
     ///todo.ATRIBUTOS///
     protected boolean domesticado;
     protected int IDduenio;
@@ -47,5 +50,39 @@ public class Lobo extends Animal{
     @Override
     public String emitirSonido() {
         return "*AULLANDO COMO LOBA*AUUUUU";
+    }
+
+    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+    // todo JSON
+    @Override
+    public JSONObject toJSON(){
+        JSONObject j;
+
+        try {
+            j = super.toJSON();
+            j.put("domesticado", domesticado);
+            j.put("IDduenio", IDduenio);
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+
+        return j;
+    }
+
+    @Override
+    public boolean fromJSON(JSONObject j) {
+        boolean exito = false;
+        try {
+            super.fromJSON(j);
+            setDomesticado(j.getBoolean("domesticado"));
+            setIDduenio(j.getInt("IDduenio"));
+
+            exito = true;
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+        return exito;
     }
 }

@@ -2,12 +2,12 @@ package PackageModelo;
 
 import PackageEnum.Gen_Panda;
 import PackageEnum.TipoAlimentacion;
+import PackageEnum.TipoZombie;
+import PackageInterfaces.IConversionJSON;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-
-public class Panda extends Animal{
+public class Panda extends Animal implements IConversionJSON {
     ///todo.ATRIBUTOS
     protected Gen_Panda gen;
     ///todo.CONSTRUCTOR
@@ -23,8 +23,16 @@ public class Panda extends Animal{
     public Gen_Panda getGen() {
         return gen;
     }
-    public void setGen(Gen_Panda gen) {
-        this.gen = gen;
+    public void setGen(String gen) {
+        if (
+                gen.equals(Gen_Panda.NORMAL.name()) ||
+                        gen.equals(Gen_Panda.AGRESIVO.name()) ||
+                        gen.equals(Gen_Panda.PEREZOSO.name()) ||
+                        gen.equals(Gen_Panda.ASUSTADIZO.name()) ||
+                        gen.equals(Gen_Panda.JUGUETON.name()) ||
+                        gen.equals(Gen_Panda.DEBIL.name()) ||
+                        gen.equals(Gen_Panda.MARRON.name())
+        ) this.gen = Gen_Panda.valueOf(gen);
     }
 
 
@@ -45,38 +53,35 @@ public class Panda extends Animal{
         return "nom nom nom *comiendo bambu modo panda*";
     }
 
-    ///todo.JSON///
-    public JSONObject convertirAJSON () {
-        JSONObject jsonObject = new JSONObject();
+    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+    // todo JSON
+    @Override
+    public JSONObject toJSON(){
+        JSONObject j;
 
         try {
-            jsonObject.put("nombre", nombre);
-            jsonObject.put("vida", vida);
-            jsonObject.put("danio", danio);
-            jsonObject.put("drops", drops);
-            jsonObject.put("esBebe", esBebe);
-            jsonObject.put("gen",gen);
+            j = super.toJSON();
+            j.put("gen", gen);
 
-        } catch (JSONException exc) {
-            exc.printStackTrace();
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
         }
-        return jsonObject;
+
+        return j;
     }
 
-    public Panda convertirAZombie (JSONObject jsonObject) {
-        Panda p = new Panda();
-
+    @Override
+    public boolean fromJSON(JSONObject j) {
+        boolean exito = false;
         try {
-            p.setNombre(jsonObject.getString("nombre"));
-            p.setVida(jsonObject.getDouble("vida"));
-            p.setDanio(jsonObject.getDouble("danio"));
-            //p.setDrops(jsonObject.getString("drops"));
-            p.setEsBebe(jsonObject.getBoolean("esBebe"));
-            //p.setGen();
-        } catch (JSONException exc) {
-            exc.printStackTrace();
-        }
+            super.fromJSON(j);
+            setGen(j.getString("gen"));
 
-        return p;
+            exito = true;
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+        return exito;
     }
 }
