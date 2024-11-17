@@ -1,6 +1,7 @@
 package UI;
 
 import PackageContenedores.AlmacenamientoNPC;
+import PackageExceptions.Atributo_vacio_Exception;
 import PackageJSON.JSONUtiles;
 import PackageModelo.Creeper;
 import PackageModelo.Entidad;
@@ -105,7 +106,32 @@ public class Menu {
         s.nextLine();
     }
 
+    private Creeper crearCreeper(){
+        Creeper c = new Creeper();
+        Scanner s = new Scanner(System.in);
 
+
+
+
+        return c;
+    }
+    private Entidad crearEntidad(){
+        Entidad e = new Entidad();
+        Scanner s = new Scanner(System.in);
+
+
+        double vida, danio;
+
+        System.out.print("Ingrese un nombre: ");
+        String nombre = s.next();
+        if (nombre.isBlank()) throw new Atributo_vacio_Exception();
+
+        e.setNombre(nombre);
+        e.setVida(vida);
+        e.setDanio(danio);
+
+        return e;
+    }
 
 
 
