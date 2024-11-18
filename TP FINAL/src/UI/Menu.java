@@ -33,16 +33,20 @@ public class Menu {
         zombies.add(z2);
         zombies.add(z3);
 
-        /**/
+        /*
         System.out.println(z.aTabla());
-        System.out.printf("\n\n");/*
-        System.out.println(ZombiesToTable(zombies));
+
         */
+
+        System.out.println(ZombiesToTable(zombies));
+        System.out.printf("\n\n");
         /*
         carcel.agregar(c);
         carcel.agregar(c2);
         carcel.agregar(c3);
+        */
 
+        /*
         JSONUtiles.grabarUnJson(carcel.toJSON(),"carcel");
 
         try {
@@ -389,13 +393,7 @@ public class Menu {
 
         for (int i = 0; i < zombies.size(); i++) {
             Zombie z = zombies.get(i);
-            data[i + 1] = new String[]{
-                    z.getNombre(),
-                    String.format("%.2f", z.getVida()),
-                    String.format("%.2f", z.getDanio()),
-                    z.isEsBebe()? "Sí" : "No",
-                    z.getTipoZombie().name()
-            };
+            data[i + 1] = z.aFila();
         }
         return AsciiTable.getTable(data);
     }
