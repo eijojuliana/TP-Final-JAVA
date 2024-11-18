@@ -54,7 +54,7 @@ public class Player extends Entidad implements IConversionJSON, ITabla {
             tipoPlayer.equalsIgnoreCase(TipoPlayer.ESPECTADOR.name()) ||
             tipoPlayer.equalsIgnoreCase(TipoPlayer.OP.name()) )
         {
-            this.tipoPlayer = TipoPlayer.valueOf(tipoPlayer);
+            this.tipoPlayer = TipoPlayer.valueOf(tipoPlayer.toUpperCase());
             return true;
         }
         else return false;

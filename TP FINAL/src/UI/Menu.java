@@ -393,6 +393,7 @@ public class Menu {
         Scanner s = new Scanner(System.in);
 
         String nombre, contrasenia;
+        char eleccion; // Y o N
 
         System.out.print("Ingrese el nombre del usuario: ");
         nombre = s.next();
@@ -403,15 +404,15 @@ public class Menu {
         if (contrasenia.isBlank()) throw new Atributo_vacio_Exception("La contrasenia esta vacia");
 
         System.out.print("Es premium? [Y-N]: ");
-        if(s.next().charAt(0) == 'Y') p.setEsPremium(true);
-        else if (s.next().charAt(0) == 'N') p.setEsPremium(true);
+        eleccion = s.next().charAt(0);
+        if(eleccion == 'Y' || eleccion == 'y') p.setEsPremium(true);
+        else if (eleccion == 'N' || eleccion == 'n') p.setEsPremium(true);
         else throw new Formato_no_valido_Exception("Caracter ingresado incorrecto.");
 
-        System.out.println("Ingrese el gamemode [Survival-Creativo-Espectador-OP]: ");
+        System.out.print("Ingrese el gamemode [Survival-Creativo-Espectador-OP]: ");
         if ( !p.setTipoPlayer(s.next()) ) throw new Valor_de_atributo_no_valido_Exception("Tipo de player no valido.");
 
-
-
+        //Valores por defecto
         p.setNombre(nombre);
         p.setContrasenia(contrasenia);
         p.setVida(10);

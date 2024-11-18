@@ -22,9 +22,11 @@ public class Login {
         contrasenia = s.next();
 
         try {
-            JSONArray jArrray = new JSONArray( JSONUtiles.leer2("ArchivoUsuarios") );
-            for (int i=0; i<jArrray.length() ; i++){
-                JSONObject jObject = new JSONObject();
+            JSONArray jArray = new JSONArray( JSONUtiles.leer2("ArchivoUsuarios") );
+
+            for (int i=0; i<jArray.length() ; i++){
+                JSONObject jObject = jArray.getJSONObject(i);
+
                 if ( jObject.getString("nombre").equals(usuario) && jObject.getString("contrasenia").equals(contrasenia) ){
                     tipoUsuario = jObject.getString("tipoPlayer");
                     break;
@@ -33,6 +35,7 @@ public class Login {
 
         } catch (JSONException e) {
             System.out.println("No existe el archivo jugadores.");
+            e.printStackTrace();
         } catch (IOException e) {
             System.out.println("Archivo de usuarios no encontrado. Usando credenciales por defecto.");
             if (usuario.equals("admin") && contrasenia.equals("admin") ){
