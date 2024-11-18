@@ -7,13 +7,14 @@ public class Aldea {
     /// todo.Atributos///
     protected AlmacenamientoNPC<Animal> ArrayAnimales;
     protected AlmacenamientoNPC<Aldeano> ArrayAldeanos;
-    protected AlmacenamientoNPC<Entidad> ArrayCarcel;
+    protected Carcel carcel;
+
 
     ///todo.Constructores///
     public Aldea() {
         ArrayAnimales = new AlmacenamientoNPC<>();
         ArrayAldeanos = new AlmacenamientoNPC<>();
-        ArrayCarcel = new AlmacenamientoNPC<>();
+       carcel=new Carcel();
     }
     /// todo.Metodos//
     @Override
@@ -21,7 +22,6 @@ public class Aldea {
         return "Aldea{" +
                 "ArrayAnimales=" + ArrayAnimales +
                 ", ArrayAldeanos=" + ArrayAldeanos +
-                ", ArrayEntidad=" + ArrayCarcel +
                 '}';
     }
 }
