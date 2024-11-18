@@ -47,12 +47,16 @@ public class Player extends Entidad implements IConversionJSON, ITabla {
     public void setEsPremium(boolean esPremium) {
         this.premium = esPremium;
     }
-    public void setTipoPlayer(String tipoPlayer) {
+    public boolean setTipoPlayer(String tipoPlayer) {
         if (
-                tipoPlayer.equals(TipoPlayer.SURVIVAL.name()) ||
-                        tipoPlayer.equals(TipoPlayer.CREATIVO.name()) ||
-                        tipoPlayer.equals(TipoPlayer.ESPECTADOR.name())
-        ) this.tipoPlayer = TipoPlayer.valueOf(tipoPlayer);
+            tipoPlayer.equals(TipoPlayer.SURVIVAL.name()) ||
+            tipoPlayer.equals(TipoPlayer.CREATIVO.name()) ||
+            tipoPlayer.equals(TipoPlayer.ESPECTADOR.name()))
+        {
+            this.tipoPlayer = TipoPlayer.valueOf(tipoPlayer);
+            return true;
+        }
+        else return false;
     }
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════

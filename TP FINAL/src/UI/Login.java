@@ -1,6 +1,5 @@
 package UI;
 
-import PackageExceptions.Usuario_no_encontrado_Exception;
 import PackageJSON.JSONUtiles;
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -5,6 +5,7 @@ import PackageEnum.Gen_Panda;
 import PackageEnum.TipoZombie;
 import PackageExceptions.Atributo_vacio_Exception;
 import PackageExceptions.Formato_no_valido_Exception;
+import PackageExceptions.Valor_de_atributo_no_valido_Exception;
 import PackageModelo.*;
 import com.github.freva.asciitable.AsciiTable;
 
@@ -164,7 +165,7 @@ public class Menu {
                 case 4:{
                     switch (menu2){
                         case 1:{
-                            //agregarJugador();
+                            Player p = crearPlayer();
                             break;
                         }
                         case 2:{
@@ -379,6 +380,37 @@ public class Menu {
         return o;
     }
 
+    //Jugador
+    private Player crearPlayer(){
+        Player p = new Player();
+        Scanner s = new Scanner(System.in);
+
+        String nombre, contrasenia;
+
+        System.out.print("Ingrese el nombre del usuario: ");
+        nombre = s.next();
+        if (nombre.isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
+
+        System.out.print("Ingrese la contrasenia: ");
+        contrasenia = s.next();
+        if (contrasenia.isBlank()) throw new Atributo_vacio_Exception("La contrasenia esta vacia");
+
+        System.out.print("Es premium? [Y-N]: ");
+        if(s.next().charAt(0) == 'Y') p.setEsPremium(true);
+        else if (s.next().charAt(0) == 'N') p.setEsPremium(true);
+        else throw new Formato_no_valido_Exception("Caracter ingresado incorrecto.");
+
+        System.out.println("Ingrese el gamemode [Survival-Creativo-Espectador]: ");
+        if ( !p.setTipoPlayer(s.next()) ) throw new Valor_de_atributo_no_valido_Exception("Tipo de player no valido.");
+
+
+        p.setNombre(nombre);
+        p.setContrasenia(contrasenia);
+        p.setVida(10);
+        p.setDanio(2);
+
+        return p;
+    }
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
