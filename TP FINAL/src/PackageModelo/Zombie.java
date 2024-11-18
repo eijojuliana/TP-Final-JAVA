@@ -66,11 +66,12 @@ public class Zombie extends Mob implements IAtacar, IConversionJSON, ITabla {
     @Override
     public String[] aFila(){
         return new String[]{
-               getNombre(),
-               String.format("%.2f", getVida()),
-               String.format("%.2f", getDanio()),
-               isEsBebe()? "Sí" : "No",
-               getTipoZombie().name() };
+                String.format("%d" ,getId()),
+                getNombre(),
+                String.format("%.2f", getVida()),
+                String.format("%.2f", getDanio()),
+                isEsBebe()? "Sí" : "No",
+                getTipoZombie().name() };
     }
 
     @Override

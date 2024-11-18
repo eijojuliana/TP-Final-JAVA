@@ -2,30 +2,36 @@ package PackageModelo;
 
 import PackageEnum.TipoPlayer;
 import PackageEnum.TipoZombie;
+import PackageInterfaces.IConversionJSON;
+import PackageInterfaces.ITabla;
+import com.github.freva.asciitable.AsciiTable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Player extends Entidad{
+public class Player extends Entidad implements IConversionJSON, ITabla {
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
     ///todo.ATRIBUTOS///
-    protected boolean esPremium;
+    protected boolean premium;
     protected TipoPlayer tipoPlayer;
     protected int contrasenia;
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
     ///todo.CONSTRUCTORES///
     public Player(String nombre, double vida, double danio, boolean esPremium, TipoPlayer tipoPlayer) {
         super(nombre, vida, danio, Player.class.getSimpleName());
-        this.esPremium = esPremium;
+        this.premium = esPremium;
         this.tipoPlayer = tipoPlayer;
     }
     public Player() {
     }
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
     ///todo.GETS Y SETS///
-    public boolean isEsPremium() {
-        return esPremium;
+    public boolean isPremium() {
+        return premium;
     }
     public TipoPlayer getTipoPlayer() {
         return tipoPlayer;
@@ -38,7 +44,7 @@ public class Player extends Entidad{
         this.contrasenia = contrasenia;
     }
     public void setEsPremium(boolean esPremium) {
-        this.esPremium = esPremium;
+        this.premium = esPremium;
     }
     public void setTipoPlayer(String tipoPlayer) {
         if (
@@ -47,14 +53,38 @@ public class Player extends Entidad{
                         tipoPlayer.equals(TipoPlayer.ESPECTADOR.name())
         ) this.tipoPlayer = TipoPlayer.valueOf(tipoPlayer);
     }
+
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-    /// ///todo.TO STRING///
+
+    //todo TO STRING
     @Override
     public String toString() {
         return "Player{" +
-                "esPremium=" + esPremium +
+                "esPremium=" + premium +
                 ", tipoPlayer=" + tipoPlayer +
                 "} " + super.toString();
+    }
+
+    @Override
+    public String aTabla() {
+        return AsciiTable.getTable(new String[][] {
+                {"ID", String.format("%d", getId()) },
+                {"Cuenta Premium", isPremium()? "Sí": "No" },
+                {"Gamemode", getTipo() },
+                {"Usuario", getNombre() },
+                {"Contrasenia", String.format("%d", getContrasenia())}
+        });
+    }
+
+    @Override
+    public String[] aFila() {
+        return new String[]{
+                String.format("%d", getId()),
+                getNombre(),
+                isPremium()? "Sí": "No",
+                String.format("%.2f", getVida()),
+                String.format("%.2f", getDanio()),
+        };
     }
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
@@ -65,7 +95,7 @@ public class Player extends Entidad{
 
         try {
             j = super.toJSON();
-            j.put("esPremium", esPremium);
+            j.put("esPremium", premium);
             j.put("tipoPlayer", tipoPlayer);
             j.put("contrasenia", contrasenia);
 
