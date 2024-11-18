@@ -49,9 +49,10 @@ public class Player extends Entidad implements IConversionJSON, ITabla {
     }
     public boolean setTipoPlayer(String tipoPlayer) {
         if (
-            tipoPlayer.equals(TipoPlayer.SURVIVAL.name()) ||
-            tipoPlayer.equals(TipoPlayer.CREATIVO.name()) ||
-            tipoPlayer.equals(TipoPlayer.ESPECTADOR.name()))
+            tipoPlayer.equalsIgnoreCase(TipoPlayer.SURVIVAL.name()) ||
+            tipoPlayer.equalsIgnoreCase(TipoPlayer.CREATIVO.name()) ||
+            tipoPlayer.equalsIgnoreCase(TipoPlayer.ESPECTADOR.name()) ||
+            tipoPlayer.equalsIgnoreCase(TipoPlayer.OP.name()) )
         {
             this.tipoPlayer = TipoPlayer.valueOf(tipoPlayer);
             return true;
@@ -65,9 +66,10 @@ public class Player extends Entidad implements IConversionJSON, ITabla {
     @Override
     public String toString() {
         return "Player{" +
+                super.toString() +
                 "esPremium=" + premium +
                 ", tipoPlayer=" + tipoPlayer +
-                "} " + super.toString();
+                "} ";
     }
 
     @Override

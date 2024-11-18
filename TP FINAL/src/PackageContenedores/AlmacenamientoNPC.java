@@ -1,5 +1,6 @@
 package PackageContenedores;
 
+import PackageExceptions.Atributo_vacio_Exception;
 import PackageInterfaces.IConversionJSON;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,15 +25,14 @@ public class AlmacenamientoNPC<T extends IConversionJSON> {
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     //todo.METODOS
 
-    public String agregar(T NPC){ // Boleean
-        String mensaje="";
-        if(NPC != null){ // Tira una exception
-            arrayNPC.add(NPC);
-            mensaje="Se agrego el npc correctamente";
-        }else{
-            mensaje="No ha sido posible su carga.";
-        }
-        return mensaje;
+    public boolean agregar(T NPC){ // Boleean
+        boolean exito = false;
+
+        if (NPC == null) throw new Atributo_vacio_Exception("El elemento vacio.");
+
+        exito = arrayNPC.add(NPC);
+
+        return exito;
     }
 
 

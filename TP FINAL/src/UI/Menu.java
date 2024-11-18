@@ -1,11 +1,13 @@
 package UI;
 
+import PackageContenedores.Aldea;
 import PackageContenedores.AlmacenamientoNPC;
 import PackageEnum.Gen_Panda;
 import PackageEnum.TipoZombie;
 import PackageExceptions.Atributo_vacio_Exception;
 import PackageExceptions.Formato_no_valido_Exception;
 import PackageExceptions.Valor_de_atributo_no_valido_Exception;
+import PackageJSON.JSONUtiles;
 import PackageModelo.*;
 import com.github.freva.asciitable.AsciiTable;
 
@@ -19,6 +21,8 @@ public class Menu {
         Scanner s = new Scanner(System.in);
 
         int menu1 = 0, menu2 = 0;
+
+        Aldea aldea = new Aldea();
 
         Creeper c = new Creeper("Creeper1",10,5,false,false);
         Creeper c2 = new Creeper("Creeper2",10,5,false,false);
@@ -83,6 +87,7 @@ public class Menu {
             if ( menu1 != 0 ){
                 printMenu2(menu1);
                 menu2 = s.nextInt();
+                System.out.println();
             }
 
             switch (menu1) {
@@ -166,6 +171,8 @@ public class Menu {
                     switch (menu2){
                         case 1:{
                             Player p = crearPlayer();
+                            if ( aldea.agregarPlayer(p) ) System.out.println("Se agregó el jugador correctamente.");
+                            else System.out.println("No se pudo agregar el jugador.");
                             break;
                         }
                         case 2:{
@@ -257,7 +264,7 @@ public class Menu {
             case 3: System.out.println("CÁRCEL:"); break;
             case 4: System.out.println("JUGADORES:"); break;
         }
-        System.out.println("""   
+        System.out.print("""   
             
                 [1] Cargar elemento
                 [2] Ver todos
@@ -400,8 +407,9 @@ public class Menu {
         else if (s.next().charAt(0) == 'N') p.setEsPremium(true);
         else throw new Formato_no_valido_Exception("Caracter ingresado incorrecto.");
 
-        System.out.println("Ingrese el gamemode [Survival-Creativo-Espectador]: ");
+        System.out.println("Ingrese el gamemode [Survival-Creativo-Espectador-OP]: ");
         if ( !p.setTipoPlayer(s.next()) ) throw new Valor_de_atributo_no_valido_Exception("Tipo de player no valido.");
+
 
 
         p.setNombre(nombre);

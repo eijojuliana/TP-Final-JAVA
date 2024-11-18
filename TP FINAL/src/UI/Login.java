@@ -22,7 +22,7 @@ public class Login {
         contrasenia = s.next();
 
         try {
-            JSONArray jArrray = new JSONArray( JSONUtiles.leer2("jugadores") );
+            JSONArray jArrray = new JSONArray( JSONUtiles.leer2("ArchivoUsuarios") );
             for (int i=0; i<jArrray.length() ; i++){
                 JSONObject jObject = new JSONObject();
                 if ( jObject.getString("nombre").equals(usuario) && jObject.getString("contrasenia").equals(contrasenia) ){
