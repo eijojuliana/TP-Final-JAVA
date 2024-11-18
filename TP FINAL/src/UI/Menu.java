@@ -420,7 +420,7 @@ public class Menu {
 
         // Crear los datos para la tabla
         String[][] data = new String[zombies.size() + 1][6];
-        data[0] = new String[]{"Nombre", "Vida", "Daño", "¿Es bebé?", "Tipo Zombie"};
+        data[0] = new String[]{"ID","Nombre", "Vida", "Daño", "¿Es bebé?", "Tipo Zombie"};
 
         for (int i = 0; i < zombies.size(); i++) {
             Zombie z = zombies.get(i);
