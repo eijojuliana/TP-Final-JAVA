@@ -43,4 +43,9 @@ public class JSONUtiles {
         }
         return contenido;
     }
+
+    public static String leer2(String archivo) throws IOException
+    {
+        return new String(Files.readAllBytes(Paths.get(archivo+".json")));
+    }
 }

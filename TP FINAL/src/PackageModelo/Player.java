@@ -14,15 +14,16 @@ public class Player extends Entidad implements IConversionJSON, ITabla {
     ///todo.ATRIBUTOS///
     protected boolean premium;
     protected TipoPlayer tipoPlayer;
-    protected int contrasenia;
+    protected String contrasenia;
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
     ///todo.CONSTRUCTORES///
-    public Player(String nombre, double vida, double danio, boolean esPremium, TipoPlayer tipoPlayer) {
+    public Player(String nombre, double vida, double danio, boolean esPremium, TipoPlayer tipoPlayer, String contrasenia) {
         super(nombre, vida, danio, Player.class.getSimpleName());
         this.premium = esPremium;
         this.tipoPlayer = tipoPlayer;
+        this.contrasenia = contrasenia;
     }
     public Player() {
     }
@@ -36,11 +37,11 @@ public class Player extends Entidad implements IConversionJSON, ITabla {
     public TipoPlayer getTipoPlayer() {
         return tipoPlayer;
     }
-    public int getContrasenia() {
+    public String getContrasenia() {
         return contrasenia;
     }
 
-    public void setContrasenia(int contrasenia) {
+    public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
     public void setEsPremium(boolean esPremium) {
@@ -113,7 +114,7 @@ public class Player extends Entidad implements IConversionJSON, ITabla {
             super.fromJSON(j);
             setEsPremium(j.getBoolean("esPremium"));
             setTipoPlayer(j.getString("tipoPlayer"));
-            setContrasenia(j.getInt("Contrasenia"));
+            setContrasenia(j.getString("Contrasenia"));
 
             exito = true;
 

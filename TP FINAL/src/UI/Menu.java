@@ -35,7 +35,6 @@ public class Menu {
 
         /*
         System.out.println(z.aTabla());
-
         */
 
         System.out.println(ZombiesToTable(zombies));
