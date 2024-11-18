@@ -48,10 +48,11 @@ public class Zombie extends Mob implements IAtacar, IConversionJSON {
                 "} " + super.toString();
     }
 
-    public String toAsciiTable() {
+    public String aTabla() {
         // Crear la tabla usando la biblioteca AsciiTable
         return AsciiTable.getTable(new String[][] {
-                {"Atributo", "Valor"},
+                {"Mob", getTipo() },
+                {"ID", String.format("%d" ,getId()) },
                 {"Nombre", getNombre()},
                 {"Vida", String.format("%.2f", getVida())},
                 {"Daño", String.format("%.2f", getDanio())},
@@ -67,7 +68,7 @@ public class Zombie extends Mob implements IAtacar, IConversionJSON {
 
     @Override
     public String ataque(int IDMob) {
-        return "Golpea al mob "+IDMob+", quitandole"+danio+"puntos de vida";
+        return "Golpea al mob "+IDMob+", quitandole " + danio + " puntos de vida";
     }
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════

@@ -33,9 +33,9 @@ public class Menu {
         zombies.add(z2);
         zombies.add(z3);
 
-        /*
-        System.out.println(z.toAsciiTable());
-        System.out.printf("\n\n");
+        /**/
+        System.out.println(z.aTabla());
+        System.out.printf("\n\n");/*
         System.out.println(ZombiesToTable(zombies));
         */
         /*
