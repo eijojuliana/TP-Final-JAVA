@@ -143,6 +143,7 @@ public class Aldea {
             }
         } catch (NoSuchFileException e){
             System.out.println("creando archivo jugadores...");
+            JSONUtiles.grabarUnJson(new JSONArray(),"ArchivoUsuarios");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -173,6 +174,7 @@ public class Aldea {
             }
         } catch (NoSuchFileException e){
             System.out.println("creando archivo animales...");
+            JSONUtiles.grabarUnJson(new JSONArray(),"ArchivoAnimales");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -187,6 +189,7 @@ public class Aldea {
             }
         } catch (NoSuchFileException e){
             System.out.println("creando archivo aldeanos...");
+            JSONUtiles.grabarUnJson(new JSONArray(),"ArchivoAldeanos");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -212,6 +215,7 @@ public class Aldea {
             }
         } catch (NoSuchFileException e){
             System.out.println("creando archivo hostiles...");
+            JSONUtiles.grabarUnJson(new JSONArray(),"ArchivoHostiles");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -223,6 +227,7 @@ public class Aldea {
 
         } catch (NoSuchFileException e){
             System.out.println("creando archivo carcel...");
+            JSONUtiles.grabarUnJson(new JSONObject(),"ArchivoCarcel");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
