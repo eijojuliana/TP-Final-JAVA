@@ -1,7 +1,6 @@
 package PackageModelo;
 
 import PackageEnum.TipoZombie;
-import PackageInterfaces.IAtacar;
 import PackageInterfaces.IConversionJSON;
 import PackageInterfaces.ITabla;
 import com.github.freva.asciitable.*;
@@ -10,7 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class Zombie extends Mob implements IAtacar, IConversionJSON, ITabla {
+public class Zombie extends Mob implements IConversionJSON, ITabla {
     ///todo.ATRIBUTOS///
     protected TipoZombie tipoZombie;
 
@@ -77,11 +76,6 @@ public class Zombie extends Mob implements IAtacar, IConversionJSON, ITabla {
     @Override
     public String emitirSonido() {
         return "ROOAWR ROOAWR";
-    }
-
-    @Override
-    public String ataque(int IDMob) {
-        return "Golpea al mob "+IDMob+", quitandole " + danio + " puntos de vida";
     }
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════

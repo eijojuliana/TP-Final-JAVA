@@ -1,16 +1,12 @@
 package PackageModelo;
 
-import PackageInterfaces.IAtacar;
 import PackageInterfaces.IConversionJSON;
 import PackageInterfaces.ITabla;
 import com.github.freva.asciitable.AsciiTable;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-
-public class Creeper extends Mob implements IAtacar, IConversionJSON, ITabla {
+public class Creeper extends Mob implements IConversionJSON, ITabla {
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     //todo ATRIBUTOS
     protected boolean esElectrico;
@@ -70,11 +66,6 @@ public class Creeper extends Mob implements IAtacar, IConversionJSON, ITabla {
     @Override
     public String emitirSonido() {
         return "Allahu akbar fss... *explota*";
-    }
-
-    @Override
-    public String ataque(int IDMob) {
-        return "Le explota en toda la cabeza al mod" + IDMob + ", quitándole " + danio;
     }
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
