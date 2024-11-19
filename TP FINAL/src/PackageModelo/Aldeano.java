@@ -2,6 +2,7 @@ package PackageModelo;
 
 import PackageEnum.Profesion;
 import PackageEnum.TipoZombie;
+import PackageExceptions.Valor_de_atributo_no_valido_Exception;
 import PackageInterfaces.IConversionJSON;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -12,16 +13,12 @@ import java.util.ArrayList;
 public class Aldeano extends Mob implements IConversionJSON {
     //todo.ATRIBUTOS
     protected Profesion profesion;
-    protected ArrayList<String> tradeos;
-    protected int nivel;
 
     //todo.CONSTRUCTOR
 
-    public Aldeano(String nombre, double vida, double danio, boolean esBebe, Profesion profesion, ArrayList<String> tradeos, int nivel) {
+    public Aldeano(String nombre, double vida, double danio, boolean esBebe, Profesion profesion) {
         super(nombre, vida, danio, Aldeano.class.getSimpleName(), esBebe);
         this.profesion = profesion;
-        this.tradeos = tradeos;
-        this.nivel = nivel;
     }
 
     public Aldeano() {
@@ -29,12 +26,6 @@ public class Aldeano extends Mob implements IConversionJSON {
     //todo.GET Y SET
     public Profesion getProfesion() {
         return profesion;
-    }
-    public ArrayList<String> getTradeos() {
-        return tradeos;
-    }
-    public int getNivel() {
-        return nivel;
     }
 
     public void setProfesion(String profesion) {
@@ -53,29 +44,16 @@ public class Aldeano extends Mob implements IConversionJSON {
                         profesion.equals(Profesion.PELETERO.name()) ||
                         profesion.equals(Profesion.PESCADOR.name())
         ) this.profesion = Profesion.valueOf(profesion);
+        else throw new Valor_de_atributo_no_valido_Exception("Profesión ingresada inválida.");
     }
-    public void setTradeos(ArrayList<String> tradeos) {
-        this.tradeos = tradeos;
-    }
-    public void setNivel(int nivel) {
-        this.nivel = nivel;
-    }
-
 
     //todo.METODOS
     @Override
     public String toString() {
         return "Aldeano{" +
+                super.toString() +
                 "profesion=" + profesion +
-                ", tradeos=" + tradeos +
-                ", nivel=" + nivel +
-                "} " + super.toString();
-    }
-
-
-    //Habria que rellenarla y hacer otra en donde entre por parametro un string (item)
-    public String tradea(int esmeraldas, int libro){
-        return " ";
+                "} ";
     }
 
     @Override
@@ -92,8 +70,6 @@ public class Aldeano extends Mob implements IConversionJSON {
         try {
             j = super.toJSON();
             j.put("profesion",profesion);
-            j.put("tradeos",tradeos);
-            j.put("nivel",nivel);
 
         } catch (JSONException e) {
             throw new RuntimeException(e);
@@ -107,12 +83,6 @@ public class Aldeano extends Mob implements IConversionJSON {
         try {
             super.fromJSON(j);
             setProfesion(j.getString("profesion"));
-            JSONArray jsonArray = j.getJSONArray("tradeos");
-            for (int i=0; i< jsonArray.length(); i++){
-                tradeos.add(jsonArray.getString(i));
-            }
-            setNivel(j.getInt("nivel"));
-
             exito = true;
 
         } catch (JSONException e) {

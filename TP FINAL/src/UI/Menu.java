@@ -10,7 +10,11 @@ import PackageExceptions.Valor_de_atributo_no_valido_Exception;
 import PackageJSON.JSONUtiles;
 import PackageModelo.*;
 import com.github.freva.asciitable.AsciiTable;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
+import java.io.IOException;
+import java.nio.file.NoSuchFileException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -23,6 +27,10 @@ public class Menu {
         int menu1 = 0, menu2 = 0;
 
         Aldea aldea = new Aldea();
+
+        aldea.leerArchivos();
+        
+
 
         Creeper c = new Creeper("Creeper1",10,5,false,false);
         Creeper c2 = new Creeper("Creeper2",10,5,false,false);
@@ -223,6 +231,11 @@ public class Menu {
                     break;
                 }
             }
+            //Guardar datos.
+            /*
+            JSONUtiles.grabarUnJson(aldea.toJSON(),"ArchivoAldea");
+             */
+
             if ( menu1 != 0 ){ //Si no eligió salir...
                 System.out.println();
                 pausa();
@@ -277,6 +290,7 @@ public class Menu {
                 Ingrese una opción:""");
         System.out.print(" ");
     }
+
     private void pausa(){
         Scanner s = new Scanner(System.in);
         System.out.print("Ingrese un caracter para continuar... ");
@@ -285,8 +299,74 @@ public class Menu {
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     //todo CARGAR
+    //Aldeano
+    private Aldeano crearAldeano(){
+        Aldeano a = new Aldeano();
+        Scanner s = new Scanner(System.in);
+
+        String nombre, tipoAldeano;
+        int opcion;
+
+        System.out.print("Ingrese el nombre del aldeano: ");
+        nombre = s.next();
+        if (nombre.isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
+        a.setNombre(nombre);
+
+        System.out.println("El Aldeano es bebé?: \n 1-Si  \n2-No.");
+        opcion=s.nextInt();
+        if (opcion == 1) a.setEsBebe(true);
+        else if (opcion == 0) a.setEsBebe(false);
+        else throw new Valor_de_atributo_no_valido_Exception("Valor cargado no válido.");
+
+        System.out.print("""
+            - DESEMPLEADO
+            - VAGO,
+            - ALBANIL
+            - HERRERO
+            - BIBLIOTECARIO
+            - CARNICERO
+            - CARTOGRAFO
+            - CLERIGO
+            - FLECHERO
+            - GRANJERO
+            - PASTOR
+            - PELETERO
+            - PESCADOR
+            Ingrese la profesión:""");
+        System.out.print(" ");
+        tipoAldeano = s.nextLine();
+        a.setProfesion(tipoAldeano);
+
+        //Valores x defecto
+        a.setVida(10);
+        a.setDanio(0);
+        //No tiene drops
+
+        return a;
+    }
 
     //Mobs
+    /// @param tipo
+    /// [1] Creeper
+    /// [2] Zombie
+    private Mob crearMobHostil(int tipo){
+        Mob m;
+
+        switch (tipo){
+            case 1:{
+                m = crearCreeper();
+                break;
+            }
+            case 2:{
+                m = crearZombie();
+            }
+            default:{
+                throw new Valor_de_atributo_no_valido_Exception("Opcion ingresada incorrecta.");
+            }
+        }
+
+        return m;
+    }
     private Creeper crearCreeper(){
         Creeper c = new Creeper();
         Scanner s = new Scanner(System.in);
@@ -555,7 +635,6 @@ public class Menu {
         }
         return AsciiTable.getTable(data);
     }
-
 
 
 

@@ -24,6 +24,7 @@ public class Player extends Entidad implements IConversionJSON, ITabla {
         this.premium = esPremium;
         this.tipoPlayer = tipoPlayer;
         this.contrasenia = contrasenia;
+        this.tipo = Player.class.getSimpleName();
     }
     public Player() {
     }
@@ -120,7 +121,7 @@ public class Player extends Entidad implements IConversionJSON, ITabla {
             super.fromJSON(j);
             setEsPremium(j.getBoolean("esPremium"));
             setTipoPlayer(j.getString("tipoPlayer"));
-            setContrasenia(j.getString("Contrasenia"));
+            setContrasenia(j.getString("contrasenia"));
 
             exito = true;
 

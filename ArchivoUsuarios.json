@@ -5,5 +5,6 @@
     "contrasenia": "a",
     "id": 0,
     "nombre": "a",
-    "esPremium": true
+    "esPremium": true,
+    "tipo": "Player"
 }]
