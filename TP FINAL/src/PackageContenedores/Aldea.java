@@ -78,7 +78,7 @@ public class Aldea {
 
     public String AldeanosToTable() throws Atributo_vacio_Exception {
         if (aldeanos == null || aldeanos.isEmpty()) {
-            throw new Atributo_vacio_Exception("La lista de animales está vacía.");
+            throw new Atributo_vacio_Exception("La lista de aldeanos está vacía.");
         }
 
         String[][] data = new String[aldeanos.size() + 1][6];
@@ -94,7 +94,7 @@ public class Aldea {
 
     public String JugadoresToTable() throws Atributo_vacio_Exception {
         if (jugadores == null || jugadores.isEmpty()) {
-            throw new Atributo_vacio_Exception("La lista de animales está vacía.");
+            throw new Atributo_vacio_Exception("La lista de jugadores está vacía.");
         }
 
         String[][] data = new String[jugadores.size() + 1][5];

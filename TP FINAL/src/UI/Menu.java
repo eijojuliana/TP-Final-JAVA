@@ -30,14 +30,6 @@ public class Menu {
 
         aldea.leerArchivos();
 
-
-        Creeper c = new Creeper("Creeper1",10,5,false,false);
-        Creeper c2 = new Creeper("Creeper2",10,5,false,false);
-        Creeper c3 = new Creeper("Creeper3",10,5,false,false);
-
-
-
-
         while(bucle) {
 
             printMenu();
@@ -271,7 +263,7 @@ public class Menu {
 
     private void pausa(){
         Scanner s = new Scanner(System.in);
-        System.out.print("Ingrese un caracter para continuar... ");
+        System.out.print("Presione enter para continuar... ");
         s.nextLine();
     }
 
