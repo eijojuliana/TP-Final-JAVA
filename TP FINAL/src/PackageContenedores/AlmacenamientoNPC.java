@@ -1,7 +1,9 @@
 package PackageContenedores;
 
 import PackageExceptions.Atributo_vacio_Exception;
+import PackageExceptions.Entidad_inexistente_Exception;
 import PackageInterfaces.IConversionJSON;
+import PackageModelo.Entidad;
 import org.json.JSONArray;
 
 
@@ -23,6 +25,17 @@ public class AlmacenamientoNPC<T extends IConversionJSON> {
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     //todo.METODOS
 
+    public T buscarXid (int id) {
+        Entidad e;
+        for (T t : arrayNPC) {
+            e = (Entidad) t;
+            if (e.getId() == id) {
+                return (T) e;
+            }
+        }
+        return null;
+    }
+
     public boolean agregar(T NPC){ // Boolean
         boolean exito = false;
 
@@ -34,15 +47,14 @@ public class AlmacenamientoNPC<T extends IConversionJSON> {
     }
 
 
-    public String eliminar(T NPC){
-        String mensaje="";
-        if(NPC == null){
-            mensaje = "No se puede eliminar porq es null a ver si te das cuenta tontito";
-        }else{
-            arrayNPC.remove(NPC);
-            mensaje = "Se elimino el objeto anashi";
-        }
-        return mensaje;
+    public boolean eliminar(int id){
+        boolean exito = false;
+
+        if (buscarXid(id) == null) throw new Entidad_inexistente_Exception("El elemento no ha sido encontrado.");
+
+        exito = arrayNPC.remove(buscarXid(id));
+                
+        return exito;
     }
 
     public int size () {return arrayNPC.size();}
