@@ -14,7 +14,7 @@ public class Entidad implements IConversionJSON {
     protected String nombre;
     protected double vida;
     protected double danio;
-    protected static int autoincremental=1;
+    protected static int autoincremental=0;
     protected int id;
     protected String tipo;
 
@@ -25,10 +25,11 @@ public class Entidad implements IConversionJSON {
         this.nombre = nombre;
         this.vida = vida;
         this.danio = danio;
-        this.id = autoincremental++;
+        this.id = ++autoincremental;
         this.tipo = tipo;
     }
     public Entidad() {
+        id = ++autoincremental;
     }
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
