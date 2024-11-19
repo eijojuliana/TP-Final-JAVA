@@ -51,12 +51,13 @@ public class Aldea {
                 '}';
     }
 
+    public boolean agregarAnimal (Animal a) { return animales.agregar(a);}
 
-    // public boolean agregarAldeano(){
+    public boolean agregarAldeano(Aldeano a){ return aldeanos.agregar(a);}
 
-    public boolean agregarPlayer(Player p){
-        return jugadores.agregar(p);
-    }
+    public boolean agregarPlayer(Player p){return jugadores.agregar(p);}
+
+    public boolean agregarHostil(Mob m) { return hostiles.agregar(m); }
 
     /// ToTable ARRAYS
     public String AnimalesToTable() throws Atributo_vacio_Exception {

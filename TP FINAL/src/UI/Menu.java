@@ -55,11 +55,18 @@ public class Menu {
                 case 1:{
                     switch (menu2){
                         case 1:{
-                            //cargarAldeano();
+                            /// CARGAR ALDEANO
+                            Aldeano a = crearAldeano();
+                            if ( aldea.agregarAldeano(a) ){
+                                System.out.println("Se agregó al aldeanito correctamente.");
+                                aldea.guardarCambios("ArchivoAldeanos");
+                            }
+                            else System.out.println("No se pudo agregar al aldeano.");
                             break;
                         }
                         case 2:{
                             //verAldeanos();
+                            System.out.println(aldea.AldeanosToTable());
                             break;
                         }
                         case 3:{
@@ -80,11 +87,21 @@ public class Menu {
                 case 2:{
                     switch (menu2){
                         case 1:{
-                            //cargarAnimal();
+                            /// CARGAR ANIMAL
+                            try{
+                                System.out.print("[1] Oveja \n[2] Panda \n[2] Lobo\nIngrese un mob: ");
+                                Animal a = crearAnimal(s.nextInt());
+                                aldea.agregarAnimal(a);
+                                aldea.guardarCambios("ArchivoAnimales");
+                            } catch (Valor_de_atributo_no_valido_Exception e){
+                                System.out.println(e.getMessage());
+                            }
+
                             break;
                         }
                         case 2:{
                             //verAnimales();
+                            System.out.println(aldea.AnimalesToTable());
                             break;
                         }
                         case 3:{
@@ -118,6 +135,7 @@ public class Menu {
                         }
                         case 2:{
                             //verCarcel();
+                            System.out.println(aldea.HostilesToTable());
                             break;
                         }
                         case 3:{
@@ -148,6 +166,7 @@ public class Menu {
                         }
                         case 2:{
                             //verJugadores();
+                            System.out.println(aldea.JugadoresToTable());
                             break;
                         }
                         case 3:{
