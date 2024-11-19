@@ -31,7 +31,6 @@ public class Menu {
         aldea.leerArchivos();
         
 
-
         Creeper c = new Creeper("Creeper1",10,5,false,false);
         Creeper c2 = new Creeper("Creeper2",10,5,false,false);
         Creeper c3 = new Creeper("Creeper3",10,5,false,false);
@@ -39,51 +38,6 @@ public class Menu {
         Zombie z2 = new Zombie ("Zombieasda2", 10.6, 5.0, false, TipoZombie.AHOGADO);
         Zombie z3 = new Zombie ("Zombie3aaaaaaaaa", 10.6, 5.0, false, TipoZombie.CHIQUITO);
 
-        AlmacenamientoNPC<Entidad> carcel = new AlmacenamientoNPC<>();
-        //Probandop
-        ArrayList<Zombie> zombies = new ArrayList<>();
-        zombies.add(z);
-        zombies.add(z2);
-        zombies.add(z3);
-
-        /*
-        System.out.println(z.aTabla());
-        */
-
-        System.out.println(ZombiesToTable(zombies));
-        System.out.printf("\n\n");
-        /*
-        carcel.agregar(c);
-        carcel.agregar(c2);
-        carcel.agregar(c3);
-        */
-
-        /*
-        JSONUtiles.grabarUnJson(carcel.toJSON(),"carcel");
-
-        try {
-            JSONArray jsonArray = new JSONArray(JSONUtiles.leer("carcel"));
-            for ( int i=0; i< jsonArray.length() ; i++ ){
-                JSONObject jObject = jsonArray.getJSONObject(i);
-
-                Entidad e;
-
-                if (jObject.getString("tipo").equals("Creeper")){
-                    e = new Creeper();
-                    e.fromJSON(jObject);
-                } else {
-                    e = null;
-                }
-                carcel.agregar( e );
-            }
-
-        } catch (JSONException e) {
-            throw new RuntimeException(e);
-
-        } finally {
-            System.out.println("Cárcel:\n"+carcel);
-        }
-         */
 
 
         while(bucle) {
@@ -179,7 +133,10 @@ public class Menu {
                     switch (menu2){
                         case 1:{
                             Player p = crearPlayer();
-                            if ( aldea.agregarPlayer(p) ) System.out.println("Se agregó el jugador correctamente.");
+                            if ( aldea.agregarPlayer(p) ){
+                                System.out.println("Se agregó el jugador correctamente.");
+                                aldea.guardarCambios("ArchivoUsuarios");
+                            }
                             else System.out.println("No se pudo agregar el jugador.");
                             break;
                         }

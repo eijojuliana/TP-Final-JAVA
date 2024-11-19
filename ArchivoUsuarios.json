@@ -1,10 +1,22 @@
-[{
-    "tipoPlayer": "OP",
-    "vida": 10,
-    "danio": 2,
-    "contrasenia": "a",
-    "id": 0,
-    "nombre": "a",
-    "esPremium": true,
-    "tipo": "Player"
-}]
+[
+    {
+        "tipo": "Player",
+        "tipoPlayer": "OP",
+        "vida": 10,
+        "danio": 2,
+        "contrasenia": "a",
+        "id": 0,
+        "nombre": "a",
+        "esPremium": true
+    },
+    {
+        "tipo": "Player",
+        "tipoPlayer": "OP",
+        "vida": 10,
+        "danio": 2,
+        "contrasenia": "1",
+        "id": 0,
+        "nombre": "1",
+        "esPremium": true
+    }
+]

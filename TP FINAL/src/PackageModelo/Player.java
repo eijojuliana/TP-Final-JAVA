@@ -68,7 +68,7 @@ public class Player extends Entidad implements IConversionJSON, ITabla {
     public String toString() {
         return "Player{" +
                 super.toString() +
-                "esPremium=" + premium +
+                ", esPremium=" + premium +
                 ", tipoPlayer=" + tipoPlayer +
                 "} ";
     }
@@ -106,7 +106,7 @@ public class Player extends Entidad implements IConversionJSON, ITabla {
             j.put("esPremium", premium);
             j.put("tipoPlayer", tipoPlayer);
             j.put("contrasenia", contrasenia);
-
+            j.put("tipo","Player");
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }

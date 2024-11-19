@@ -1,4 +1,5 @@
 package PackageContenedores;
+import PackageExceptions.Valor_de_atributo_no_valido_Exception;
 import PackageInterfaces.IConversionJSON;
 import PackageJSON.JSONUtiles;
 import PackageModelo.*;
@@ -32,39 +33,6 @@ public class Aldea {
         carcel=new Carcel();
     }
 
-    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-
-    public AlmacenamientoNPC<Animal> getAnimales() {
-        return animales;
-    }
-    public AlmacenamientoNPC<Aldeano> getAldeanos() {
-        return aldeanos;
-    }
-    public AlmacenamientoNPC<Player> getJugadores() {
-        return jugadores;
-    }
-    public AlmacenamientoNPC<Mob> getHostiles() {
-        return hostiles;
-    }
-    public Carcel getCarcel() {
-        return carcel;
-    }
-
-    public void setAnimales(AlmacenamientoNPC<Animal> animales) {
-        this.animales = animales;
-    }
-    public void setAldeanos(AlmacenamientoNPC<Aldeano> aldeanos) {
-        this.aldeanos = aldeanos;
-    }
-    public void setJugadores(AlmacenamientoNPC<Player> jugadores) {
-        this.jugadores = jugadores;
-    }
-    public void setHostiles(AlmacenamientoNPC<Mob> hostiles) {
-        this.hostiles = hostiles;
-    }
-    public void setCarcel(Carcel carcel) {
-        this.carcel = carcel;
-    }
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -187,5 +155,15 @@ public class Aldea {
             throw new RuntimeException(e);
         }
 
+    }
+    public void guardarCambios(String archivo){
+        switch (archivo) {
+            case "ArchivoUsuarios" -> JSONUtiles.grabarUnJson(jugadores.toJSON(), archivo);
+            case "ArchivoAnimales" -> JSONUtiles.grabarUnJson(animales.toJSON(), archivo);
+            case "ArchivoAldeanos" -> JSONUtiles.grabarUnJson(aldeanos.toJSON(), archivo);
+            case "ArchivoHostiles" -> JSONUtiles.grabarUnJson(hostiles.toJSON(), archivo);
+            case "ArchivoCarcel" -> JSONUtiles.grabarUnJson(carcel.toJSON(), archivo);
+            default -> throw new Valor_de_atributo_no_valido_Exception("Archivo no existente.");
+        }
     }
 }
