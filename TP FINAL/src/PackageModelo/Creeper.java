@@ -2,13 +2,15 @@ package PackageModelo;
 
 import PackageInterfaces.IAtacar;
 import PackageInterfaces.IConversionJSON;
+import PackageInterfaces.ITabla;
+import com.github.freva.asciitable.AsciiTable;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Creeper extends Mob implements IAtacar, IConversionJSON {
+public class Creeper extends Mob implements IAtacar, IConversionJSON, ITabla {
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     //todo ATRIBUTOS
     protected boolean esElectrico;
@@ -39,6 +41,30 @@ public class Creeper extends Mob implements IAtacar, IConversionJSON {
                 super.toString() +
                 ", esElectrico=" + esElectrico +
                 " } " ;
+    }
+
+    @Override
+    public String aTabla() {
+        return AsciiTable.getTable(new String[][] {
+                {"Mob", getTipo() },
+                {"ID", String.format("%d" ,getId()) },
+                {"Nombre", getNombre()},
+                {"Vida", String.format("%.2f", getVida())},
+                {"Daño", String.format("%.2f", getDanio())},
+                {"¿Es bebé?", esBebe ? "Sí" : "No"},
+                {"¿Es eléctrico?", esElectrico ? "Sí" : "No"}
+        });
+    }
+
+    @Override
+    public String[] aFila() {
+        return new String[]{
+                String.format("%d" ,getId()),
+                getNombre(),
+                String.format("%.2f", getVida()),
+                String.format("%.2f", getDanio()),
+                isEsBebe()? "Sí" : "No",
+                isEsElectrico()? "Sí" : "No"};
     }
 
     @Override
