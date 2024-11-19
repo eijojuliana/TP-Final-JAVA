@@ -63,11 +63,6 @@ public class Creeper extends Mob implements IConversionJSON, ITabla {
                 isEsElectrico()? "Sí" : "No"};
     }
 
-    @Override
-    public String emitirSonido() {
-        return "Allahu akbar fss... *explota*";
-    }
-
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     // todo JSON
 

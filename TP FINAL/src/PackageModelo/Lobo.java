@@ -87,13 +87,6 @@ public class Lobo extends Animal implements IConversionJSON, ITabla {
         return mensaje;
     }
 
-    //══MÉTODOS ABSTRACTOS══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-
-    @Override
-    public String emitirSonido() {
-        return "*AULLANDO COMO LOBA*AUUUUU";
-    }
-
     //══JSON══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     @Override
     public JSONObject toJSON(){

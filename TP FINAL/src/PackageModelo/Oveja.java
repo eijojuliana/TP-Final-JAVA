@@ -75,11 +75,6 @@ public class Oveja extends Animal implements IConversionJSON, ITabla {
 
     ///══MÉTODOS══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
-    @Override
-    public String emitirSonido() {
-        return "MEEE (Traduccion automatica a ingles lanudo:yoyoyoyoyo)";
-    }
-
     public String esquilar(){
         tieneLana = false;
         return "shuck shuck *cae la lana*";

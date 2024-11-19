@@ -73,11 +73,6 @@ public class Zombie extends Mob implements IConversionJSON, ITabla {
                 getTipoZombie().name() };
     }
 
-    @Override
-    public String emitirSonido() {
-        return "ROOAWR ROOAWR";
-    }
-
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     // todo JSON
     @Override

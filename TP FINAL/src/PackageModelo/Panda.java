@@ -80,11 +80,6 @@ public class Panda extends Animal implements IConversionJSON, ITabla {
         return "*Giro ,me caigo, me levanto, vuelvo a girar*";
     }
 
-    @Override
-    public String emitirSonido() {
-        return "nom nom nom *comiendo bambu modo panda*";
-    }
-
     //══JSON══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
     @Override

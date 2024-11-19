@@ -56,11 +56,6 @@ public class Aldeano extends Mob implements IConversionJSON {
                 "} ";
     }
 
-    @Override
-    public String emitirSonido() {
-        return "MHHH (Te critica en aldeano)";
-    }
-
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     // todo JSON
     @Override
