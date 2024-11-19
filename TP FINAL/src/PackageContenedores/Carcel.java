@@ -2,6 +2,7 @@ package PackageContenedores;
 import PackageExceptions.Entidad_inexistente_Exception;
 import PackageExceptions.Entidad_repetida_Exception;
 import PackageInterfaces.IConversionJSON;
+import PackageJSON.JSONUtiles;
 import PackageModelo.Entidad;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -46,11 +47,28 @@ public class Carcel extends AlmacenamientoNPC  {
    public boolean imponerCondena(int id,LocalDate fechaCondena ) throws Entidad_inexistente_Exception
    {
        boolean condenado;
-       if (id<=0)throw new Entidad_inexistente_Exception("La entidad ingresada no existe");
+       if (id<=0){
+           throw new Entidad_inexistente_Exception("La entidad ingresada no existe");
+       }
        condenajeje.put(id,fechaCondena);
        condenado=true;
 
        return condenado;
    }
+
+   public boolean liberarMob(int id)throws Entidad_inexistente_Exception
+   {
+       boolean liberado;
+       if (!condenajeje.containsKey(id)){
+           throw new Entidad_inexistente_Exception("El id proporcionado no corresponde a un mob encarcelado tontito");
+       }
+       condenajeje.remove(id);
+       JSONUtiles.grabarUnJson(this.toJSON(),"condenas");
+       liberado=true;
+
+       return liberado;
+
+   }
+
 
 }
