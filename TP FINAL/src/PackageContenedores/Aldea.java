@@ -1,8 +1,10 @@
 package PackageContenedores;
+import PackageExceptions.Atributo_vacio_Exception;
 import PackageExceptions.Valor_de_atributo_no_valido_Exception;
 import PackageInterfaces.IConversionJSON;
 import PackageJSON.JSONUtiles;
 import PackageModelo.*;
+import com.github.freva.asciitable.AsciiTable;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -56,6 +58,75 @@ public class Aldea {
         return jugadores.agregar(p);
     }
 
+    /// ToTable ARRAYS
+    public String AnimalesToTable() throws Atributo_vacio_Exception {
+        if (animales == null || animales.isEmpty()) {
+            throw new Atributo_vacio_Exception("La lista de animales está vacía.");
+        }
+
+        String[][] data = new String[animales.size() + 1][6];
+        data[0] = new String[]{"ID", "Nombre", "Vida", "Daño", "¿Es bebé?", "Tipo Alimentacion"};
+
+        for (int i = 0; i < animales.size(); i++) {
+            Animal animal = animales.get(i);
+            data[i + 1] = animal.aFila();
+        }
+
+        return AsciiTable.getTable(data);
+    }
+
+    public String AldeanosToTable() throws Atributo_vacio_Exception {
+        if (aldeanos == null || aldeanos.isEmpty()) {
+            throw new Atributo_vacio_Exception("La lista de animales está vacía.");
+        }
+
+        String[][] data = new String[aldeanos.size() + 1][6];
+        data[0] = new String[]{"ID", "Nombre", "Vida", "Daño", "¿Es bebé?", "Profesion"};
+
+        for (int i = 0; i < aldeanos.size(); i++) {
+            Aldeano a = aldeanos.get(i);
+            data[i + 1] = a.aFila();
+        }
+
+        return AsciiTable.getTable(data);
+    }
+
+    public String JugadoresToTable() throws Atributo_vacio_Exception {
+        if (jugadores == null || jugadores.isEmpty()) {
+            throw new Atributo_vacio_Exception("La lista de animales está vacía.");
+        }
+
+        String[][] data = new String[jugadores.size() + 1][5];
+        data[0] = new String[]{"ID", "Nombre", "Premium", "Vida", "Daño"};
+
+        for (int i = 0; i < jugadores.size(); i++) {
+            Player p = jugadores.get(i);
+            data[i + 1] = p.aFila();
+        }
+
+        return AsciiTable.getTable(data);
+    }
+
+    public String HostilesToTable() throws Atributo_vacio_Exception {
+        if (hostiles == null || hostiles.isEmpty()) {
+            throw new Atributo_vacio_Exception("La lista de animales está vacía.");
+        }
+
+        String[][] data = new String[hostiles.size() + 1][5];
+        data[0] = new String[]{"ID", "Nombre", "Vida", "Daño", "¿Es bebé?"};
+
+        for (int i = 0; i < hostiles.size(); i++) {
+            if(hostiles.get(i) instanceof Zombie) {
+                Zombie z = (Zombie) hostiles.get(i);
+                data[i + 1] = z.aFila();
+            } else {
+                Creeper c = (Creeper) hostiles.get(i);
+                data[i + 1] = c.aFila();
+            }
+        }
+
+        return AsciiTable.getTable(data);
+    } // POSIBLEMENTE DEBA MODIFICARLO DESPUÉS PERO POR AHORA LO DEJO ASÍ
 
     // todo.JSON
 
