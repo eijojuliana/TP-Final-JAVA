@@ -23,6 +23,9 @@ public class Panda extends Animal implements IConversionJSON {
     public Gen_Panda getGen() {
         return gen;
     }
+    public void setGen(Gen_Panda gen) {
+        this.gen = gen;
+    }
     public void setGen(String gen) {
         if (
                 gen.equals(Gen_Panda.NORMAL.name()) ||
@@ -34,7 +37,6 @@ public class Panda extends Animal implements IConversionJSON {
                         gen.equals(Gen_Panda.MARRON.name())
         ) this.gen = Gen_Panda.valueOf(gen);
     }
-
 
     @Override
     public String toString() {
