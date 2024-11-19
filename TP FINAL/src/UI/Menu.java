@@ -29,14 +29,12 @@ public class Menu {
         Aldea aldea = new Aldea();
 
         aldea.leerArchivos();
-        
+
 
         Creeper c = new Creeper("Creeper1",10,5,false,false);
         Creeper c2 = new Creeper("Creeper2",10,5,false,false);
         Creeper c3 = new Creeper("Creeper3",10,5,false,false);
-        Zombie z = new Zombie ("Zombie1", 10.6, 5.0, false, TipoZombie.ALDEANO);
-        Zombie z2 = new Zombie ("Zombieasda2", 10.6, 5.0, false, TipoZombie.AHOGADO);
-        Zombie z3 = new Zombie ("Zombie3aaaaaaaaa", 10.6, 5.0, false, TipoZombie.CHIQUITO);
+
 
 
 
@@ -107,7 +105,15 @@ public class Menu {
                 case 3:{
                     switch (menu2){
                         case 1:{
-                            //cargarMob();
+                            try{
+                                System.out.print("[1] Creeper \n[2] Zombie \nIngrese un mob: ");
+                                Mob m = crearMobHostil(s.nextInt());
+                                aldea.agregarHostil(m);
+                                aldea.guardarCambios("ArchivoHostiles");
+                            } catch (Valor_de_atributo_no_valido_Exception e){
+                                System.out.println(e.getMessage());
+                            }
+
                             break;
                         }
                         case 2:{
@@ -188,10 +194,6 @@ public class Menu {
                     break;
                 }
             }
-            //Guardar datos.
-            /*
-            JSONUtiles.grabarUnJson(aldea.toJSON(),"ArchivoAldea");
-             */
 
             if ( menu1 != 0 ){ //Si no eligió salir...
                 System.out.println();
@@ -306,7 +308,7 @@ public class Menu {
     /// @param tipo
     /// [1] Creeper
     /// [2] Zombie
-    private Mob crearMobHostil(int tipo){
+    private Mob crearMobHostil(int tipo) throws Valor_de_atributo_no_valido_Exception{
         Mob m;
 
         switch (tipo){
@@ -316,6 +318,7 @@ public class Menu {
             }
             case 2:{
                 m = crearZombie();
+                break;
             }
             default:{
                 throw new Valor_de_atributo_no_valido_Exception("Opcion ingresada incorrecta.");
@@ -360,7 +363,7 @@ public class Menu {
         String nombre, opcion, tipoZombie;
 
         System.out.print("Ingrese el nombre del zombie: ");
-        nombre = s.next();
+        nombre = s.nextLine();
         if (nombre.isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
         z.setNombre(nombre);
 
