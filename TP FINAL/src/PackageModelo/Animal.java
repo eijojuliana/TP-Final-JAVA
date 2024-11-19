@@ -4,12 +4,13 @@ import PackageEnum.TipoZombie;
 import PackageExceptions.Atributo_vacio_Exception;
 import PackageExceptions.Valor_de_atributo_no_valido_Exception;
 import PackageInterfaces.IConversionJSON;
+import PackageInterfaces.IFila;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public abstract class Animal extends Mob implements IConversionJSON {
+public abstract class Animal extends Mob implements IConversionJSON, IFila {
     ///todo.ATRIBUTOS///
     protected TipoAlimentacion tipoAlimentacion;
 
@@ -43,6 +44,17 @@ public abstract class Animal extends Mob implements IConversionJSON {
         return "Animal{" +
                 "tipoAlimentacion=" + tipoAlimentacion +
                 "} " + super.toString();
+    }
+
+    @Override
+    public String[] aFila() {
+        return new String[]{
+                String.format("%d" ,getId()),
+                getNombre(),
+                String.format("%.2f", getVida()),
+                String.format("%.2f", getDanio()),
+                isEsBebe()? "Sí" : "No",
+                getTipoAlimentacion().name()};
     }
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════

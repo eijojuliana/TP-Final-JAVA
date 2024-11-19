@@ -3,8 +3,6 @@ package PackageContenedores;
 import PackageExceptions.Atributo_vacio_Exception;
 import PackageInterfaces.IConversionJSON;
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 
 import java.util.ArrayList;
@@ -25,7 +23,7 @@ public class AlmacenamientoNPC<T extends IConversionJSON> {
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     //todo.METODOS
 
-    public boolean agregar(T NPC){ // Boleean
+    public boolean agregar(T NPC){ // Boolean
         boolean exito = false;
 
         if (NPC == null) throw new Atributo_vacio_Exception("El elemento vacio.");
@@ -46,6 +44,12 @@ public class AlmacenamientoNPC<T extends IConversionJSON> {
         }
         return mensaje;
     }
+
+    public int size () {return arrayNPC.size();}
+
+    public boolean isEmpty () {return arrayNPC.isEmpty();}
+
+    public T get (int index) {return arrayNPC.get(index);}
 
     @Override
     public String toString(){

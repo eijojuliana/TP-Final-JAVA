@@ -2,6 +2,7 @@ package PackageModelo;
 
 import PackageEnum.TipoZombie;
 import PackageInterfaces.IConversionJSON;
+import PackageInterfaces.IFila;
 import PackageInterfaces.ITabla;
 import com.github.freva.asciitable.*;
 
@@ -9,7 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class Zombie extends Mob implements IConversionJSON, ITabla {
+public class Zombie extends Mob implements IConversionJSON, ITabla, IFila {
     ///todo.ATRIBUTOS///
     protected TipoZombie tipoZombie;
 
@@ -69,8 +70,7 @@ public class Zombie extends Mob implements IConversionJSON, ITabla {
                 getNombre(),
                 String.format("%.2f", getVida()),
                 String.format("%.2f", getDanio()),
-                isEsBebe()? "Sí" : "No",
-                getTipoZombie().name() };
+                isEsBebe()? "Sí" : "No"};
     }
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════

@@ -1,12 +1,13 @@
 package PackageModelo;
 
 import PackageInterfaces.IConversionJSON;
+import PackageInterfaces.IFila;
 import PackageInterfaces.ITabla;
 import com.github.freva.asciitable.AsciiTable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Creeper extends Mob implements IConversionJSON, ITabla {
+public class Creeper extends Mob implements IConversionJSON, ITabla, IFila {
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     //todo ATRIBUTOS
     protected boolean esElectrico;
@@ -59,8 +60,7 @@ public class Creeper extends Mob implements IConversionJSON, ITabla {
                 getNombre(),
                 String.format("%.2f", getVida()),
                 String.format("%.2f", getDanio()),
-                isEsBebe()? "Sí" : "No",
-                isEsElectrico()? "Sí" : "No"};
+                isEsBebe()? "Sí" : "No"};
     }
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════

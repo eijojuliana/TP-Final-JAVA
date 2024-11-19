@@ -4,13 +4,16 @@ import PackageEnum.Profesion;
 import PackageEnum.TipoZombie;
 import PackageExceptions.Valor_de_atributo_no_valido_Exception;
 import PackageInterfaces.IConversionJSON;
+import PackageInterfaces.IFila;
+import PackageInterfaces.ITabla;
+import com.github.freva.asciitable.AsciiTable;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Aldeano extends Mob implements IConversionJSON {
+public class Aldeano extends Mob implements IConversionJSON, ITabla, IFila {
     //todo.ATRIBUTOS
     protected Profesion profesion;
 
@@ -54,6 +57,30 @@ public class Aldeano extends Mob implements IConversionJSON {
                 super.toString() +
                 "profesion=" + profesion +
                 "} ";
+    }
+
+    @Override
+    public String aTabla() {
+        return AsciiTable.getTable(new String[][] {
+                {"Mob", getTipo() },
+                {"ID", String.format("%d" ,getId()) },
+                {"Nombre", getNombre()},
+                {"Vida", String.format("%.2f", getVida())},
+                {"Daño", String.format("%.2f", getDanio())},
+                {"¿Es bebé?", esBebe ? "Sí" : "No"},
+                {"Profesion", profesion.name()}
+        });
+    }
+
+    @Override
+    public String[] aFila() {
+        return new String[]{
+                String.format("%d" ,getId()),
+                getNombre(),
+                String.format("%.2f", getVida()),
+                String.format("%.2f", getDanio()),
+                isEsBebe()? "Sí" : "No",
+                getProfesion().name()};
     }
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════

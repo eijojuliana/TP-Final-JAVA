@@ -64,19 +64,6 @@ public class Lobo extends Animal implements IConversionJSON, ITabla {
         });
     }
 
-    @Override
-    public String[] aFila() {
-        return new String[]{
-                String.format("%d" ,getId()),
-                getNombre(),
-                String.format("%.2f", getVida()),
-                String.format("%.2f", getDanio()),
-                isEsBebe()? "Sí" : "No",
-                getTipoAlimentacion().name(),
-                isDomesticado()? "Sí" : "No",
-                String.format("%d", getIDduenio())};
-    }
-
     //══MÉTODOS══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
     public String domesticarLobo(int id){

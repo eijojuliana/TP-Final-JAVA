@@ -62,18 +62,6 @@ public class Panda extends Animal implements IConversionJSON, ITabla {
         });
     }
 
-    @Override
-    public String[] aFila() {
-        return new String[]{
-                String.format("%d" ,getId()),
-                getNombre(),
-                String.format("%.2f", getVida()),
-                String.format("%.2f", getDanio()),
-                isEsBebe()? "Sí" : "No",
-                getTipoAlimentacion().name(),
-                getGen().name()};
-    }
-
     //══MÉTODOS══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
     public String Rodar(){

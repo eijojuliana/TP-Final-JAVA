@@ -18,5 +18,25 @@
         "id": 0,
         "nombre": "1",
         "esPremium": true
+    },
+    {
+        "tipo": "Player",
+        "tipoPlayer": "OP",
+        "vida": 10,
+        "danio": 2,
+        "contrasenia": "pepe",
+        "id": 0,
+        "nombre": "pepe",
+        "esPremium": true
+    },
+    {
+        "tipo": "Player",
+        "tipoPlayer": "SURVIVAL",
+        "vida": 10,
+        "danio": 2,
+        "contrasenia": "123",
+        "id": 0,
+        "nombre": "ruperto",
+        "esPremium": true
     }
 ]

@@ -3,12 +3,13 @@ package PackageModelo;
 import PackageEnum.TipoPlayer;
 import PackageEnum.TipoZombie;
 import PackageInterfaces.IConversionJSON;
+import PackageInterfaces.IFila;
 import PackageInterfaces.ITabla;
 import com.github.freva.asciitable.AsciiTable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Player extends Entidad implements IConversionJSON, ITabla {
+public class Player extends Entidad implements IConversionJSON, ITabla, IFila {
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
     ///todo.ATRIBUTOS///
