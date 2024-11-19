@@ -2,12 +2,13 @@ package PackageModelo;
 
 import PackageEnum.Gen_Panda;
 import PackageEnum.TipoAlimentacion;
-import PackageEnum.TipoZombie;
 import PackageInterfaces.IConversionJSON;
+import PackageInterfaces.ITabla;
+import com.github.freva.asciitable.AsciiTable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Panda extends Animal implements IConversionJSON {
+public class Panda extends Animal implements IConversionJSON, ITabla {
     ///todo.ATRIBUTOS
     protected Gen_Panda gen;
     ///todo.CONSTRUCTOR
@@ -38,13 +39,42 @@ public class Panda extends Animal implements IConversionJSON {
         ) this.gen = Gen_Panda.valueOf(gen);
     }
 
+    //══TO STRING══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
     @Override
     public String toString() {
         return "Panda{" +
                 "gen=" + gen +
                 "} " + super.toString();
     }
-    ///todo.METODO///
+
+    @Override
+    public String aTabla() {
+        return AsciiTable.getTable(new String[][] {
+                {"Mob", getTipo() },
+                {"ID", String.format("%d" ,getId()) },
+                {"Nombre", getNombre()},
+                {"Vida", String.format("%.2f", getVida())},
+                {"Daño", String.format("%.2f", getDanio())},
+                {"¿Es bebé?", esBebe ? "Sí" : "No"},
+                {"Tipo alimentación", tipoAlimentacion.name()},
+                {"Gen Panda", gen.name()}
+        });
+    }
+
+    @Override
+    public String[] aFila() {
+        return new String[]{
+                String.format("%d" ,getId()),
+                getNombre(),
+                String.format("%.2f", getVida()),
+                String.format("%.2f", getDanio()),
+                isEsBebe()? "Sí" : "No",
+                getTipoAlimentacion().name(),
+                getGen().name()};
+    }
+
+    //══MÉTODOS══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
     public String Rodar(){
         return "*Giro ,me caigo, me levanto, vuelvo a girar*";
@@ -55,8 +85,8 @@ public class Panda extends Animal implements IConversionJSON {
         return "nom nom nom *comiendo bambu modo panda*";
     }
 
-    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-    // todo JSON
+    //══JSON══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
     @Override
     public JSONObject toJSON(){
         JSONObject j;

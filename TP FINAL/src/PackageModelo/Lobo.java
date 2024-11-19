@@ -2,13 +2,15 @@ package PackageModelo;
 
 import PackageEnum.TipoAlimentacion;
 import PackageInterfaces.IConversionJSON;
+import PackageInterfaces.ITabla;
+import com.github.freva.asciitable.AsciiTable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import javax.management.MalformedObjectNameException;
 import java.util.ArrayList;
 
-public class Lobo extends Animal implements IConversionJSON {
+public class Lobo extends Animal implements IConversionJSON, ITabla {
     ///todo.ATRIBUTOS///
     protected boolean domesticado;
     protected int IDduenio;
@@ -38,7 +40,7 @@ public class Lobo extends Animal implements IConversionJSON {
         this.IDduenio = IDduenio;
     }
 
-    ///todo.Metodoss///
+    //══TO STRING══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     @Override
     public String toString() {
         return "Lobo{" +
@@ -46,6 +48,36 @@ public class Lobo extends Animal implements IConversionJSON {
                 ", IDduenio=" + IDduenio +
                 "} " + super.toString();
     }
+
+    @Override
+    public String aTabla() {
+        return AsciiTable.getTable(new String[][] {
+                {"Mob", getTipo() },
+                {"ID", String.format("%d" ,getId()) },
+                {"Nombre", getNombre()},
+                {"Vida", String.format("%.2f", getVida())},
+                {"Daño", String.format("%.2f", getDanio())},
+                {"¿Es bebé?", esBebe ? "Sí" : "No"},
+                {"Tipo alimentación", tipoAlimentacion.name()},
+                {"¿Es domesticado?", domesticado ? "Sí" : "No"},
+                {"IDduenio", String.format("%d", getIDduenio())}
+        });
+    }
+
+    @Override
+    public String[] aFila() {
+        return new String[]{
+                String.format("%d" ,getId()),
+                getNombre(),
+                String.format("%.2f", getVida()),
+                String.format("%.2f", getDanio()),
+                isEsBebe()? "Sí" : "No",
+                getTipoAlimentacion().name(),
+                isDomesticado()? "Sí" : "No",
+                String.format("%d", getIDduenio())};
+    }
+
+    //══MÉTODOS══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
     public String domesticarLobo(int id){
          String mensaje;
@@ -55,14 +87,14 @@ public class Lobo extends Animal implements IConversionJSON {
         return mensaje;
     }
 
-    ///todo.METODOS ABSTRACTOS///
+    //══MÉTODOS ABSTRACTOS══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
     @Override
     public String emitirSonido() {
         return "*AULLANDO COMO LOBA*AUUUUU";
     }
 
-    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-    // todo JSON
+    //══JSON══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     @Override
     public JSONObject toJSON(){
         JSONObject j;
