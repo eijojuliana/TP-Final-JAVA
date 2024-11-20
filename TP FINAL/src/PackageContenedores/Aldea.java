@@ -223,7 +223,7 @@ public class Aldea {
         try {
             JSONObject Jcarcel = new JSONObject(JSONUtiles.leer2("ArchivoCarcel"));
             Carcel carcel = new Carcel();
-            //carcel.fromJSON(Jcarcel)
+            carcel.fromJSON(Jcarcel);
 
         } catch (NoSuchFileException e){
             System.out.println("creando archivo carcel...");
