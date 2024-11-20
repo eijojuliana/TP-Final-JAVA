@@ -16,6 +16,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.nio.file.NoSuchFileException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
@@ -31,14 +32,32 @@ public class Menu {
         aldea.leerArchivos();
 
         while(bucle) {
-
             printMenu();
-            menu1 = s.nextInt();
+            while (true){
+                try{
+                    menu1 = s.nextInt();
+                    break;
+
+                } catch (InputMismatchException e){
+                    System.out.println("Solo numeros.");
+                    s.nextLine();
+                }
+            }
+
             System.out.println();
 
-            if ( menu1 != 0 ){
+            if ( menu1 > 0 && menu1 < 6 ){
                 printMenu2(menu1, tipoUsuario);
-                menu2 = s.nextInt();
+                while (true){
+                    try {
+                        menu2 = s.nextInt();
+                        break;
+
+                    } catch (InputMismatchException e) {
+                        System.out.println("Solo numeros.");
+                        s.nextLine();
+                    }
+                }
                 System.out.println();
             }
 
@@ -67,7 +86,6 @@ public class Menu {
                         }
                         case 3:{
                             if (!tipoUsuario.equalsIgnoreCase("Espectador") ){
-                                    //eliminarAldeano
                             }
                             else System.out.println("Opción no permitida.");
 
@@ -251,9 +269,17 @@ public class Menu {
                 //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
                 case 7:{
                     System.out.print("Ingrese el id del mob a buscar: ");
-                    int id = s.nextInt();
-                    System.out.println( aldea.buscarEntidad(id) );
+                    int id;
+                    try{
+                        id = s.nextInt();
+                        Entidad e = aldea.buscarEntidad(id);
+                        String tabla;
 
+                        System.out.println( );
+
+                    } catch (InputMismatchException e){
+                        System.out.println("Solo numeros.");
+                    }
                     break;} //Buscar por
                 //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -268,12 +294,13 @@ public class Menu {
                     break;
                 }
             }
-
+            s.nextLine();
             if ( menu1 != 0 && menu2 != 0){ //Si no eligió salir...
                 System.out.println();
                 pausa();
                 System.out.println("\n");
             }
+
         }
 
     }

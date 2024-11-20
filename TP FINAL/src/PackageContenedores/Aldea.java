@@ -75,21 +75,21 @@ public class Aldea {
         return hostiles.buscarXid(id);
     }
 
-    public <T extends ITabla> T buscarEntidad(int id) throws Valor_de_atributo_no_valido_Exception, Entidad_inexistente_Exception {
+    public Entidad buscarEntidad(int id) throws Valor_de_atributo_no_valido_Exception, Entidad_inexistente_Exception {
 
         if (id<0) throw new Valor_de_atributo_no_valido_Exception("ID negativo.");
 
-        T e;
-        e = (T) buscarMobHostil(id);
+        Entidad e;
+        e = buscarMobHostil(id);
         if ( e != null ) return e;
 
-        e = (T) buscarAldeano(id);
+        e = buscarAldeano(id);
         if ( e != null ) return e;
 
-        e = (T) buscarAnimal(id);
+        e = buscarAnimal(id);
         if ( e != null ) return e;
 
-        e = (T) buscarPlayer(id);
+        e = buscarPlayer(id);
         if ( e != null ) return e;
 
         throw new Entidad_inexistente_Exception("La entidad no fue encontrada.");
