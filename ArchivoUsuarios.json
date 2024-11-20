@@ -38,5 +38,15 @@
         "id": 4,
         "nombre": "ruperto",
         "esPremium": true
+    },
+    {
+        "tipo": "Player",
+        "tipoPlayer": "OP",
+        "vida": 10,
+        "danio": 2,
+        "contrasenia": "b",
+        "id": 5,
+        "nombre": "b",
+        "esPremium": true
     }
 ]
