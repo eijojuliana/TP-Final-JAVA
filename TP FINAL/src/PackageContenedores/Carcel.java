@@ -3,6 +3,7 @@ import PackageExceptions.Entidad_inexistente_Exception;
 import PackageExceptions.Entidad_repetida_Exception;
 import PackageInterfaces.IConversionJSON;
 import PackageJSON.JSONUtiles;
+import PackageModelo.Celda;
 import PackageModelo.Entidad;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,38 +12,64 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Carcel extends AlmacenamientoNPC  {
+public class Carcel implements IConversionJSON{
     ///todo.Atributos///
 
-    protected HashMap<Integer,LocalDate> condenajeje;
+    protected HashMap<Integer, Celda> carcel;
 
     /// todo.Constructores///
     public Carcel() {
-        this.condenajeje = new HashMap<>();
+        this.carcel = new HashMap<>();
+    }
+
+    //
+    public void setCarcel(HashMap<Integer, Celda> carcel) {
+        this.carcel = carcel;
     }
 
     /// todo.TO JSON///
     @Override
-    public JSONArray toJSON() {
-        JSONArray j;
+    public JSONObject toJSON() {
+        JSONObject carcelJSON = new JSONObject();
+        JSONArray celdasJSON = new JSONArray();
+
         try {
-            j = super.toJSON();
-
-            JSONObject condenasJSON = new JSONObject();
-            for (Integer key : condenajeje.keySet()) {
-                condenasJSON.put(key.toString(), condenajeje.get(key).toString());
+            for (Integer key : carcel.keySet()) {
+                Celda celda = carcel.get(key);
+                if (celda != null){
+                    celdasJSON.put(celda.toJSON());
+                }
             }
-
-            j.put(new JSONObject().put("condenas", condenasJSON));
+            carcelJSON.put("celdas", celdasJSON);
 
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
 
-        return j;
+        return carcelJSON;
     }
 
+    @Override
+    public boolean fromJSON(JSONObject j) {
+        boolean exito = false;
+        try{
+            JSONArray jsonArray = j.getJSONArray("celdas");
+            for(int i=0;i< jsonArray.length();i++){
+                JSONObject jCelda = jsonArray.getJSONObject(i);
+                Celda celda = new Celda();
+                if (celda.fromJSON(jCelda)){
+                    carcel.put(celda.getNumeroCelda(), celda);
+                }
+            }
+            exito = true;
 
+        } catch (JSONException e){
+            throw new RuntimeException();
+        }
+        return exito;
+    }
+
+    /*
     /// todo.METODOS///
    public boolean imponerCondena(int id,LocalDate fechaCondena ) throws Entidad_inexistente_Exception
    {
@@ -69,6 +96,8 @@ public class Carcel extends AlmacenamientoNPC  {
        return liberado;
 
    }
+
+     */
 
 
 }
