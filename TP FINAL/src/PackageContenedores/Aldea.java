@@ -1,5 +1,6 @@
 package PackageContenedores;
 import PackageExceptions.Atributo_vacio_Exception;
+import PackageExceptions.Entidad_inexistente_Exception;
 import PackageExceptions.Valor_de_atributo_no_valido_Exception;
 import PackageInterfaces.IConversionJSON;
 import PackageJSON.JSONUtiles;
@@ -11,6 +12,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.nio.file.NoSuchFileException;
+import java.util.ArrayList;
 
 public class Aldea {
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
@@ -58,6 +60,31 @@ public class Aldea {
     public boolean agregarPlayer(Player p){return jugadores.agregar(p);}
 
     public boolean agregarHostil(Mob m) { return hostiles.agregar(m); }
+
+    public Entidad buscarEntidad(int id) throws Valor_de_atributo_no_valido_Exception {
+
+        if (id<0) throw new Valor_de_atributo_no_valido_Exception("ID negativo.");
+
+        for (int i=0; i<animales.size(); i++){
+            Animal a = animales.get(i);
+            if (a.getId() == id) return a;
+        }
+        for (int i=0; i<aldeanos.size(); i++){
+            Aldeano a = aldeanos.get(i);
+            if (a.getId() == id) return a;
+        }
+        for (int i=0; i<jugadores.size(); i++){
+            Player p = jugadores.get(i);
+            if (p.getId() == id) return p;
+        }
+        for (int i=0; i<hostiles.size(); i++){
+            Mob m = hostiles.get(i);
+            if (m.getId() == id) return m;
+        }
+        throw new Entidad_inexistente_Exception("La entidad no fue encontrada.");
+
+    }
+
 
     /// ToTable ARRAYS
     public String AnimalesToTable() throws Atributo_vacio_Exception {
