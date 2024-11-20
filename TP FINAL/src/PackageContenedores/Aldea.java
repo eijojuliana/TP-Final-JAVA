@@ -385,4 +385,20 @@ public class Aldea {
 
         return numeroCeldaDesocupadas;
     }
+
+    public String verCarcel (){
+        String estadoCarcel;
+
+        estadoCarcel=carcel.verCarcel();
+
+        return estadoCarcel;
+    }
+
+    public String verEncarcelados(){
+        String mobsEncarcelados;
+
+        mobsEncarcelados=carcel.verInfoEncarcelados();
+
+        return mobsEncarcelados;
+    }
 }
