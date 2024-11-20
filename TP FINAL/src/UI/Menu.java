@@ -634,20 +634,20 @@ public class Menu {
         if (nombre.isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
         p.setNombre(nombre);
 
-        System.out.println("El lobo es bebé?: \n 1-SIIII :3 \n2-No. Está grande ya.");
+        System.out.println("El panda es bebé?: \n 1-SIIII :3 \n2-No. Está grande ya.");
         opcion=s.nextInt();
         if (opcion == 1) p.setEsBebe(true);
         else if (opcion == 0) p.setEsBebe(false);
         else throw new Valor_de_atributo_no_valido_Exception("Valor cargado no válido.");
 
-        System.out.print("Ingrese el tipo de alimentacion que tiene su vaca: ");
-        tipoAlimentacion = s.next();
-        if (tipoAlimentacion.isBlank()) throw new Atributo_vacio_Exception("El tipo de alimentación está vacio");
-        p.setTipoAlimentacion(tipoAlimentacion);
-
-        System.out.print("Ingrese el tipo de alimentacion que tiene su panda: ");
-        String tipoalimentacion=s.next();
-        p.setTipoAlimentacion(tipoalimentacion);
+        System.out.print("Ingrese el tipo de alimentación que tiene su panda: ");
+         tipoAlimentacion = s.next();
+        try {
+            p.setTipoAlimentacion(tipoAlimentacion);
+            System.out.println("El tipo de alimentación fue asignado correctamente.");
+        } catch (Atributo_vacio_Exception e) {
+            System.out.println(e.getMessage());
+        }
 
         int num = (int) (Math.random() * 8);//Un numero aleatorio entre 0 y 7. Esto porq en el juego el "caracter" del panda es alatorio.
         Gen_Panda[] genPandas = Gen_Panda.values();
@@ -680,10 +680,15 @@ public class Menu {
         else if (opcion == 0) l.setEsBebe(false);
         else throw new Valor_de_atributo_no_valido_Exception("Valor cargado no válido.");
 
-        System.out.print("Ingrese el tipo de alimentacion que tiene su lobo: ");
+        System.out.print("Ingrese el tipo de alimentación que tiene su lobo: ");
         tipoAlimentacion = s.next();
-        if (tipoAlimentacion.isBlank()) throw new Atributo_vacio_Exception("El tipo de alimentación está vacio");
-        l.setTipoAlimentacion(tipoAlimentacion);
+
+        try {
+            l.setTipoAlimentacion(tipoAlimentacion);
+            System.out.println("El tipo de alimentación fue asignado correctamente.");
+        } catch (Atributo_vacio_Exception e) {
+            System.out.println(e.getMessage());
+        }
 
         System.out.println("Desea domesticar al lobo? : \n 1-SIP \n 0-NOP ");
         int decision =s.nextInt();
@@ -718,10 +723,15 @@ public class Menu {
         if (s.next().isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
         o.setNombre(nombre);
 
-        System.out.print("Ingrese el tipo de alimentacion que tiene su oveja: ");
+
+        System.out.print("Ingrese el tipo de alimentación que tiene su panda: ");
         tipoAlimentacion = s.next();
-        if (tipoAlimentacion.isBlank()) throw new Atributo_vacio_Exception("El tipo de alimentación está vacio");
-        o.setTipoAlimentacion(tipoAlimentacion);
+        try {
+            o.setTipoAlimentacion(tipoAlimentacion);
+            System.out.println("El tipo de alimentación fue asignado correctamente.");
+        } catch (Atributo_vacio_Exception e) {
+            System.out.println(e.getMessage());
+        }
 
         System.out.print("Ingrese el color: ");
         color = s.next();
