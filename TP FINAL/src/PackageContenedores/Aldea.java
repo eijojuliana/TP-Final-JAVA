@@ -13,6 +13,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.nio.file.NoSuchFileException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Aldea {
@@ -280,5 +281,62 @@ public class Aldea {
             case "ArchivoCarcel" -> JSONUtiles.grabarUnJson(carcel.toJSON(), archivo);
             default -> throw new Valor_de_atributo_no_valido_Exception("Archivo no existente.");
         }
+    }
+
+    /// todo.METODOS CARCEL
+    public boolean encarcelar(int id, LocalDate fechaEntrada, LocalDate fechaSalida){
+        Boolean encarcelado;
+        Entidad entidad=new Entidad();
+        entidad=buscarEntidad(id);
+
+        encarcelado=carcel.encarcelar(entidad,fechaEntrada,fechaSalida,id);
+        return encarcelado;
+    }
+
+    public boolean liberaMob (int numeroCelda){
+        boolean liberado;
+        liberado=carcel.liberarMob(numeroCelda);
+
+        return liberado;
+    }
+
+    public Celda infoCelda(int numeroCelda){
+        Celda celda=new Celda();
+
+        celda=carcel.obtenerInfoCelda(numeroCelda);
+
+        return celda;
+    }
+
+    public ArrayList<Celda> verTodasLasCeldas (){
+        ArrayList<Celda> celdas=new ArrayList<>();
+
+        celdas=carcel.verTodasLasCeldas();
+
+        return celdas;
+    }
+
+    public ArrayList<Entidad> verMobsEncarcelados(){
+        ArrayList<Entidad>mobsEncarcelados=new ArrayList<>();
+
+        mobsEncarcelados=carcel.verMobsEncarcelados();
+
+        return mobsEncarcelados;
+    }
+
+    public int cantCeldasDesocupadas(){
+        int cantCeldasDesocupadas;
+
+        cantCeldasDesocupadas=carcel.contarCeldasDesocupadas();
+
+        return cantCeldasDesocupadas;
+    }
+
+    public ArrayList<Integer> celdasDesocupadas(){
+        ArrayList<Integer> numeroCeldaDesocupadas=new ArrayList<>();
+
+        numeroCeldaDesocupadas=carcel.obtenerCeldasDesocupadas();
+
+        return numeroCeldaDesocupadas;
     }
 }

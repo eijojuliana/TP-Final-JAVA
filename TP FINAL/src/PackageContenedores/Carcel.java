@@ -73,29 +73,39 @@ public class Carcel implements IConversionJSON{
 
 
     /// todo.METODOS///
- public boolean encarcelar(Entidad mob,LocalDate fechaEntrada,LocalDate fechaSalida,int id) throws Entidad_inexistente_Exception,Entidad_repetida_Exception
- {
-     boolean encarcelado=false;
-     try{
-         if (mob!=null){
-             if (!(carcel.containsKey(id))){
-                 Celda nuevaCelda=new Celda(mob,fechaEntrada,fechaSalida);
-                 carcel.put(nuevaCelda.getNumeroCelda(),nuevaCelda);
-                 encarcelado=true;
-             }
-         }
-     } catch (Entidad_inexistente_Exception e){
-         System.out.println(e.getMessage());
-     }
-     return encarcelado;
- }
+    public boolean encarcelar(Entidad mob,LocalDate fechaEntrada,LocalDate fechaSalida,int id) throws Entidad_inexistente_Exception,Entidad_repetida_Exception
+    {
+        boolean encarcelado=false;
+        try{
+            if (mob!=null){
+                if (!(carcel.containsKey(id))){
+                    Celda nuevaCelda=new Celda(mob,fechaEntrada,fechaSalida);
+                    carcel.put(nuevaCelda.getNumeroCelda(),nuevaCelda);
+                    encarcelado=true;
+                }
+            }
+        } catch (Entidad_inexistente_Exception e){
+            System.out.println(e.getMessage());
+        }
+        return encarcelado;
+    }
 
- public boolean liberarMob(int numeroCelda) throws Valor_de_atributo_no_valido_Exception {
+    public boolean liberarMob(int numeroCelda) throws Valor_de_atributo_no_valido_Exception {
         boolean liberado = false;
         try {
             if (carcel.containsKey(numeroCelda)) {
-                carcel.remove(numeroCelda);
-                liberado = true;
+                Celda celda = carcel.get(numeroCelda);
+                LocalDate fechaSalida = celda.getFechaSalida();
+                LocalDate fechaActual = LocalDate.now();
+
+                // Verificar si la fecha de salida ya pasó o es igual a la fecha actual
+                if (!fechaActual.isBefore(fechaSalida)) {
+                    carcel.remove(numeroCelda); // Liberar la celda
+                    liberado = true;
+                } else {
+                    // Si la fecha actual es antes de la fecha de salida
+                    throw new Valor_de_atributo_no_valido_Exception("El mob aún no puede ser liberado. La fecha de salida no ha llegado.");
+                }
             } else {
                 throw new Valor_de_atributo_no_valido_Exception("Número de celda no válido o inexistente.");
             }
@@ -103,27 +113,28 @@ public class Carcel implements IConversionJSON{
             System.out.println(e.getMessage());
         }
         return liberado;
- }
+    }
 
 
- public Celda obtenerInfoCelda(int numeroCelda){
-     return carcel.get(numeroCelda);
- }
 
- public ArrayList<Celda> verTodasLasCeldas() {
+    public Celda obtenerInfoCelda(int numeroCelda){
+        return carcel.get(numeroCelda);
+    }
+
+    public ArrayList<Celda> verTodasLasCeldas() {
         return new ArrayList<>(carcel.values());
- }
+    }
 
 
- public ArrayList<Entidad> verMobsEncarcelados() {
+    public ArrayList<Entidad> verMobsEncarcelados() {
         ArrayList<Entidad> mobs = new ArrayList<>();
         for (Celda celda : carcel.values()) {
             mobs.add(celda.getMob());
         }
         return mobs;
- }
+    }
 
- public int contarCeldasDesocupadas() {
+    public int contarCeldasDesocupadas() {
         int maxNumeroCelda = Celda.getIdIncremental(); // Obtiene el último ID generado.
         int celdasDesocupadas = 0;
 
@@ -133,11 +144,18 @@ public class Carcel implements IConversionJSON{
             }
         }
         return celdasDesocupadas;
- }
+    }
 
+    public ArrayList<Integer> obtenerCeldasDesocupadas() {
+        ArrayList<Integer> celdasDesocupadas = new ArrayList<>();
+        int maxNumeroCelda = Celda.getIdIncremental(); // Obtiene el último ID generado.
 
-
-
-
+        for (int i = 1; i <= maxNumeroCelda; i++) {
+            if (!carcel.containsKey(i)) {
+                celdasDesocupadas.add(i);
+            }
+        }
+        return celdasDesocupadas;
+    }
 
 }
