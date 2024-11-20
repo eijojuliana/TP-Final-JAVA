@@ -146,7 +146,7 @@ public class Aldea {
         }
 
         String[][] data = new String[animales.size() + 1][7];
-        data[0] = new String[]{"ID", "Mob","Nombre", "Vida", "Daño", "¿Es bebé?", "Tipo Alimentacion"};
+        data[0] = new String[]{"Mob", "ID","Nombre", "Vida", "Daño", "¿Es bebé?", "Tipo Alimentacion"};
 
         for (int i = 0; i < animales.size(); i++) {
             Animal animal = animales.get(i);
@@ -194,7 +194,7 @@ public class Aldea {
         }
 
         String[][] data = new String[hostiles.size() + 1][6];
-        data[0] = new String[]{"ID", "Mob","Nombre", "Vida", "Daño", "¿Es bebé?"}; //Pero no pueden ser bebe ninguno de los dos
+        data[0] = new String[]{"Mob", "ID", "Nombre", "Vida", "Daño", "¿Es bebé?"}; //Pero no pueden ser bebe ninguno de los dos
 
         for (int i = 0; i < hostiles.size(); i++) {
             if(hostiles.get(i) instanceof Zombie) {

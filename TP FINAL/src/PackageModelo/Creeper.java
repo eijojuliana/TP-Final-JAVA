@@ -62,8 +62,8 @@ public final class Creeper extends Mob implements IConversionJSON, ITabla, IFila
     @Override
     public String[] aFila() {
         return new String[]{
-                String.format("%d" ,getId()),
                 getTipo(),
+                String.format("%d" ,getId()),
                 getNombre(),
                 String.format("%.2f", getVida()),
                 String.format("%.2f", getDanio()),
