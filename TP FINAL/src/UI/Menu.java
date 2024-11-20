@@ -1,21 +1,14 @@
 package UI;
 
 import PackageContenedores.Aldea;
-import PackageContenedores.AlmacenamientoNPC;
 import PackageEnum.Gen_Panda;
-import PackageEnum.TipoZombie;
 import PackageExceptions.Atributo_vacio_Exception;
 import PackageExceptions.Formato_no_valido_Exception;
 import PackageExceptions.Valor_de_atributo_no_valido_Exception;
-import PackageJSON.JSONUtiles;
-import PackageModelo.*;
-import com.github.freva.asciitable.AsciiTable;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
-import java.io.IOException;
-import java.nio.file.NoSuchFileException;
-import java.util.ArrayList;
+import PackageModelo.*;
+
+import java.time.LocalDate;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -85,12 +78,22 @@ public class Menu {
                             }
                             case 3: {
                                 if (!tipoUsuario.equalsIgnoreCase("Espectador")) {
+                                    int id;
+                                    System.out.print("Ingrese el id del aldeano a eliminar: ");
+                                    id = s.nextInt();
+                                    if (aldea.eliminarAldeano(id)) System.out.println("Se eliminó el aldeanito :c .");
+                                    else System.out.println("No se pudo eliminar el aldeano.");
 
                                 } else System.out.println("Opción no permitida.");
                                 break;
                             }
                             case 4: {
-                                //buscar aldeano por id
+                                int id;
+                                System.out.print("Ingrese el id del aldeano a buscar: ");
+                                id = s.nextInt();
+                                Aldeano a = aldea.buscarAldeano(id);
+                                System.out.println("\nSe encontró el aldeano:");
+                                System.out.println(a.aTabla());
                                 break;
                             }
                         }
@@ -119,20 +122,33 @@ public class Menu {
                             }
                             case 3: {
                                 if (!tipoUsuario.equalsIgnoreCase("Espectador")) {
-                                    //eliminar animal
-                                    //a
+                                    int id;
+                                    System.out.print("Ingrese el id del animalito a eliminar: ");
+                                    id = s.nextInt();
+                                    if (aldea.eliminarAnimal(id)) System.out.println("Se eliminó el animalito :c .");
+                                    else System.out.println("No se pudo eliminar el animal.");
+
                                 } else System.out.println("Opción no permitida.");
                                 break;
                             }
                             case 4: {
-                                //Buscar por
+                                int id;
+                                System.out.print("Ingrese el id del animal a buscar: ");
+                                id = s.nextInt();
+                                Animal a = aldea.buscarAnimal(id);
+                                System.out.println("\nSe encontró el animal:");
+                                System.out.println(a.aTabla());
                                 break;
                             }
                             case 5: {
                                 if (!tipoUsuario.equalsIgnoreCase("Espectador")) {
-                                    //buscar por
-                                    //if intance of lobo
-                                    //Domesticar lobo
+                                    int id;
+                                    System.out.print("Ingrese el id del lobo a buscar: ");
+                                    id = s.nextInt();
+                                    System.out.print("Ingrese su id: ");
+                                    if ( aldea.domesticarLobito(id, s.nextInt()) ) System.out.println("HA ADOPTADO AL LOBO!!.");
+                                    else System.out.println("No se pudo domesticar al lobo.");
+
                                 } else System.out.println("Opción no permitida.");
                                 break;
                             }
@@ -161,12 +177,22 @@ public class Menu {
                             }
                             case 3: {
                                 if (!tipoUsuario.equalsIgnoreCase("Espectador")) {
-                                    //eliminarMob
+                                    int id;
+                                    System.out.print("Ingrese el id del mob a eliminar: ");
+                                    id = s.nextInt();
+                                    if (aldea.eliminarHostiles(id)) System.out.println("Se eliminó el mob.");
+                                    else System.out.println("No se pudo eliminar el mob.");
+
                                 } else System.out.println("Opción no permitida.");
                                 break;
                             }
                             case 4: {
-                                //Buscar por
+                                int id;
+                                System.out.print("Ingrese el id del mob a buscar: ");
+                                id = s.nextInt();
+                                Mob m = aldea.buscarMobHostil(id);
+                                System.out.println("\nSe encontró el mob:");
+                                System.out.println(m.aTabla());
                                 break;
                             }
                         }
@@ -177,34 +203,44 @@ public class Menu {
                         switch (menu2) {
                             case 1: {
                                 if (tipoUsuario.equalsIgnoreCase("Creativo") ||
-                                        tipoUsuario.equalsIgnoreCase("OP")) {
-                                    System.out.print("Ingrese el id del mob que desea meter preso: ");
-                                    int id = s.nextInt();
-                                    /*if ( aldea.encarcelar(id) ){
-                                    System.out.println("Se agregó el mob correctamente.");
-                                    aldea.guardarCambios("ArchivoCarcel");
-                                    }
-                                    else System.out.println("No se pudo agregar el mob.");*/
-                                    break;
+                                    tipoUsuario.equalsIgnoreCase("OP")) {
+                                        System.out.print("Ingrese el id del mob que desea meter preso: ");
+                                        int id = s.nextInt();
+                                        System.out.print("Ingrese la fecha de liberación (dd/MM/yyyy): ");
+                                        LocalDate fechaSalida = Celda.stringToLocalDate(s.next());
+
+                                        if ( aldea.encarcelar(id, LocalDate.now(), fechaSalida ) ){
+                                            System.out.println("El mob se fue en cana.");
+                                            aldea.guardarCambios("ArchivoCarcel");
+                                        }
+                                        else System.out.println("No se pudo encarcelar el mob.");
+
+                                        break;
                                 } else System.out.println("Opción no permitida.");
                                 break;
                             }
                             case 2: {
-                                //System.out.println(aldea.verCarcel());
+                                System.out.println(aldea.verCarcel());
                                 break;
                             }
                             case 3: {
-                                //System.out.println(aldea.verEncarcelados());
+                                System.out.println(aldea.verEncarcelados());
                                 break;
                             }
                             case 4: {
-                                //System.out.println(aldea.verCaldasLibres());
+                                System.out.println(aldea.celdasDesocupadas());
                                 break;
                             }
                             case 5: {
                                 if (tipoUsuario.equalsIgnoreCase("Creativo") ||
-                                        tipoUsuario.equalsIgnoreCase("OP")) {
-                                    //Liberar mob
+                                    tipoUsuario.equalsIgnoreCase("OP")) {
+                                        System.out.print("Ingrese el id de la celda: ");
+                                        int idCelda = s.nextInt();
+
+                                        if ( aldea.liberaMob(idCelda) ) System.out.println("Se liberó el mob correctamente!");
+                                        else System.out.println("No se pudo liberar el mob.");
+
+
                                 } else System.out.println("Opción no permitida.");
                                 break;
                             }
@@ -230,13 +266,20 @@ public class Menu {
                             }
                             case 3: {
                                 if (tipoUsuario.equalsIgnoreCase("OP")) {
-                                    //eliminarJugador de la whitelist
+                                    System.out.print("Ingrese el id del jugador a eliminar: ");
+                                    int id = s.nextInt();
+                                    if ( aldea.eliminarPlayer(id) ) System.out.println("Se eliminó el jugador de la whitelist.");
+                                    else System.out.println("No se pudo eliminar el jugador de la whitelist.");
+
                                 } else System.out.println("Opción no permitida.");
                                 break;
                             }
                             case 4: {
                                 if (tipoUsuario.equalsIgnoreCase("OP")) {
-                                    //buscar por id (solo admin)
+                                    System.out.print("Ingrese el id del jugador: ");
+                                    int id = s.nextInt();
+                                    System.out.println(aldea.buscarPlayer(id));
+
                                 } else System.out.println("Opción no permitida.");
                                 break;
                             }
@@ -287,7 +330,7 @@ public class Menu {
             }
 
         }
-
+        s.close();
     }
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     //todo MENU
