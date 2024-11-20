@@ -3,6 +3,7 @@ import PackageExceptions.Atributo_vacio_Exception;
 import PackageExceptions.Entidad_inexistente_Exception;
 import PackageExceptions.Valor_de_atributo_no_valido_Exception;
 import PackageInterfaces.IConversionJSON;
+import PackageInterfaces.ITabla;
 import PackageJSON.JSONUtiles;
 import PackageModelo.*;
 import com.github.freva.asciitable.AsciiTable;
@@ -54,35 +55,43 @@ public class Aldea {
     }
 
     public boolean agregarAnimal (Animal a) { return animales.agregar(a);}
+    public Animal buscarAnimal (int id) {
+        return animales.buscarXid(id);
+    }
 
     public boolean agregarAldeano(Aldeano a){ return aldeanos.agregar(a);}
+    public Aldeano buscarAldeano(int id){
+        return aldeanos.buscarXid(id);
+    }
 
     public boolean agregarPlayer(Player p){return jugadores.agregar(p);}
+    public Player buscarPlayer(int id){
+        return jugadores.buscarXid(id);
+    }
 
     public boolean agregarHostil(Mob m) { return hostiles.agregar(m); }
+    public Mob buscarMobHostil(int id){
+        return hostiles.buscarXid(id);
+    }
 
-    public Entidad buscarEntidad(int id) throws Valor_de_atributo_no_valido_Exception {
+    public <T extends ITabla> T buscarEntidad(int id) throws Valor_de_atributo_no_valido_Exception, Entidad_inexistente_Exception {
 
         if (id<0) throw new Valor_de_atributo_no_valido_Exception("ID negativo.");
 
-        for (int i=0; i<animales.size(); i++){
-            Animal a = animales.get(i);
-            if (a.getId() == id) return a;
-        }
-        for (int i=0; i<aldeanos.size(); i++){
-            Aldeano a = aldeanos.get(i);
-            if (a.getId() == id) return a;
-        }
-        for (int i=0; i<jugadores.size(); i++){
-            Player p = jugadores.get(i);
-            if (p.getId() == id) return p;
-        }
-        for (int i=0; i<hostiles.size(); i++){
-            Mob m = hostiles.get(i);
-            if (m.getId() == id) return m;
-        }
-        throw new Entidad_inexistente_Exception("La entidad no fue encontrada.");
+        T e;
+        e = (T) buscarMobHostil(id);
+        if ( e != null ) return e;
 
+        e = (T) buscarAldeano(id);
+        if ( e != null ) return e;
+
+        e = (T) buscarAnimal(id);
+        if ( e != null ) return e;
+
+        e = (T) buscarPlayer(id);
+        if ( e != null ) return e;
+
+        throw new Entidad_inexistente_Exception("La entidad no fue encontrada.");
     }
 
 
@@ -155,6 +164,8 @@ public class Aldea {
 
         return AsciiTable.getTable(data);
     } // POSIBLEMENTE DEBA MODIFICARLO DESPUÉS PERO POR AHORA LO DEJO ASÍ
+
+    //CarcelTtTable
 
     // todo.JSON
 
@@ -254,7 +265,7 @@ public class Aldea {
 
         } catch (NoSuchFileException e){
             System.out.println("creando archivo carcel...");
-            JSONUtiles.grabarUnJson(new JSONObject(),"ArchivoCarcel");
+            JSONUtiles.grabarUnJson(new Carcel().toJSON(),"ArchivoCarcel");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
