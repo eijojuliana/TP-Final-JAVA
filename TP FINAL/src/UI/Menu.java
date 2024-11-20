@@ -37,7 +37,7 @@ public class Menu {
             System.out.println();
 
             if ( menu1 != 0 ){
-                printMenu2(menu1);
+                printMenu2(menu1, tipoUsuario);
                 menu2 = s.nextInt();
                 System.out.println();
             }
@@ -97,15 +97,17 @@ public class Menu {
                             break;
                         }
                         case 3:{
-                            //modificarAnimal();
-                            break;
-                        }
-                        case 4:{
                             //eliminarAnimal()
                             break;
                         }
-                        case 5:{
+                        case 4:{
                             //Buscar por
+                            break;
+                        }
+                        case 5:{
+                            //buscar por
+                            //if intance of lobo
+                            //Domesticar lobo
                             break;
                         }
                     }
@@ -206,7 +208,7 @@ public class Menu {
                 }
             }
 
-            if ( menu1 != 0 ){ //Si no eligió salir...
+            if ( menu1 != 0 && menu2 != 0){ //Si no eligió salir...
                 System.out.println();
                 pausa();
                 System.out.println("\n");
@@ -223,42 +225,191 @@ public class Menu {
                 --  ALDEA  --
                 [1] Aldeanos
                 [2] Animales
-                [3] Cárcel
-        
+                [3] Hostiles
+                [4] Carcel
+                
                 -- USUARIOS --
-                [4] Jugadores
+                [5] Jugadores
                 
                 --  TODOS  --
-                [5] Mostrar todos los mobs.
-                [6] Buscar mob por id/nombre.
+                [7] Mostrar todos los mobs.
+                [8] Buscar mob por id/nombre.
                 
                 -- SISTEMA --
                 [0] Salir
                 
-                ¿Qué registro desea modificar? Ingrese una opción:""");
+                Ingrese una opción:""");
         System.out.print(" ");
     }
-    private void printMenu2(int menu1){
+    private void printMenu2(int menu1, String tipoUsuario){
 
         System.out.print(" GESTIÓN ");
         switch (menu1){
-            case 1: System.out.println("ALDEANOS:"); break;
-            case 2: System.out.println("ANIMALES:"); break;
-            case 3: System.out.println("CÁRCEL:"); break;
-            case 4: System.out.println("JUGADORES:"); break;
-        }
-        System.out.print("""   
+            case 1: {
+                System.out.println("ALDEANOS:");
+                if (tipoUsuario.equalsIgnoreCase("Espectador")){
+                    System.out.print("""   
             
-                [1] Cargar elemento
-                [2] Ver todos
-                [3] Modificar un elemento
-                [4] Eliminar una entidad
-                [5] Buscar por id/nombre
+                        [̶̶̶1̶̶̶]̶̶̶ ̶̶̶C̶̶̶a̶̶̶r̶̶̶g̶̶̶a̶̶̶r̶̶̶ ̶̶̶u̶n̶ ̶a̶l̶d̶e̶a̶n̶o̶
+                        [2] Ver todos los aldeanos
+                        [̶3̶]̶ ̶E̶l̶i̶m̶i̶n̶a̶r̶ ̶u̶n̶ ̶a̶l̶d̶e̶a̶n̶o̶ ̶p̶o̶r̶ ̶i̶d̶
+                        [4] Buscar por id
+                        
+                        """);
+                } else if (tipoUsuario.equalsIgnoreCase("Survival")) {
+                    System.out.print("""   
+                            
+                            [̶̶̶1̶̶̶]̶̶̶ ̶̶̶C̶̶̶a̶̶̶r̶̶̶g̶̶̶a̶̶̶r̶̶̶ ̶̶̶u̶n̶ ̶a̶l̶d̶e̶a̶n̶o̶
+                            [2] Ver todos los aldeanos
+                            [3] Eliminar un aldeano por id
+                            [4] Buscar por id
+                            
+                            """);
+                } else if ( tipoUsuario.equalsIgnoreCase("Creativo") ||
+                            tipoUsuario.equalsIgnoreCase("OP") ) {
+                    System.out.print("""   
+                            
+                            [1] Cargar un aldeano
+                            [2] Ver todos los aldeanos
+                            [3] Eliminar un aldeano por id
+                            [4] Buscar por id
+                            
+                            """);
+                }
+                break;
+            }
+            case 2: {
+                System.out.println("ANIMALES:");
+                if (tipoUsuario.equalsIgnoreCase("Espectador")){
+                    System.out.print("""   
+            
+                        [̶̶̶1̶̶̶]̶ ̶̶̶C̶̶̶a̶̶̶r̶̶̶g̶̶̶a̶̶̶r̶̶̶ ̶̶̶u̶n̶ ̶a̶n̶i̶m̶a̶l̶
+                        [2] Ver todos los animales
+                        [̶3̶]̶ ̶E̶l̶i̶m̶i̶n̶a̶r̶ ̶u̶n̶ ̶a̶n̶i̶m̶a̶l̶ ̶p̶o̶r̶ ̶i̶d̶
+                        [4] Buscar por id
+                        [̶5̶]̶ ̶D̶o̶m̶e̶s̶t̶i̶c̶a̶r̶ ̶l̶o̶b̶o̶
+                        
+                        """);
+                } else if (tipoUsuario.equalsIgnoreCase("Survival")){
+                    System.out.print("""   
+            
+                        [̶̶̶1̶̶̶]̶ ̶̶̶C̶̶̶a̶̶̶r̶̶̶g̶̶̶a̶̶̶r̶̶̶ ̶̶̶u̶n̶ ̶a̶n̶i̶m̶a̶l̶
+                        [2] Ver todos los animales
+                        [3] Eliminar un animal por id
+                        [4] Buscar por id
+                        [5] Domesticar lobo
+                        
+                        """);
+                } else if ( tipoUsuario.equalsIgnoreCase("Creativo") ||
+                            tipoUsuario.equalsIgnoreCase("OP") ) {
+                    System.out.print("""   
+                            
+                            [1] Cargar un animal
+                            [2] Ver todos los animales
+                            [3] Eliminar un animal por id
+                            [4] Buscar por id
+                            [5] Domesticar lobo
+                            
+                            """);
+                }
+                break;
+            }
+            case 3: {
+                System.out.println("HOSTILES:");
+                if (tipoUsuario.equalsIgnoreCase("Espectador")){
+                    System.out.print("""   
+            
+                        [̶̶̶1̶̶̶]̶̶̶ ̶̶̶C̶a̶r̶g̶a̶r̶ ̶u̶n̶ ̶m̶o̶b̶ ̶h̶o̶s̶t̶i̶l̶
+                        [2] Ver todos los mobs hostiles
+                        [̶3̶]̶ ̶E̶l̶i̶m̶i̶n̶a̶r̶ ̶u̶n̶ ̶m̶o̶b̶ ̶p̶o̶r̶ ̶i̶d̶
+                        [4] Buscar por id
+                        
+                        """);
+                } else if (tipoUsuario.equalsIgnoreCase("Survival")){
+                    System.out.print("""   
+            
+                        [̶̶̶1̶̶̶]̶̶̶ ̶̶̶C̶a̶r̶g̶a̶r̶ ̶u̶n̶ ̶m̶o̶b̶ ̶h̶o̶s̶t̶i̶l̶
+                        [2] Ver todos los mob hostiles
+                        [3] Eliminar un mob por id
+                        [4] Buscar por id
+                        
+                        """);
+                } else if ( tipoUsuario.equalsIgnoreCase("Creativo") ||
+                            tipoUsuario.equalsIgnoreCase("OP") ) {
+                    System.out.print("""   
+                            
+                            [1] Cargar un mob hostil
+                            [2] Ver todos los mob hostiles
+                            [3] Eliminar un mob por id
+                            [4] Buscar por id
+                            
+                            """);
+                }
+                break;
+            }
+            case 4: {
+                System.out.println("CARCEL:");
+                if (tipoUsuario.equalsIgnoreCase("Espectador")){
+                    System.out.print("""   
+            
+                        [̶1̶]̶ ̶A̶g̶r̶e̶g̶a̶r̶ ̶m̶o̶b̶ ̶a̶ ̶l̶a̶ ̶c̶a̶r̶c̶e̶l̶
+                        [2] Ver todas las celdas
+                        [3] Ver mobs encarcelados
+                        [4] Ver celdas libres
+                        [̶5̶]̶̶ ̶L̶i̶b̶e̶r̶a̶r̶ ̶m̶o̶b̶
+                        
+                        """);
+                } else if (tipoUsuario.equalsIgnoreCase("Survival")){
+                    System.out.print("""   
                 
-                [0] Salir
-                
-                Ingrese una opción:""");
-        System.out.print(" ");
+                            [̶1̶]̶ ̶A̶g̶r̶e̶g̶a̶r̶ ̶m̶o̶b̶ ̶a̶ ̶l̶a̶ ̶c̶a̶r̶c̶e̶l̶
+                            [2] Ver todas las celdas
+                            [3] Ver mobs encarcelados
+                            [4] Ver celdas libres
+                            [̶5̶]̶̶ ̶L̶i̶b̶e̶r̶a̶r̶ ̶m̶o̶b̶
+                            
+                            """);
+                } else if ( tipoUsuario.equalsIgnoreCase("Creativo") ||
+                        tipoUsuario.equalsIgnoreCase("OP") ) {
+                    System.out.print("""   
+                            
+                            [1] Agregar un mob a la carcel
+                            [2] Ver todas las celdas
+                            [3] Ver mobs encarcelados
+                            [4] Ver celdas libres
+                            [5] Liberar mob
+                            
+                            """);
+                }
+                break;
+            }
+            case 5:{
+                System.out.println("JUGADORES:");
+                if (tipoUsuario.equalsIgnoreCase("Espectador") ||
+                    tipoUsuario.equalsIgnoreCase("Survival") ||
+                    tipoUsuario.equalsIgnoreCase("Creativo") ){
+                    System.out.print("""   
+            
+                        [̶1̶]̶ ̶A̶g̶r̶e̶g̶a̶r̶ ̶j̶u̶g̶a̶d̶o̶r̶ ̶a̶ ̶l̶a̶ ̶w̶h̶i̶t̶e̶l̶i̶s̶t̶
+                        [2] Ver todos los jugadores.
+                        [̶3̶]̶ ̶E̶l̶i̶m̶i̶n̶a̶r̶ ̶j̶u̶g̶a̶d̶o̶r̶ ̶d̶e̶ ̶l̶a̶ ̶w̶h̶i̶t̶e̶l̶i̶s̶t̶
+                        [̶̶̶4̶]̶̶ ̶̶̶B̶u̶s̶c̶a̶r̶ ̶p̶o̶r̶ ̶i̶d̶
+                        
+                        """);
+                } else if (tipoUsuario.equalsIgnoreCase("OP")){
+                    System.out.print("""   
+            
+                        [1] Agregar jugador a la whitelist
+                        [2] Ver todos los jugadores.
+                        [3] Eliminar jugador de la whitelist
+                        [4] Buscar por id
+                        
+                        """);
+                }
+                break;
+            }
+        }
+        System.out.print("[0] Volver \n \n" + "Ingrese una opción: ");
     }
 
     private void pausa(){
