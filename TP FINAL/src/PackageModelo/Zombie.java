@@ -9,6 +9,8 @@ import com.github.freva.asciitable.*;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 
 public final class Zombie extends Mob implements IConversionJSON, ITabla, IFila {
     ///todo.ATRIBUTOS///
@@ -17,7 +19,8 @@ public final class Zombie extends Mob implements IConversionJSON, ITabla, IFila 
     ///todo.CONSTRUCTORES///
 
     public Zombie(String nombre, double vida, double danio, boolean esBebe, TipoZombie tipoZombie) {
-        super(nombre, vida, danio, Zombie.class.getSimpleName(),esBebe);
+        super(nombre, 10.0, 2.5, Zombie.class.getSimpleName(),false);
+        inicializar_drops();
         this.tipoZombie = tipoZombie;
     }
 
@@ -71,6 +74,11 @@ public final class Zombie extends Mob implements IConversionJSON, ITabla, IFila 
                 String.format("%.2f", getVida()),
                 String.format("%.2f", getDanio()),
                 isEsBebe()? "Sí" : "No"};
+    }
+
+    private void inicializar_drops() {
+        drops.add("Carne podrida");
+        setDrops(drops);
     }
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════

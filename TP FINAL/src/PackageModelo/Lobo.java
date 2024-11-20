@@ -17,7 +17,8 @@ public final class Lobo extends Animal implements IConversionJSON, ITabla {
 
     ///todo.CONSTRUCTORES///
     public Lobo(String nombre, double vida, double danio, boolean esBebe, TipoAlimentacion tipoAlimentacion, boolean domesticado, int IDduenio) {
-        super(nombre, vida, danio, Lobo.class.getSimpleName(), esBebe, tipoAlimentacion);
+        super(nombre, vida, 4.0, Lobo.class.getSimpleName(), esBebe, tipoAlimentacion);
+        inicializar_vida();
         this.domesticado = domesticado;
         this.IDduenio = IDduenio;
     }
@@ -72,6 +73,11 @@ public final class Lobo extends Animal implements IConversionJSON, ITabla {
             setIDduenio(id);
             mensaje="FELICIDADES!! A DOMESTICADO A SU NUEVO LOBO";
         return mensaje;
+    }
+
+    private void inicializar_vida() { //Se podría hacer una interfaz IInicializar, ya que se repite en varias clases, pero por cuestiones de complejizar menos el código decidí hacerlo en cada clase que lo precise.
+        if (isDomesticado()) this.vida = 10;
+        else this.vida = 4;
     }
 
     //══JSON══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════

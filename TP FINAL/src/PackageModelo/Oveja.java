@@ -7,15 +7,18 @@ import com.github.freva.asciitable.AsciiTable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public final class Oveja extends Animal implements IConversionJSON, ITabla {
     ///todo.ATRIBUTO
     private String color;
     private boolean tieneLana;
 
     public Oveja(String nombre, double vida, double danio, boolean esBebe, TipoAlimentacion tipoAlimentacion, String color, boolean tieneLana) {
-        super(nombre, vida, danio, Oveja.class.getSimpleName(), esBebe, tipoAlimentacion);
+        super(nombre, 4.0, 0.0, Oveja.class.getSimpleName(), esBebe, tipoAlimentacion);
         this.color = color;
         this.tieneLana = tieneLana;
+        inicializar_drops();
     }
 
     ///todo.CONSTRUCTOR
@@ -60,6 +63,13 @@ public final class Oveja extends Animal implements IConversionJSON, ITabla {
         });
     }
 
+    private void inicializar_drops() {
+        ArrayList<String> drops = new ArrayList<>();
+        drops.add("Lana");
+        drops.add("Carne");
+        setDrops(drops);
+
+    }
     ///══MÉTODOS══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
     public String esquilar(){

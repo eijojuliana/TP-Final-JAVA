@@ -14,8 +14,9 @@ public final class Panda extends Animal implements IConversionJSON, ITabla {
     ///todo.CONSTRUCTOR
 
     public Panda(String nombre, double vida, double danio, boolean esBebe, TipoAlimentacion tipoAlimentacion, Gen_Panda gen ) {
-        super(nombre, vida, danio, Panda.class.getSimpleName(), esBebe, tipoAlimentacion);
-        this.gen = gen;
+        super(nombre, 20.0, danio, Panda.class.getSimpleName(), esBebe, tipoAlimentacion);
+        inicializar_danio();
+        inicializar_gen();
     }
 
     public Panda(){}
@@ -66,6 +67,17 @@ public final class Panda extends Animal implements IConversionJSON, ITabla {
 
     public String Rodar(){
         return "*Giro ,me caigo, me levanto, vuelvo a girar*";
+    }
+
+    private void inicializar_danio() {
+        if (getGen() == Gen_Panda.AGRESIVO) danio = 3;
+        else danio = 0.0;
+    }
+
+    private void inicializar_gen () {
+        int num = (int) (Math.random() * 8);//Un numero aleatorio entre 0 y 7. Esto porq en el juego el "caracter" del panda es alatorio.
+        Gen_Panda[] genPandas = Gen_Panda.values();
+        setGen(genPandas[num]);
     }
 
     //══JSON══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════

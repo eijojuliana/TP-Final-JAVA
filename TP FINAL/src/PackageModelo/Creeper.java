@@ -7,6 +7,8 @@ import com.github.freva.asciitable.AsciiTable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public final class Creeper extends Mob implements IConversionJSON, ITabla, IFila {
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     //todo ATRIBUTOS
@@ -14,9 +16,9 @@ public final class Creeper extends Mob implements IConversionJSON, ITabla, IFila
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     //todo CONSTRUCTORES
-
     public Creeper(String nombre, double vida, double danio, boolean esBebe, boolean esElectrico) {
-        super(nombre, vida, danio, Creeper.class.getSimpleName(), esBebe);
+        super(nombre, 10.0, 21.5, Creeper.class.getSimpleName(), false);
+        inicializar_drops();
         this.esElectrico = esElectrico;
     }
     public Creeper() {}
@@ -63,6 +65,11 @@ public final class Creeper extends Mob implements IConversionJSON, ITabla, IFila
                 isEsBebe()? "Sí" : "No"};
     }
 
+    private void inicializar_drops() {
+        ArrayList<String> drops = new ArrayList<>();
+        drops.add("Pólvora");
+        setDrops(drops);
+    }
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     // todo JSON
 

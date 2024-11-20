@@ -21,7 +21,7 @@ public final class Player extends Entidad implements IConversionJSON, ITabla, IF
 
     ///todo.CONSTRUCTORES///
     public Player(String nombre, double vida, double danio, boolean esPremium, TipoPlayer tipoPlayer, String contrasenia) {
-        super(nombre, vida, danio, Player.class.getSimpleName());
+        super(nombre, 10.0, 2.0, Player.class.getSimpleName());
         this.premium = esPremium;
         this.tipoPlayer = tipoPlayer;
         this.contrasenia = contrasenia;
