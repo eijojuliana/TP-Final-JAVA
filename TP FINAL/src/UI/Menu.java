@@ -31,6 +31,7 @@ public class Menu {
 
         aldea.leerArchivos();
 
+        MINECRAFT();
         while(bucle) {
             printMenu();
             while (true){
@@ -479,6 +480,23 @@ public class Menu {
         Scanner s = new Scanner(System.in);
         System.out.print("Presione enter para continuar... ");
         s.nextLine();
+    }
+
+    private void MINECRAFT() {
+        String bloque = "\033[37;47m█\033[0m";
+        String espacio = "\033[30;40m█\033[0m";
+        System.out.println(espacio.repeat(144));
+        System.out.println(espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(8) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(4) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(12) + espacio.repeat(2) + bloque.repeat(16) + espacio.repeat(2) + bloque.repeat(14) + espacio.repeat(2) + bloque.repeat(14) + espacio.repeat(2) + bloque.repeat(12) + espacio.repeat(2) + bloque.repeat(14) + espacio.repeat(2));
+        System.out.println(espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(8) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(4) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(12) + espacio.repeat(2) + bloque.repeat(16) + espacio.repeat(2) + bloque.repeat(14) + espacio.repeat(2) + bloque.repeat(14) + espacio.repeat(2) + bloque.repeat(12) + espacio.repeat(2) + bloque.repeat(14) + espacio.repeat(2));
+        System.out.println(espacio.repeat(2) + bloque.repeat(8) + espacio.repeat(4) + bloque.repeat(8) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(8) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(8) + bloque.repeat(6) + espacio.repeat(12) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(4) + espacio.repeat(2) + bloque.repeat(2) + espacio.repeat(2) + bloque.repeat(4) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(12) + bloque.repeat(6) + espacio.repeat(6));
+        System.out.println(espacio.repeat(2) + bloque.repeat(8) + espacio.repeat(4) + bloque.repeat(8) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(8) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(8) + bloque.repeat(6) + espacio.repeat(12) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2)  + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(12) + bloque.repeat(6) + espacio.repeat(6));
+        System.out.println(espacio.repeat(2) + bloque.repeat(20) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(16) + espacio.repeat(2) + bloque.repeat(12) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(12) + bloque.repeat(14) + espacio.repeat(2) + bloque.repeat(4) + espacio.repeat(6) + bloque.repeat(4) + espacio.repeat(2) + bloque.repeat(12) + espacio.repeat(6) + bloque.repeat(6) + espacio.repeat(6));
+        System.out.println(espacio.repeat(2) + bloque.repeat(20) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(16) + espacio.repeat(2) + bloque.repeat(12) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(12) + bloque.repeat(12) + espacio.repeat(4) + bloque.repeat(4) + espacio.repeat(2) + bloque.repeat(2) + espacio.repeat(2) + bloque.repeat(4) + espacio.repeat(2) + bloque.repeat(12) + espacio.repeat(6) + bloque.repeat(6) + espacio.repeat(6));
+        System.out.println(espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(4) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(8) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(8) + bloque.repeat(6) + espacio.repeat(12) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(14) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(12) + bloque.repeat(6) + espacio.repeat(6));
+        System.out.println(espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(4) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(8) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(8) + bloque.repeat(6) + espacio.repeat(12) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(12) + bloque.repeat(6) + espacio.repeat(6));
+        System.out.println(espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(8) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(4) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(12) + espacio.repeat(2) + bloque.repeat(16) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(12) + bloque.repeat(6) + espacio.repeat(6));
+        System.out.println(espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(8) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(4) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(12) + espacio.repeat(2) + bloque.repeat(16) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(12) + bloque.repeat(6) + espacio.repeat(6));
+        System.out.println(espacio.repeat(144));
     }
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
