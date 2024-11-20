@@ -109,7 +109,7 @@ public class Menu {
                                 if (tipoUsuario.equalsIgnoreCase("Creativo") ||
                                     tipoUsuario.equalsIgnoreCase("OP")) {
                                         // CARGAR ANIMAL
-                                        System.out.print("[1] Oveja \n[2] Panda \n[2] Lobo\nIngrese un mob: ");
+                                        System.out.print("[1] Oveja \n[2] Panda \n[3] Lobo\nIngrese un mob: ");
                                         Animal a = crearAnimal(s.nextInt());
                                         if (aldea.agregarAnimal(a)) {
                                             System.out.println("Se agregó al animalito correctamente.");
@@ -229,11 +229,13 @@ public class Menu {
                                 break;
                             }
                             case 2: {
-                                System.out.println(aldea.verCarcel());
+                                System.out.println(aldea.carcelToTable());
                                 break;
                             }
                             case 3: {
-                                System.out.println(aldea.verEncarcelados());
+                                System.out.print("Ingrese el id de la celda: ");
+                                int id = s.nextInt();
+                                System.out.println(aldea.infoCelda(id));
                                 break;
                             }
                             case 4: {
@@ -254,6 +256,10 @@ public class Menu {
 
 
                                 } else System.out.println("Opción no permitida.");
+                                break;
+                            }
+                            case 6:{
+                                System.out.println("Cantidad de celdas desocupadas: " + aldea.cantCeldasDesocupadas() );
                                 break;
                             }
                         }
@@ -486,9 +492,10 @@ public class Menu {
             
                         [̶1̶]̶ ̶A̶g̶r̶e̶g̶a̶r̶ ̶m̶o̶b̶ ̶a̶ ̶l̶a̶ ̶c̶a̶r̶c̶e̶l̶
                         [2] Ver todas las celdas
-                        [3] Ver mobs encarcelados
+                        [3] Ver info mob encarcelado
                         [4] Ver celdas libres
                         [̶5̶]̶̶ ̶L̶i̶b̶e̶r̶a̶r̶ ̶m̶o̶b̶
+                        [6] Contar cantidad de celdas desocupadas
                         
                         """);
                 } else if ( tipoUsuario.equalsIgnoreCase("Creativo") ||
@@ -497,9 +504,10 @@ public class Menu {
                             
                             [1] Agregar un mob a la carcel
                             [2] Ver todas las celdas
-                            [3] Ver mobs encarcelados
+                            [3] Ver info mob encarcelado
                             [4] Ver celdas libres
                             [5] Liberar mob
+                            [6] Contar cantidad de celdas desocupadas
                             
                             """);
                 }
@@ -696,11 +704,11 @@ public class Menu {
         int opcion;
 
         System.out.print("Ingrese el nombre del panda: ");
-        nombre = s.next();
+        nombre = s.next().toUpperCase();
         if (nombre.isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
         p.setNombre(nombre);
 
-        System.out.print("El panda es bebé? [1] SIIII :3 ,[2]-No. Está grande ya: ");
+        System.out.print("El panda es bebé? [1] SIIII :3 ,[0]-No. Está grande ya: ");
         opcion=s.nextInt();
         if (opcion == 1) p.setEsBebe(true);
         else if (opcion == 0) p.setEsBebe(false);
@@ -728,14 +736,14 @@ public class Menu {
         if (nombre.isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
         l.setNombre(nombre);
 
-        System.out.print("El panda es bebé? [1] SIIII :3 ,[2]-No. Está grande ya: ");
+        System.out.print("El panda es bebé? [1] SIIII :3 ,[0]-No. Está grande ya: ");
         opcion=s.nextInt();
         if (opcion == 1) l.setEsBebe(true);
         else if (opcion == 0) l.setEsBebe(false);
         else throw new Valor_de_atributo_no_valido_Exception("Valor cargado no válido.");
 
         System.out.print("Ingrese el tipo de alimentación que tiene su lobo [CARNIVORO, HERVIVORO, OMNIVORO]: ");
-        tipoAlimentacion = s.next();
+        tipoAlimentacion = s.next().toUpperCase();
         l.setTipoAlimentacion(tipoAlimentacion);
 
         System.out.println("Desea domesticar al lobo? : \n 1-SIP \n 0-NOP ");
@@ -760,15 +768,14 @@ public class Menu {
         String mensaje, nombre, color, tipoAlimentacion;
         int opcion;
 
-        System.out.print("Ingrese el nombre de la oveja [CARNIVORO, HERVIVORO, OMNIVORO]: ");
-        nombre = s.next();
+        System.out.print("Ingrese el nombre de la oveja: ");
+        nombre = s.next().toUpperCase();
         if (s.next().isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
         o.setNombre(nombre);
 
 
-        System.out.print("Ingrese el tipo de alimentación que tiene su panda: ");
+        System.out.print("Ingrese el tipo de alimentación que tiene su oveja [CARNIVORO, HERVIVORO, OMNIVORO]: ");
         tipoAlimentacion = s.next();
-
         o.setTipoAlimentacion(tipoAlimentacion);
         System.out.println("El tipo de alimentación fue asignado correctamente.");
 
@@ -777,7 +784,7 @@ public class Menu {
         if (color.isBlank()) throw new Atributo_vacio_Exception("El color está vacio");
         o.setColor(color);
 
-        System.out.print("El panda es bebé? [1] SIIII :3 ,[2]-No. Está grande ya: ");
+        System.out.print("El panda es bebé? [1] SIIII :3 ,[0]-No. Está grande ya: ");
         opcion=s.nextInt();
         if (opcion == 1) o.setEsBebe(true);
         else if (opcion == 0) o.setEsBebe(false);
