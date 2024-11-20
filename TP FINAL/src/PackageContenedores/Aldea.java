@@ -61,6 +61,19 @@ public class Aldea {
                 '}';
     }
 
+    private String tabla_modificada(String asciiTable) {
+        return asciiTable.replace("+", "╬")
+                .replace("-", "═")
+                .replace("|", "║")
+                .replace("┐", "╖")
+                .replace("└", "╙")
+                .replace("┘", "╜")
+                .replace("┌", "╓")
+                .replace("┼", "╪")
+                .replace("╥", "╬")
+                .replace("╨", "╡");
+    }
+
     public boolean agregarAnimal (Animal a) { return animales.agregar(a);}
     public Animal buscarAnimal (int id) {
         return animales.buscarXid(id);
@@ -140,7 +153,7 @@ public class Aldea {
             data[i + 1] = animal.aFila();
         }
 
-        return AsciiTable.getTable(data);
+        return tabla_modificada(AsciiTable.getTable(data));
     }
 
     public String AldeanosToTable() throws Atributo_vacio_Exception {
@@ -156,7 +169,7 @@ public class Aldea {
             data[i + 1] = a.aFila();
         }
 
-        return AsciiTable.getTable(data);
+        return tabla_modificada(AsciiTable.getTable(data));
     }
 
     public String JugadoresToTable() throws Atributo_vacio_Exception {
@@ -172,7 +185,7 @@ public class Aldea {
             data[i + 1] = p.aFila();
         }
 
-        return AsciiTable.getTable(data);
+        return tabla_modificada(AsciiTable.getTable(data));
     }
 
     public String HostilesToTable() throws Atributo_vacio_Exception {
@@ -193,10 +206,8 @@ public class Aldea {
             }
         }
 
-        return AsciiTable.getTable(data);
-    } // POSIBLEMENTE DEBA MODIFICARLO DESPUÉS PERO POR AHORA LO DEJO ASÍ
-
-    //CarcelToTable
+        return tabla_modificada(AsciiTable.getTable(data));
+    }
 
     public String todoToTable() throws Atributo_vacio_Exception {
         if (hostiles.isEmpty() && jugadores.isEmpty() && aldeanos.isEmpty() && animales.isEmpty())
@@ -226,7 +237,7 @@ public class Aldea {
             data[i + 1] = Entidad.aFila(e);
         }
 
-        return AsciiTable.getTable(data);
+        return tabla_modificada(AsciiTable.getTable(data));
     }
 
     // todo.JSON
@@ -347,8 +358,7 @@ public class Aldea {
     /// todo.METODOS CARCEL
     public boolean encarcelar(int id, LocalDate fechaEntrada, LocalDate fechaSalida){
         boolean encarcelado;
-        Entidad entidad=new Entidad();
-        entidad=buscarEntidad(id);
+        Entidad entidad = buscarEntidad(id);
 
         encarcelado=carcel.encarcelar(entidad,fechaEntrada,fechaSalida,id);
         return encarcelado;
@@ -361,28 +371,22 @@ public class Aldea {
         return liberado;
     }
 
-    public Celda infoCelda(int numeroCelda){
-        Celda celda=new Celda();
+    public String carcelToTable() throws Atributo_vacio_Exception {
+        if(carcel.carcel.isEmpty()) throw new Atributo_vacio_Exception("La carcel está vacía.");
 
-        celda=carcel.obtenerInfoCelda(numeroCelda);
+        String[][] data = new String[carcel.carcel.size() + 1][4];
+        data[0] = new String[]{"ID Celda", "Mob", "Fecha Entrada", "Fecha Salida"};
 
-        return celda;
+        for (int i = 0; i < carcel.carcel.size(); i++) {
+            Celda c = carcel.carcel.get(i);
+            data[i + 1] = c.aFila();
+        }
+
+        return tabla_modificada(AsciiTable.getTable(data));
     }
 
-    public ArrayList<Celda> verTodasLasCeldas (){
-        ArrayList<Celda> celdas=new ArrayList<>();
-
-        celdas=carcel.verTodasLasCeldas();
-
-        return celdas;
-    }
-
-    public ArrayList<Entidad> verMobsEncarcelados(){
-        ArrayList<Entidad>mobsEncarcelados=new ArrayList<>();
-
-        mobsEncarcelados=carcel.verMobsEncarcelados();
-
-        return mobsEncarcelados;
+    public String infoCelda(int numeroCelda){
+        return carcel.obtenerInfoCelda(numeroCelda).aTabla();
     }
 
     public int cantCeldasDesocupadas(){
@@ -394,27 +398,7 @@ public class Aldea {
     }
 
     public ArrayList<Integer> celdasDesocupadas(){
-        ArrayList<Integer> numeroCeldaDesocupadas=new ArrayList<>();
-
-        numeroCeldaDesocupadas=carcel.obtenerCeldasDesocupadas();
-
-        return numeroCeldaDesocupadas;
-    }
-
-    public String verCarcel (){
-        String estadoCarcel;
-
-        estadoCarcel=carcel.verCarcel();
-
-        return estadoCarcel;
-    }
-
-    public String verEncarcelados(){
-        String mobsEncarcelados;
-
-        mobsEncarcelados=carcel.verInfoEncarcelados();
-
-        return mobsEncarcelados;
+        return carcel.obtenerCeldasDesocupadas();
     }
 
     /// todo.METODOS DE ELIMINACION//

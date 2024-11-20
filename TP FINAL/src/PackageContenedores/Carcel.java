@@ -111,23 +111,8 @@ public class Carcel implements IConversionJSON{
         return liberado;
     }
 
-
-
     public Celda obtenerInfoCelda(int numeroCelda){
         return carcel.get(numeroCelda);
-    }
-
-    public ArrayList<Celda> verTodasLasCeldas() {
-        return new ArrayList<>(carcel.values());
-    }
-
-
-    public ArrayList<Entidad> verMobsEncarcelados() {
-        ArrayList<Entidad> mobs = new ArrayList<>();
-        for (Celda celda : carcel.values()) {
-            mobs.add(celda.getMob());
-        }
-        return mobs;
     }
 
     public int contarCeldasDesocupadas() {
@@ -153,42 +138,4 @@ public class Carcel implements IConversionJSON{
         }
         return celdasDesocupadas;
     }
-
-    public String verCarcel() {
-        StringBuilder estadoCarcel = new StringBuilder("Estado de la cárcel:\n");
-
-        if (carcel.isEmpty()) {
-            estadoCarcel.append("La cárcel está vacía.");
-        } else {
-            for (Celda celda : carcel.values()) {
-                estadoCarcel.append(celda.aTabla()).append("\n");
-            }
-        }
-
-        return estadoCarcel.toString();
-    }
-
-    public String verInfoEncarcelados() {
-        StringBuilder listaEncarcelados = new StringBuilder("Lista de mobs encarcelados:\n");
-
-        if (carcel.isEmpty()) {
-            listaEncarcelados.append("No hay mobs encarcelados.");
-        } else {
-            for (Celda celda : carcel.values()) {
-                Entidad mob = celda.getMob();
-                if (mob != null) {
-                    listaEncarcelados.append(String.format(
-                            "Celda #%d: Mob -> %s (ID: %d)\n",//ESTA LINEA TIRA EL MOB,SU ID Y EL NUMERO DE CELDA :0
-                            celda.getNumeroCelda(),
-                            mob.getNombre(),
-                            mob.getId()
-                    ));
-                }
-            }
-        }
-
-        return listaEncarcelados.toString();
-    }
-
-
 }
