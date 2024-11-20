@@ -416,4 +416,37 @@ public class Aldea {
 
         return mobsEncarcelados;
     }
+
+    /// todo.METODOS DE ELIMINACION//
+   public boolean eliminarAldeano(int id){
+       boolean eliminado=false;
+       eliminado=aldeanos.eliminar(id);
+
+       return eliminado;
+   }
+
+    public  boolean eliminarHostiles( int id) {
+      boolean eliminado=false;
+
+      eliminado=hostiles.eliminar(id);
+
+      return eliminado;
+    }
+
+    public boolean eliminarPlayer(int id){
+       boolean eliminado=false;
+
+       eliminado= jugadores.eliminar(id);
+
+       return eliminado;
+    }
+
+    public boolean eliminarAnimal(int id ){
+       boolean eliminado=false;
+
+       eliminado=animales.eliminar(id);
+
+       return eliminado;
+    }
+
 }
