@@ -7,6 +7,7 @@ import PackageInterfaces.IConversionJSON;
 import PackageJSON.JSONUtiles;
 import PackageModelo.Celda;
 import PackageModelo.Entidad;
+import com.github.freva.asciitable.AsciiTable;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONArray;
@@ -137,5 +138,20 @@ public class Carcel implements IConversionJSON{
             }
         }
         return celdasDesocupadas;
+    }
+
+    public String carcelToTable() throws Atributo_vacio_Exception {
+        if(carcel.isEmpty()) throw new Atributo_vacio_Exception("La carcel está vacía.");
+
+        String[][] data = new String[carcel.size() + 1][4];
+        data[0] = new String[]{"ID Celda", "Mob", "Fecha Entrada", "Fecha Salida"};
+
+        for (int i = 1; i < carcel.size(); i++) {
+            Celda c = carcel.get(i);
+            data[i + 1] = c.aFila();
+
+        }
+
+        return Aldea.tabla_modificada(AsciiTable.getTable(data));
     }
 }

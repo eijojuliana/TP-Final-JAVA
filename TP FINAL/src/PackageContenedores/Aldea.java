@@ -61,7 +61,7 @@ public class Aldea {
                 '}';
     }
 
-    private String tabla_modificada(String asciiTable) {
+    protected static String tabla_modificada(String asciiTable) {
         return asciiTable.replace("+", "╬")
                 .replace("-", "═")
                 .replace("|", "║")
@@ -392,19 +392,10 @@ public class Aldea {
         return liberado;
     }
 
-    public String carcelToTable() throws Atributo_vacio_Exception {
-        if(carcel.carcel.isEmpty()) throw new Atributo_vacio_Exception("La carcel está vacía.");
-
-        String[][] data = new String[carcel.carcel.size() + 1][4];
-        data[0] = new String[]{"ID Celda", "Mob", "Fecha Entrada", "Fecha Salida"};
-
-        for (int i = 0; i < carcel.carcel.size(); i++) {
-            Celda c = carcel.carcel.get(i);
-            data[i + 1] = c.aFila();
-        }
-
-        return tabla_modificada(AsciiTable.getTable(data));
+    public String carcelToTable(){
+        return carcel.carcelToTable();
     }
+
 
     public String infoCelda(int numeroCelda){
         return carcel.obtenerInfoCelda(numeroCelda).aTabla();
