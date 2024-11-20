@@ -66,6 +66,21 @@ public class Aldea {
         return animales.buscarXid(id);
     }
 
+    public boolean domesticarLobito(int idLobo, int idDuenio) {
+        boolean domesticado=false;
+        try {
+            Lobo lobo = (Lobo) animales.buscarXid(idLobo);
+
+            domesticado=lobo.domesticarLobo(idDuenio);
+        } catch (Entidad_inexistente_Exception | Valor_de_atributo_no_valido_Exception | Entidad_repetida_Exception e) {
+            System.out.println(e.getMessage());
+
+        }
+
+        return domesticado;
+    }
+
+
     public boolean agregarAldeano(Aldeano a){ return aldeanos.agregar(a);}
     public Aldeano buscarAldeano(int id){
         return aldeanos.buscarXid(id);
@@ -331,7 +346,7 @@ public class Aldea {
 
     /// todo.METODOS CARCEL
     public boolean encarcelar(int id, LocalDate fechaEntrada, LocalDate fechaSalida){
-        Boolean encarcelado;
+        boolean encarcelado;
         Entidad entidad=new Entidad();
         entidad=buscarEntidad(id);
 
