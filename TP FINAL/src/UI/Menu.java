@@ -490,7 +490,7 @@ public class Menu {
 
         System.out.print("""
             - DESEMPLEADO
-            - VAGO,
+            - VAGO
             - ALBANIL
             - HERRERO
             - BIBLIOTECARIO
@@ -504,7 +504,7 @@ public class Menu {
             - PESCADOR
             Ingrese la profesión:""");
         System.out.print(" ");
-        tipoAldeano = s.nextLine();
+        tipoAldeano = s.next().toUpperCase();
         a.setProfesion(tipoAldeano);
 
         //Valores x defecto

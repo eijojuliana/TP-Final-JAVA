@@ -83,7 +83,7 @@ public final class Zombie extends Mob implements IConversionJSON, ITabla, IFila 
             j = super.toJSON();
             j.put("esBebe", esBebe);
             j.put("tipoZombie", tipoZombie);
-            j.put("Tipo","Zombie");
+            j.put("tipo","Zombie");
 
         } catch (JSONException e) {
             throw new RuntimeException(e);

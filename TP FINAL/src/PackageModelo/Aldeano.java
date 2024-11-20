@@ -92,7 +92,7 @@ public final class Aldeano extends Mob implements IConversionJSON, ITabla, IFila
         try {
             j = super.toJSON();
             j.put("profesion",profesion);
-            j.put("Tipo","Aldeano");
+            j.put("tipo","Aldeano");
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }

@@ -1,1 +1,22 @@
-[]
+[
+    {
+        "tipo": "Aldeano",
+        "drops": [],
+        "vida": 10,
+        "danio": 0,
+        "esBebe": true,
+        "id": 6,
+        "profesion": "VAGO",
+        "nombre": "lolito"
+    },
+    {
+        "drops": [],
+        "tipo": "Aldeano",
+        "vida": 10,
+        "danio": 0,
+        "esBebe": true,
+        "id": 7,
+        "profesion": "FLECHERO",
+        "nombre": "pablo"
+    }
+]
