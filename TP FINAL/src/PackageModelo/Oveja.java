@@ -14,15 +14,18 @@ public final class Oveja extends Animal implements IConversionJSON, ITabla {
     private String color;
     private boolean tieneLana;
 
-    public Oveja(String nombre, double vida, double danio, boolean esBebe, TipoAlimentacion tipoAlimentacion, String color, boolean tieneLana) {
+    ///todo.CONSTRUCTOR
+    public Oveja(String nombre, boolean esBebe, TipoAlimentacion tipoAlimentacion, String color) {
         super(nombre, 4.0, 0.0, Oveja.class.getSimpleName(), esBebe, tipoAlimentacion);
         this.color = color;
-        this.tieneLana = tieneLana;
+        tieneLana = true;
         inicializar_drops();
     }
+    public Oveja() {
+        setVida(4);
+        setDanio(0);
+    }
 
-    ///todo.CONSTRUCTOR
-    public Oveja() {}
 
     ///todo.GET Y SET
     public String getColor() {

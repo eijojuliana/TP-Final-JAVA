@@ -24,10 +24,6 @@ public class Carcel implements IConversionJSON{
         this.carcel = new HashMap<>();
     }
 
-    //
-    public void setCarcel(HashMap<Integer, Celda> carcel) {
-        this.carcel = carcel;
-    }
 
     /// todo.TO JSON///
     @Override

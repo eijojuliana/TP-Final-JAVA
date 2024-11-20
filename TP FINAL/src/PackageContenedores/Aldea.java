@@ -1,6 +1,7 @@
 package PackageContenedores;
 import PackageExceptions.Atributo_vacio_Exception;
 import PackageExceptions.Entidad_inexistente_Exception;
+import PackageExceptions.Entidad_repetida_Exception;
 import PackageExceptions.Valor_de_atributo_no_valido_Exception;
 import PackageInterfaces.IConversionJSON;
 import PackageInterfaces.ITabla;
@@ -11,10 +12,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.awt.image.AreaAveragingScaleFilter;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.NoSuchFileException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.TreeSet;
 
 public class Aldea {
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
@@ -69,9 +75,21 @@ public class Aldea {
     public Player buscarPlayer(int id){
         return jugadores.buscarXid(id);
     }
+    public static boolean existePlayerEnArchivo(int id) throws Entidad_inexistente_Exception{
+        try {
+            JSONArray jugadores = new JSONArray(JSONUtiles.leer2("ArchivoUsuarios"));
+
+            for (int i=0; i<jugadores.length() ; i++) {
+                if ( jugadores.getJSONObject(i).getInt("id") == id) return true;
+            }
+            throw new Entidad_inexistente_Exception("No se encontró el jugador.");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public boolean agregarHostil(Mob m) { return hostiles.agregar(m); }
-    public Mob buscarMobHostil(int id){
+    public Mob buscarMobHostil(int id) throws Entidad_repetida_Exception {
         return hostiles.buscarXid(id);
     }
 
@@ -79,19 +97,16 @@ public class Aldea {
 
         if (id<0) throw new Valor_de_atributo_no_valido_Exception("ID negativo.");
 
-        Entidad e;
-        e = buscarMobHostil(id);
-        if ( e != null ) return e;
+        ArrayList<Entidad> todos = new ArrayList<>();
+        for (int i = 0; i<aldeanos.size() ; i++) todos.add( aldeanos.get(i));
+        for (int i = 0; i<animales.size() ; i++) todos.add(animales.get(i));
+        for (int i = 0; i<jugadores.size() ; i++) todos.add(jugadores.get(i));
+        for (int i = 0; i<hostiles.size() ; i++) todos.add(hostiles.get(i));
 
-        e = buscarAldeano(id);
-        if ( e != null ) return e;
-
-        e = buscarAnimal(id);
-        if ( e != null ) return e;
-
-        e = buscarPlayer(id);
-        if ( e != null ) return e;
-
+        for (int i=0; i<todos.size() ; i++) {
+            Entidad e = todos.get(i);
+            if (e.getId() == id) return e;
+        }
         throw new Entidad_inexistente_Exception("La entidad no fue encontrada.");
     }
 
@@ -147,11 +162,11 @@ public class Aldea {
 
     public String HostilesToTable() throws Atributo_vacio_Exception {
         if (hostiles == null || hostiles.isEmpty()) {
-            throw new Atributo_vacio_Exception("La lista de animales está vacía.");
+            throw new Atributo_vacio_Exception("La lista de hostiles está vacía.");
         }
 
         String[][] data = new String[hostiles.size() + 1][5];
-        data[0] = new String[]{"ID", "Nombre", "Vida", "Daño", "¿Es bebé?"};
+        data[0] = new String[]{"ID", "Nombre", "Vida", "Daño", "¿Es bebé?"}; //Pero no pueden ser bebe ninguno de los dos
 
         for (int i = 0; i < hostiles.size(); i++) {
             if(hostiles.get(i) instanceof Zombie) {
@@ -166,7 +181,38 @@ public class Aldea {
         return AsciiTable.getTable(data);
     } // POSIBLEMENTE DEBA MODIFICARLO DESPUÉS PERO POR AHORA LO DEJO ASÍ
 
-    //CarcelTtTable
+    //CarcelToTable
+
+    public String todoToTable() throws Atributo_vacio_Exception {
+        if (hostiles.isEmpty() && jugadores.isEmpty() && aldeanos.isEmpty() && animales.isEmpty())
+            throw new Atributo_vacio_Exception("Listas sin valores.");
+
+        ArrayList<Entidad> todos = new ArrayList<>();
+
+        //Agregamos los elementos a un unico array para desp ordenarlos en el array final
+        for (int i = 0; i<aldeanos.size() ; i++) todos.add( aldeanos.get(i));
+        for (int i = 0; i<animales.size() ; i++) todos.add(animales.get(i));
+        for (int i = 0; i<jugadores.size() ; i++) todos.add(jugadores.get(i));
+        for (int i = 0; i<hostiles.size() ; i++) todos.add(hostiles.get(i));
+
+        Comparator<Entidad> comparator = new Comparator<Entidad>() {
+            @Override
+            public int compare(Entidad o1, Entidad o2) {
+                return Integer.compare(o1.getId(),o2.getId());
+            }
+        };
+        Collections.sort(todos,comparator);
+
+        String[][] data = new String[ todos.size() + 1][5];
+        data[0] = new String[]{"ID", "NOMBRE", "VIDA", "DAÑO","TIPO"};
+
+        for (int i=0; i<todos.size(); i++){
+            Entidad e = todos.get(i);
+            data[i + 1] = Entidad.aFila(e);
+        }
+
+        return AsciiTable.getTable(data);
+    }
 
     // todo.JSON
 
@@ -272,7 +318,7 @@ public class Aldea {
         }
 
     }
-    public void guardarCambios(String archivo){
+    public void guardarCambios(String archivo) throws Valor_de_atributo_no_valido_Exception{
         switch (archivo) {
             case "ArchivoUsuarios" -> JSONUtiles.grabarUnJson(jugadores.toJSON(), archivo);
             case "ArchivoAnimales" -> JSONUtiles.grabarUnJson(animales.toJSON(), archivo);

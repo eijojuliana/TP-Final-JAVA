@@ -60,51 +60,48 @@ public class Menu {
                 }
                 System.out.println();
             }
+            try {
+                switch (menu1) {
+                    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+                    case 1: {
+                        switch (menu2) {
+                            case 1: {
+                                if (tipoUsuario.equalsIgnoreCase("Creativo") ||
+                                    tipoUsuario.equalsIgnoreCase("OP")) {
+                                        // CARGAR ALDEANO
+                                        Aldeano a = crearAldeano();
+                                        if (aldea.agregarAldeano(a)) {
+                                            System.out.println("Se agregó al aldeanito correctamente.");
+                                            aldea.guardarCambios("ArchivoAldeanos");
+                                        } else System.out.println("No se pudo agregar al aldeano.");
 
-            switch (menu1) {
-                //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-                case 1:{
-                    switch (menu2){
-                        case 1:{
-                            if (tipoUsuario.equalsIgnoreCase("Creativo") ||
-                                tipoUsuario.equalsIgnoreCase("OP") ){
-                                    // CARGAR ALDEANO
-                                    Aldeano a = crearAldeano();
-                                    if ( aldea.agregarAldeano(a) ){
-                                        System.out.println("Se agregó al aldeanito correctamente.");
-                                        aldea.guardarCambios("ArchivoAldeanos");
-                                    }
-                                    else System.out.println("No se pudo agregar al aldeano.");
+                                } else System.out.println("Opción no permitida.");
+                                break;
                             }
-                            else System.out.println("Opción no permitida.");
-
-                            break;
-                        }
-                        case 2:{
-                            System.out.println(aldea.AldeanosToTable());
-                            break;
-                        }
-                        case 3:{
-                            if (!tipoUsuario.equalsIgnoreCase("Espectador") ){
+                            case 2: {
+                                System.out.println(aldea.AldeanosToTable());
+                                break;
                             }
-                            else System.out.println("Opción no permitida.");
+                            case 3: {
+                                if (!tipoUsuario.equalsIgnoreCase("Espectador")) {
 
-                            break;
+                                } else System.out.println("Opción no permitida.");
+                                break;
+                            }
+                            case 4: {
+                                //buscar aldeano por id
+                                break;
+                            }
                         }
-                        case 4:{
-                            //buscar aldeano por id
-                            break;
-                        }
-                    }
-                    break;} //ALDEANOS
-                //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-                case 2:{
-                    switch (menu2){
-                        case 1:{
-                            if (tipoUsuario.equalsIgnoreCase("Creativo") ||
-                                tipoUsuario.equalsIgnoreCase("OP") ) {
-                                    // CARGAR ANIMAL
-                                    try {
+                        break;
+                    } //ALDEANOS
+                    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+                    case 2: {
+                        switch (menu2) {
+                            case 1: {
+                                if (tipoUsuario.equalsIgnoreCase("Creativo") ||
+                                    tipoUsuario.equalsIgnoreCase("OP")) {
+                                        // CARGAR ANIMAL
                                         System.out.print("[1] Oveja \n[2] Panda \n[2] Lobo\nIngrese un mob: ");
                                         Animal a = crearAnimal(s.nextInt());
                                         if (aldea.agregarAnimal(a)) {
@@ -112,84 +109,74 @@ public class Menu {
                                             aldea.guardarCambios("ArchivoAnimales");
                                         } else System.out.println("No se pudo agregar al animal.");
 
-                                    } catch (Valor_de_atributo_no_valido_Exception e) {
-                                        System.out.println(e.getMessage());
-                                    }
+                                } else System.out.println("Opción no permitida.");
+                                break;
                             }
-                            else System.out.println("Opción no permitida.");
-                            break;
-                        }
-                        case 2:{
-                            System.out.println(aldea.AnimalesToTable());
-                            break;
-                        }
-                        case 3:{
-                            if (!tipoUsuario.equalsIgnoreCase("Espectador")) {
-                                //eliminar animal
-                                //a
+                            case 2: {
+                                System.out.println(aldea.AnimalesToTable());
+                                break;
                             }
-                            else System.out.println("Opción no permitida.");
-                            break;
-                        }
-                        case 4:{
-                            //Buscar por
-                            break;
-                        }
-                        case 5:{
-                            if (!tipoUsuario.equalsIgnoreCase("Espectador")) {
+                            case 3: {
+                                if (!tipoUsuario.equalsIgnoreCase("Espectador")) {
+                                    //eliminar animal
+                                    //a
+                                } else System.out.println("Opción no permitida.");
+                                break;
+                            }
+                            case 4: {
+                                //Buscar por
+                                break;
+                            }
+                            case 5: {
+                                if (!tipoUsuario.equalsIgnoreCase("Espectador")) {
                                     //buscar por
                                     //if intance of lobo
                                     //Domesticar lobo
+                                } else System.out.println("Opción no permitida.");
+                                break;
                             }
-                            else System.out.println("Opción no permitida.");
-                            break;
                         }
-                    }
-                    break;} //ANIMALES
-                //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-                case 3:{
-                    switch (menu2){
-                        case 1:{
-                            if (tipoUsuario.equalsIgnoreCase("Creativo") ||
-                                tipoUsuario.equalsIgnoreCase("OP") ) {
-                                    try {
+                        break;
+                    } //ANIMALES
+                    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+                    case 3: {
+                        switch (menu2) {
+                            case 1: {
+                                if (tipoUsuario.equalsIgnoreCase("Creativo") ||
+                                    tipoUsuario.equalsIgnoreCase("OP")) {
+                                        //AGREGAR MOB
                                         System.out.print("[1] Creeper \n[2] Zombie \nIngrese un mob: ");
                                         Mob m = crearMobHostil(s.nextInt());
                                         if (aldea.agregarHostil(m)) {
                                             System.out.println("Se agregó al mob correctamente.");
                                             aldea.guardarCambios("ArchivoHostiles");
                                         }
-
-                                    } catch (Valor_de_atributo_no_valido_Exception e) {
-                                        System.out.println(e.getMessage());
-                                    }
+                                } else System.out.println("Opción no permitida.");
+                                break;
                             }
-                            else System.out.println("Opción no permitida.");
-                            break;
-                        }
-                        case 2:{
-                            System.out.println(aldea.HostilesToTable());
-                            break;
-                        }
-                        case 3:{
-                            if (!tipoUsuario.equalsIgnoreCase("Espectador")) {
-                                   //eliminarMob
+                            case 2: {
+                                System.out.println(aldea.HostilesToTable());
+                                break;
                             }
-                            else System.out.println("Opción no permitida.");
-                            break;
+                            case 3: {
+                                if (!tipoUsuario.equalsIgnoreCase("Espectador")) {
+                                    //eliminarMob
+                                } else System.out.println("Opción no permitida.");
+                                break;
+                            }
+                            case 4: {
+                                //Buscar por
+                                break;
+                            }
                         }
-                        case 4:{
-                            //Buscar por
-                            break;
-                        }
-                    }
-                    break;} //HOSTILES
-                //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-                case 4:{
-                    switch (menu2){
-                        case 1:{
-                            if (tipoUsuario.equalsIgnoreCase("Creativo") ||
-                                tipoUsuario.equalsIgnoreCase("OP") ) {
+                        break;
+                    } //HOSTILES
+                    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+                    case 4: {
+                        switch (menu2) {
+                            case 1: {
+                                if (tipoUsuario.equalsIgnoreCase("Creativo") ||
+                                        tipoUsuario.equalsIgnoreCase("OP")) {
                                     System.out.print("Ingrese el id del mob que desea meter preso: ");
                                     int id = s.nextInt();
                                     /*if ( aldea.encarcelar(id) ){
@@ -198,104 +185,101 @@ public class Menu {
                                     }
                                     else System.out.println("No se pudo agregar el mob.");*/
                                     break;
+                                } else System.out.println("Opción no permitida.");
+                                break;
                             }
-                            else System.out.println("Opción no permitida.");
-                            break;
-                        }
-                        case 2:{
-                            //System.out.println(aldea.verCarcel());
-                            break;
-                        }
-                        case 3:{
-                            //System.out.println(aldea.verEncarcelados());
-                            break;
-                        }
-                        case 4:{
-                            //System.out.println(aldea.verCaldasLibres());
-                            break;
-                        }
-                        case 5:{
-                            if (tipoUsuario.equalsIgnoreCase("Creativo") ||
-                                tipoUsuario.equalsIgnoreCase("OP") ) {
+                            case 2: {
+                                //System.out.println(aldea.verCarcel());
+                                break;
+                            }
+                            case 3: {
+                                //System.out.println(aldea.verEncarcelados());
+                                break;
+                            }
+                            case 4: {
+                                //System.out.println(aldea.verCaldasLibres());
+                                break;
+                            }
+                            case 5: {
+                                if (tipoUsuario.equalsIgnoreCase("Creativo") ||
+                                        tipoUsuario.equalsIgnoreCase("OP")) {
                                     //Liberar mob
+                                } else System.out.println("Opción no permitida.");
+                                break;
                             }
-                            else System.out.println("Opción no permitida.");
-                            break;
                         }
-                    }
-                    break;} //CARCEL
-                //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-                case 5:{
-                    switch (menu2){
-                        case 1:{
-                            if (tipoUsuario.equalsIgnoreCase("OP") ) {
+                        break;
+                    } //CARCEL
+                    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+                    case 5: {
+                        switch (menu2) {
+                            case 1: {
+                                if (tipoUsuario.equalsIgnoreCase("OP")) {
                                     Player p = crearPlayer();
                                     if (aldea.agregarPlayer(p)) {
                                         System.out.println("Se agregó el jugador correctamente.");
                                         aldea.guardarCambios("ArchivoUsuarios");
                                     } else System.out.println("No se pudo agregar el jugador.");
+                                } else System.out.println("Opción no permitida.");
+                                break;
                             }
-                            else System.out.println("Opción no permitida.");
-                            break;
-                        }
-                        case 2:{
-                            System.out.println(aldea.JugadoresToTable());
-                            break;
-                        }
-                        case 3:{
-                            if (tipoUsuario.equalsIgnoreCase("OP") ) {
-                                //eliminarJugador de la whitelist
+                            case 2: {
+                                System.out.println(aldea.JugadoresToTable());
+                                break;
                             }
-                            else System.out.println("Opción no permitida.");
-                            break;
-                        }
-                        case 4:{
-                            if (tipoUsuario.equalsIgnoreCase("OP") ) {
-                                //buscar por id (solo admin)
+                            case 3: {
+                                if (tipoUsuario.equalsIgnoreCase("OP")) {
+                                    //eliminarJugador de la whitelist
+                                } else System.out.println("Opción no permitida.");
+                                break;
                             }
-                            else System.out.println("Opción no permitida.");
-                            break;
+                            case 4: {
+                                if (tipoUsuario.equalsIgnoreCase("OP")) {
+                                    //buscar por id (solo admin)
+                                } else System.out.println("Opción no permitida.");
+                                break;
+                            }
                         }
-                    }
-                    break;} //JUGADORES
-                //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-                case 6:{
-                    //mostrarAldeanos();
-                    //------
-                    //mostrarAnimales();
-                    //------
-                    //mostrarCarcel();
-                    break;} //Mostrar todos los mobs
-                //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-                case 7:{
-                    System.out.print("Ingrese el id del mob a buscar: ");
-                    int id;
-                    try{
+                        break;
+                    } //JUGADORES
+                    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+                    case 6: {
+                        System.out.println(aldea.todoToTable());
+                        break;
+                    } //Mostrar todos los mobs
+                    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+                    case 7: {
+                        System.out.print("Ingrese el id a buscar: ");
+                        int id;
                         id = s.nextInt();
                         Entidad e = aldea.buscarEntidad(id);
-                        String tabla;
+                        String tabla = e.aTabla();
+                        System.out.println(tabla);
 
-                        System.out.println( );
+                        break;
+                    } //Buscar por id general
+                    //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
-                    } catch (InputMismatchException e){
-                        System.out.println("Solo numeros.");
+                    case 0: {
+                        System.out.println("Saliendo...");
+                        bucle = false;
+                        break;
                     }
-                    break;} //Buscar por
-                //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-
-                case 0: {
-                    System.out.println("Saliendo...");
-                    bucle = false;
-                    break;
+                    default: {
+                        System.out.println("Error al cargar una opción intente nuevamente.");
+                        s.nextLine();
+                        break;
+                    }
                 }
-                default: {
-                    System.out.println("Error al cargar una opción intente nuevamente.");
-                    s.nextLine();
-                    break;
-                }
+            } catch (InputMismatchException e){
+                System.out.println("Error. Ingresar numeros.");
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
+                e.printStackTrace();
             }
+
             s.nextLine();
-            if ( menu1 != 0 && menu2 != 0){ //Si no eligió salir...
+            if ( menu1 != 0 ){ //Si no eligió salir...
                 System.out.println();
                 pausa();
                 System.out.println("\n");
@@ -320,8 +304,8 @@ public class Menu {
                 [5] Jugadores
                 
                 --  TODOS  --
-                [6] Mostrar todos los mobs
-                [7] Buscar mob por id
+                [6] Mostrar todo
+                [7] Buscar por id
                 
                 -- SISTEMA --
                 [0] Salir
@@ -500,7 +484,7 @@ public class Menu {
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     //todo CARGAR
     //Aldeano
-    private Aldeano crearAldeano(){
+    private Aldeano crearAldeano() throws Atributo_vacio_Exception, Valor_de_atributo_no_valido_Exception, InputMismatchException{
         Aldeano a = new Aldeano();
         Scanner s = new Scanner(System.in);
 
@@ -512,10 +496,10 @@ public class Menu {
         if (nombre.isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
         a.setNombre(nombre);
 
-        System.out.println("El Aldeano es bebé?: \n 1-Si  \n2-No.");
+        System.out.print("El Aldeano es bebé?: 1-Si  2-No: ");
         opcion=s.nextInt();
         if (opcion == 1) a.setEsBebe(true);
-        else if (opcion == 0) a.setEsBebe(false);
+        else if (opcion == 2) a.setEsBebe(false);
         else throw new Valor_de_atributo_no_valido_Exception("Valor cargado no válido.");
 
         System.out.print("""
@@ -537,11 +521,6 @@ public class Menu {
         tipoAldeano = s.next().toUpperCase();
         a.setProfesion(tipoAldeano);
 
-        //Valores x defecto
-        a.setVida(10);
-        a.setDanio(0);
-        //No tiene drops
-
         return a;
     }
 
@@ -549,7 +528,7 @@ public class Menu {
     /// @param tipo
     /// [1] Creeper
     /// [2] Zombie
-    private Mob crearMobHostil(int tipo) throws Valor_de_atributo_no_valido_Exception{
+    private Mob crearMobHostil(int tipo) throws Valor_de_atributo_no_valido_Exception, Formato_no_valido_Exception, Atributo_vacio_Exception{
         Mob m;
 
         switch (tipo){
@@ -562,13 +541,13 @@ public class Menu {
                 break;
             }
             default:{
-                throw new Valor_de_atributo_no_valido_Exception("Opcion ingresada incorrecta.");
+                throw new Formato_no_valido_Exception("Opcion ingresada incorrecta.");
             }
         }
 
         return m;
     }
-    private Creeper crearCreeper(){
+    private Creeper crearCreeper() throws Atributo_vacio_Exception, Formato_no_valido_Exception {
         Creeper c = new Creeper();
         Scanner s = new Scanner(System.in);
 
@@ -585,19 +564,9 @@ public class Menu {
         else if (opcion.charAt(0) == 'N') c.setEsElectrico(false);
         else throw new Formato_no_valido_Exception("Caracter ingresado incorrecto.");
 
-        c.setEsBebe(false); //No pueden ser bebes.
-
-        //Valores x defecto
-        ArrayList<String> drops = new ArrayList<>();
-        drops.add("Polvora");
-        c.setDrops(drops);
-
-        c.setVida(10);
-        c.setDanio(21.5);
-
         return c;
     }
-    private Zombie crearZombie(){
+    private Zombie crearZombie() throws Atributo_vacio_Exception, Valor_de_atributo_no_valido_Exception{
         Zombie z = new Zombie();
         Scanner s = new Scanner(System.in);
 
@@ -609,17 +578,8 @@ public class Menu {
         z.setNombre(nombre);
 
         System.out.print("Ingrese el tipo de zombie [Chiquito,Ahogado,Momificado,Comun,Aldeano]: ");
-        tipoZombie = s.nextLine();
+        tipoZombie = s.nextLine().toUpperCase();
         z.setTipoZombie(tipoZombie);
-
-
-        //Valores x defecto
-        z.setEsBebe(false);
-        z.setVida(10);
-        z.setDanio(2.5);
-        ArrayList<String> drops = new ArrayList<>();
-        drops.add("Carne podrida");
-        z.setDrops(drops);
 
         return z;
     }
@@ -629,7 +589,7 @@ public class Menu {
     /// [1] Oveja
     /// [2] Panda
     /// [3] Lobo
-    private Animal crearAnimal(int tipo) throws Valor_de_atributo_no_valido_Exception {
+    private Animal crearAnimal(int tipo) throws Valor_de_atributo_no_valido_Exception, Atributo_vacio_Exception, InputMismatchException {
         Animal a;
 
         switch (tipo){
@@ -652,7 +612,7 @@ public class Menu {
 
         return a;
     }
-    private Panda crearPanda(){
+    private Panda crearPanda() throws Atributo_vacio_Exception, Valor_de_atributo_no_valido_Exception, InputMismatchException {
         Panda p=new Panda();
         Scanner s=new Scanner(System.in);
 
@@ -664,35 +624,23 @@ public class Menu {
         if (nombre.isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
         p.setNombre(nombre);
 
-        System.out.println("El panda es bebé?: \n 1-SIIII :3 \n2-No. Está grande ya.");
+        System.out.print("El panda es bebé? [1] SIIII :3 ,[2]-No. Está grande ya: ");
         opcion=s.nextInt();
         if (opcion == 1) p.setEsBebe(true);
         else if (opcion == 0) p.setEsBebe(false);
         else throw new Valor_de_atributo_no_valido_Exception("Valor cargado no válido.");
 
-        System.out.print("Ingrese el tipo de alimentación que tiene su panda: ");
-         tipoAlimentacion = s.next();
-        try {
-            p.setTipoAlimentacion(tipoAlimentacion);
-            System.out.println("El tipo de alimentación fue asignado correctamente.");
-        } catch (Atributo_vacio_Exception e) {
-            System.out.println(e.getMessage());
-        }
+        System.out.print("Ingrese el tipo de alimentación que tiene su panda [CARNIVORO, HERVIVORO, OMNIVORO]: ");
+        tipoAlimentacion = s.next().toUpperCase();
+        p.setTipoAlimentacion(tipoAlimentacion);
 
         int num = (int) (Math.random() * 8);//Un numero aleatorio entre 0 y 7. Esto porq en el juego el "caracter" del panda es alatorio.
         Gen_Panda[] genPandas = Gen_Panda.values();
         p.setGen( genPandas[num] );
 
-
-        //Valores x defecto
-        p.setVida(20);
-        if (p.getGen() == Gen_Panda.AGRESIVO) p.setDanio(3);
-        else p.setDanio(0);
-        //No dropean nada
-
         return p;
     }
-    private Lobo crearLobo(){
+    private Lobo crearLobo() throws Atributo_vacio_Exception, Valor_de_atributo_no_valido_Exception, InputMismatchException {
         Lobo l= new Lobo();
         Scanner s=new Scanner(System.in);
 
@@ -704,21 +652,15 @@ public class Menu {
         if (nombre.isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
         l.setNombre(nombre);
 
-        System.out.println("El lobo es bebé?: \n 1-SIIII :3 \n2-No. Está grande ya.");
+        System.out.print("El panda es bebé? [1] SIIII :3 ,[2]-No. Está grande ya: ");
         opcion=s.nextInt();
         if (opcion == 1) l.setEsBebe(true);
         else if (opcion == 0) l.setEsBebe(false);
         else throw new Valor_de_atributo_no_valido_Exception("Valor cargado no válido.");
 
-        System.out.print("Ingrese el tipo de alimentación que tiene su lobo: ");
+        System.out.print("Ingrese el tipo de alimentación que tiene su lobo [CARNIVORO, HERVIVORO, OMNIVORO]: ");
         tipoAlimentacion = s.next();
-
-        try {
-            l.setTipoAlimentacion(tipoAlimentacion);
-            System.out.println("El tipo de alimentación fue asignado correctamente.");
-        } catch (Atributo_vacio_Exception e) {
-            System.out.println(e.getMessage());
-        }
+        l.setTipoAlimentacion(tipoAlimentacion);
 
         System.out.println("Desea domesticar al lobo? : \n 1-SIP \n 0-NOP ");
         int decision =s.nextInt();
@@ -726,29 +668,23 @@ public class Menu {
         if (decision ==1 ){
             System.out.println("Ingrese su id :");
             int id=s.nextInt();
-            String mensaje =l.domesticarLobo(id);
-            System.out.println(mensaje);
+            if (l.domesticarLobo(id)) System.out.println("HA DOMESTICADO A SU LOBO!!");
+            else System.out.println("No se pudo domesticar el lobo.");
         } else {
             l.setDomesticado(false);
             l.setIDduenio(0);
         }
 
-        //Valor por defecto
-        if (l.isDomesticado()) l.setVida(10);
-        else l.setVida(4);
-        l.setDanio(4);
-        //No tiene drops
-
         return l;
     }
-    private Oveja crearOveja() throws Atributo_vacio_Exception, Valor_de_atributo_no_valido_Exception{
+    private Oveja crearOveja() throws Atributo_vacio_Exception, Valor_de_atributo_no_valido_Exception, InputMismatchException {
         Oveja o= new Oveja();
         Scanner s=new Scanner(System.in);
 
         String mensaje, nombre, color, tipoAlimentacion;
         int opcion;
 
-        System.out.print("Ingrese el nombre de la oveja: ");
+        System.out.print("Ingrese el nombre de la oveja [CARNIVORO, HERVIVORO, OMNIVORO]: ");
         nombre = s.next();
         if (s.next().isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
         o.setNombre(nombre);
@@ -756,19 +692,16 @@ public class Menu {
 
         System.out.print("Ingrese el tipo de alimentación que tiene su panda: ");
         tipoAlimentacion = s.next();
-        try {
-            o.setTipoAlimentacion(tipoAlimentacion);
-            System.out.println("El tipo de alimentación fue asignado correctamente.");
-        } catch (Atributo_vacio_Exception e) {
-            System.out.println(e.getMessage());
-        }
+
+        o.setTipoAlimentacion(tipoAlimentacion);
+        System.out.println("El tipo de alimentación fue asignado correctamente.");
 
         System.out.print("Ingrese el color: ");
         color = s.next();
-        if (color.isBlank()) throw new Atributo_vacio_Exception("El tipo de alimentación está vacio");
+        if (color.isBlank()) throw new Atributo_vacio_Exception("El color está vacio");
         o.setColor(color);
 
-        System.out.println("La oveja es bebé?: \n 1-SIIII :3 \n2-No. Está grande ya");
+        System.out.print("El panda es bebé? [1] SIIII :3 ,[2]-No. Está grande ya: ");
         opcion=s.nextInt();
         if (opcion == 1) o.setEsBebe(true);
         else if (opcion == 0) o.setEsBebe(false);
@@ -786,18 +719,11 @@ public class Menu {
             System.out.println(mensaje);
         } else throw new Valor_de_atributo_no_valido_Exception("Valor cargado no válido.");
 
-        //Valores por defecto
-        o.setVida(4);
-        o.setDanio(0);
-        ArrayList<String> drops = new ArrayList<>();
-        drops.add("Lana");
-        o.setDrops(drops);
-
         return o;
     }
 
     //Jugador
-    private Player crearPlayer(){
+    private Player crearPlayer() throws Atributo_vacio_Exception, Valor_de_atributo_no_valido_Exception, InputMismatchException {
         Player p = new Player();
         Scanner s = new Scanner(System.in);
 
@@ -823,29 +749,11 @@ public class Menu {
         System.out.print("Ingrese el gamemode [Survival-Creativo-Espectador-OP]: ");
         if ( !p.setTipoPlayer(s.next()) ) throw new Valor_de_atributo_no_valido_Exception("Tipo de player no valido.");
 
-        //Valores por defecto del juego
-        p.setVida(10);
-        p.setDanio(2);
-
         return p;
     }
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
-    public static String ZombiesToTable(ArrayList<Zombie> zombies) throws Atributo_vacio_Exception {
-        // Verificar si el ArrayList está vacío
-        if (zombies == null || zombies.isEmpty()) throw new Atributo_vacio_Exception("La lista de zombies está vacía.");
-
-        // Crear los datos para la tabla
-        String[][] data = new String[zombies.size() + 1][6];
-        data[0] = new String[]{"ID","Nombre", "Vida", "Daño", "¿Es bebé?", "Tipo Zombie"};
-
-        for (int i = 0; i < zombies.size(); i++) {
-            Zombie z = zombies.get(i);
-            data[i + 1] = z.aFila();
-        }
-        return AsciiTable.getTable(data);
-    }
 
 
 

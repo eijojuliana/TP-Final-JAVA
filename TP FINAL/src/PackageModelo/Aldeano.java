@@ -19,12 +19,15 @@ public final class Aldeano extends Mob implements IConversionJSON, ITabla, IFila
 
     //todo.CONSTRUCTOR
 
-    public Aldeano(String nombre, double vida, double danio, boolean esBebe, Profesion profesion) {
+    public Aldeano(String nombre, boolean esBebe, Profesion profesion) {
         super(nombre, 10.0, 0.0, Aldeano.class.getSimpleName(), esBebe);
         this.profesion = profesion;
     }
 
     public Aldeano() {
+        setVida(10);
+        setDanio(0);
+        setTipo(Aldeano.class.getSimpleName());
     }
     //todo.GET Y SET
     public Profesion getProfesion() {

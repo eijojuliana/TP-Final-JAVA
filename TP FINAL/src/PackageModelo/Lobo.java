@@ -1,6 +1,10 @@
 package PackageModelo;
 
+import PackageContenedores.Aldea;
 import PackageEnum.TipoAlimentacion;
+import PackageExceptions.Entidad_inexistente_Exception;
+import PackageExceptions.Entidad_repetida_Exception;
+import PackageExceptions.Valor_de_atributo_no_valido_Exception;
 import PackageInterfaces.IConversionJSON;
 import PackageInterfaces.ITabla;
 import com.github.freva.asciitable.AsciiTable;
@@ -16,14 +20,17 @@ public final class Lobo extends Animal implements IConversionJSON, ITabla {
     private int IDduenio;
 
     ///todo.CONSTRUCTORES///
-    public Lobo(String nombre, double vida, double danio, boolean esBebe, TipoAlimentacion tipoAlimentacion, boolean domesticado, int IDduenio) {
-        super(nombre, vida, 4.0, Lobo.class.getSimpleName(), esBebe, tipoAlimentacion);
+    public Lobo(String nombre, boolean esBebe, TipoAlimentacion tipoAlimentacion, boolean domesticado) {
+        super(nombre, 4, 4.0, Lobo.class.getSimpleName(), esBebe, tipoAlimentacion);
         inicializar_vida();
         this.domesticado = domesticado;
-        this.IDduenio = IDduenio;
+        this.IDduenio = -1;
     }
 
     public Lobo() {
+        setVida(4);
+        setDanio(4);
+        setIDduenio(-1);
     }
 
     ///todo.GETS Y SETS///
@@ -67,12 +74,19 @@ public final class Lobo extends Animal implements IConversionJSON, ITabla {
 
     //══MÉTODOS══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
-    public String domesticarLobo(int id){
-         String mensaje;
-            setDomesticado(true);
-            setIDduenio(id);
-            mensaje="FELICIDADES!! A DOMESTICADO A SU NUEVO LOBO";
-        return mensaje;
+    public boolean domesticarLobo(int id) throws Valor_de_atributo_no_valido_Exception, Entidad_inexistente_Exception, Entidad_repetida_Exception{
+         boolean exito = false;
+
+         if (id<0) throw new Valor_de_atributo_no_valido_Exception("ID Negativo.");
+         if (!Aldea.existePlayerEnArchivo(id)) throw new Entidad_inexistente_Exception("No se encuentra el jugador.");
+
+         if (isDomesticado()) throw new Entidad_repetida_Exception("El lobo ya se encuentra domesticado");
+
+         setDomesticado(true);
+         setIDduenio(id);
+         exito = true;
+
+        return exito;
     }
 
     private void inicializar_vida() { //Se podría hacer una interfaz IInicializar, ya que se repite en varias clases, pero por cuestiones de complejizar menos el código decidí hacerlo en cada clase que lo precise.

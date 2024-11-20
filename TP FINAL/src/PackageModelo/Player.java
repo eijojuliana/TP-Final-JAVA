@@ -20,7 +20,7 @@ public final class Player extends Entidad implements IConversionJSON, ITabla, IF
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
     ///todo.CONSTRUCTORES///
-    public Player(String nombre, double vida, double danio, boolean esPremium, TipoPlayer tipoPlayer, String contrasenia) {
+    public Player(String nombre, boolean esPremium, TipoPlayer tipoPlayer, String contrasenia) {
         super(nombre, 10.0, 2.0, Player.class.getSimpleName());
         this.premium = esPremium;
         this.tipoPlayer = tipoPlayer;
@@ -28,6 +28,9 @@ public final class Player extends Entidad implements IConversionJSON, ITabla, IF
         this.tipo = Player.class.getSimpleName();
     }
     public Player() {
+        setVida(10);
+        setDanio(2);
+        setTipo(Player.class.getSimpleName());
     }
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
@@ -81,7 +84,7 @@ public final class Player extends Entidad implements IConversionJSON, ITabla, IF
                 {"Cuenta Premium", isPremium()? "Sí": "No" },
                 {"Gamemode", getTipo() },
                 {"Usuario", getNombre() },
-                {"Contrasenia", String.format("%d", getContrasenia())}
+                {"Contrasenia", getContrasenia() }
         });
     }
 
@@ -90,9 +93,9 @@ public final class Player extends Entidad implements IConversionJSON, ITabla, IF
         return new String[]{
                 String.format("%d", getId()),
                 getNombre(),
-                isPremium()? "Sí": "No",
                 String.format("%.2f", getVida()),
                 String.format("%.2f", getDanio()),
+                isPremium()? "Sí": "No",
         };
     }
 

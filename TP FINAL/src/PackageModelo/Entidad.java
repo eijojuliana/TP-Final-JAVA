@@ -1,13 +1,16 @@
 package PackageModelo;
 
 import PackageInterfaces.IConversionJSON;
+import PackageInterfaces.IFila;
+import PackageInterfaces.ITabla;
+import com.github.freva.asciitable.AsciiTable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Entidad implements IConversionJSON {
+public class Entidad implements IConversionJSON, ITabla, IFila {
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     //todo.ATRIBUTOS//
 
@@ -87,6 +90,36 @@ public class Entidad implements IConversionJSON {
                 ", danio=" + danio +
                 ", id=" + id ;
     }
+
+    @Override
+    public String aTabla() {
+        return AsciiTable.getTable(new String[][]{
+                {"ID", String.format("%d" ,getId()) },
+                {"Nombre", getNombre()},
+                {"Vida", String.format("%.2f", getVida())},
+                {"Daño", String.format("%.2f", getDanio())},
+                {"Mob", getTipo() },
+        });
+    }
+
+    @Override
+    public String[] aFila() {
+        return new String[]{
+                String.format("%d" ,getId()),
+                getNombre(),
+                String.format("%.2f", getVida()),
+                String.format("%.2f", getDanio()),
+                getTipo() };
+    }
+    public static String[] aFila(Entidad e) {
+        return new String[]{
+                String.format("%d" ,e.getId()),
+                e.getNombre(),
+                String.format("%.2f", e.getVida()),
+                String.format("%.2f", e.getDanio()),
+                e.getTipo() };
+    }
+
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     //todo.JSON

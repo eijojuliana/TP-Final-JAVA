@@ -16,12 +16,16 @@ public final class Creeper extends Mob implements IConversionJSON, ITabla, IFila
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     //todo CONSTRUCTORES
-    public Creeper(String nombre, double vida, double danio, boolean esBebe, boolean esElectrico) {
+    public Creeper(String nombre, boolean esBebe, boolean esElectrico) {
         super(nombre, 10.0, 21.5, Creeper.class.getSimpleName(), false);
         inicializar_drops();
         this.esElectrico = esElectrico;
     }
-    public Creeper() {}
+    public Creeper() {
+        setVida(10);
+        setDanio(21.5);
+        setTipo(Creeper.class.getSimpleName());
+    }
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     // todo GETTER AND SETTER

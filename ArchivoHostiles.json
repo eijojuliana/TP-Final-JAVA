@@ -1,1 +1,32 @@
-[]
+[
+    {
+        "tipo": "Creeper",
+        "drops": ["Polvora"],
+        "esElectrico": true,
+        "vida": 10,
+        "danio": 21.5,
+        "esBebe": false,
+        "id": 8,
+        "nombre": "LaBatallaHaEmpezado"
+    },
+    {
+        "tipo": "Zombie",
+        "drops": [],
+        "vida": 0,
+        "danio": 0,
+        "esBebe": false,
+        "tipoZombie": "COMUN",
+        "id": 9,
+        "nombre": "EnUnMundoMuyCuadrado"
+    },
+    {
+        "drops": [],
+        "tipo": "Zombie",
+        "vida": 10,
+        "danio": 2.5,
+        "esBebe": false,
+        "tipoZombie": "MOMIFICADO",
+        "id": 10,
+        "nombre": "Zombiee"
+    }
+]

@@ -13,13 +13,16 @@ public final class Panda extends Animal implements IConversionJSON, ITabla {
     private Gen_Panda gen;
     ///todo.CONSTRUCTOR
 
-    public Panda(String nombre, double vida, double danio, boolean esBebe, TipoAlimentacion tipoAlimentacion, Gen_Panda gen ) {
-        super(nombre, 20.0, danio, Panda.class.getSimpleName(), esBebe, tipoAlimentacion);
+    public Panda(String nombre, boolean esBebe, TipoAlimentacion tipoAlimentacion, Gen_Panda gen ) {
+        super(nombre, 20.0, 0, Panda.class.getSimpleName(), esBebe, tipoAlimentacion);
         inicializar_danio();
         inicializar_gen();
     }
 
-    public Panda(){}
+    public Panda(){
+        setVida(20);
+        setDanio(0);
+    }
 
     ///todo.GET Y SET
     public Gen_Panda getGen() {

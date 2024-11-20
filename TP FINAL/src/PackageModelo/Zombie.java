@@ -1,6 +1,7 @@
 package PackageModelo;
 
 import PackageEnum.TipoZombie;
+import PackageExceptions.Valor_de_atributo_no_valido_Exception;
 import PackageInterfaces.IConversionJSON;
 import PackageInterfaces.IFila;
 import PackageInterfaces.ITabla;
@@ -18,13 +19,16 @@ public final class Zombie extends Mob implements IConversionJSON, ITabla, IFila 
 
     ///todo.CONSTRUCTORES///
 
-    public Zombie(String nombre, double vida, double danio, boolean esBebe, TipoZombie tipoZombie) {
+    public Zombie(String nombre, TipoZombie tipoZombie) {
         super(nombre, 10.0, 2.5, Zombie.class.getSimpleName(),false);
         inicializar_drops();
         this.tipoZombie = tipoZombie;
     }
 
     public Zombie() {
+        setVida(10);
+        setDanio(2.5);
+        setTipo(Zombie.class.getSimpleName());
     }
 
     ///todo.GETS Y SETS///
@@ -34,7 +38,7 @@ public final class Zombie extends Mob implements IConversionJSON, ITabla, IFila 
     public void setTipoZombie(TipoZombie tipoZombie) {
         this.tipoZombie = tipoZombie;
     }
-    public void setTipoZombie(String tipoZombie) {
+    public void setTipoZombie(String tipoZombie) throws Valor_de_atributo_no_valido_Exception {
         if (
                 tipoZombie.equalsIgnoreCase(TipoZombie.COMUN.name()) ||
                 tipoZombie.equalsIgnoreCase(TipoZombie.MOMIFICADO.name()) ||
@@ -42,6 +46,7 @@ public final class Zombie extends Mob implements IConversionJSON, ITabla, IFila 
                 tipoZombie.equalsIgnoreCase(TipoZombie.ALDEANO.name()) ||
                 tipoZombie.equalsIgnoreCase(TipoZombie.AHOGADO.name())
         ) this.tipoZombie = TipoZombie.valueOf(tipoZombie);
+        else throw new Valor_de_atributo_no_valido_Exception("Tipo de zombie incorrecto.");
     }
 
     ///todo.TO STRING///
