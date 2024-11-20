@@ -13,9 +13,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Aldeano extends Mob implements IConversionJSON, ITabla, IFila {
+public final class Aldeano extends Mob implements IConversionJSON, ITabla, IFila {
     //todo.ATRIBUTOS
-    protected Profesion profesion;
+    private Profesion profesion;
 
     //todo.CONSTRUCTOR
 

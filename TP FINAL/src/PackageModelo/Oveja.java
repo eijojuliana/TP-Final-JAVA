@@ -7,10 +7,10 @@ import com.github.freva.asciitable.AsciiTable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Oveja extends Animal implements IConversionJSON, ITabla {
+public final class Oveja extends Animal implements IConversionJSON, ITabla {
     ///todo.ATRIBUTO
-    public String color;
-    public boolean tieneLana;
+    private String color;
+    private boolean tieneLana;
 
     public Oveja(String nombre, double vida, double danio, boolean esBebe, TipoAlimentacion tipoAlimentacion, String color, boolean tieneLana) {
         super(nombre, vida, danio, Oveja.class.getSimpleName(), esBebe, tipoAlimentacion);

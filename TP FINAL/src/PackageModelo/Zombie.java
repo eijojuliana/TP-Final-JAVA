@@ -10,9 +10,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class Zombie extends Mob implements IConversionJSON, ITabla, IFila {
+public final class Zombie extends Mob implements IConversionJSON, ITabla, IFila {
     ///todo.ATRIBUTOS///
-    protected TipoZombie tipoZombie;
+    private TipoZombie tipoZombie;
 
     ///todo.CONSTRUCTORES///
 

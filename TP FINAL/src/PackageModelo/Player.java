@@ -9,13 +9,13 @@ import com.github.freva.asciitable.AsciiTable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Player extends Entidad implements IConversionJSON, ITabla, IFila {
+public final class Player extends Entidad implements IConversionJSON, ITabla, IFila {
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
     ///todo.ATRIBUTOS///
-    protected boolean premium;
-    protected TipoPlayer tipoPlayer;
-    protected String contrasenia;
+    private boolean premium;
+    private TipoPlayer tipoPlayer;
+    private String contrasenia;
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 

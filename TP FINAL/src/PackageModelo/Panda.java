@@ -8,9 +8,9 @@ import com.github.freva.asciitable.AsciiTable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Panda extends Animal implements IConversionJSON, ITabla {
+public final class Panda extends Animal implements IConversionJSON, ITabla {
     ///todo.ATRIBUTOS
-    protected Gen_Panda gen;
+    private Gen_Panda gen;
     ///todo.CONSTRUCTOR
 
     public Panda(String nombre, double vida, double danio, boolean esBebe, TipoAlimentacion tipoAlimentacion, Gen_Panda gen ) {

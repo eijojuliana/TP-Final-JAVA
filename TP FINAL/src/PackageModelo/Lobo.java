@@ -10,10 +10,10 @@ import org.json.JSONObject;
 import javax.management.MalformedObjectNameException;
 import java.util.ArrayList;
 
-public class Lobo extends Animal implements IConversionJSON, ITabla {
+public final class Lobo extends Animal implements IConversionJSON, ITabla {
     ///todo.ATRIBUTOS///
-    protected boolean domesticado;
-    protected int IDduenio;
+    private boolean domesticado;
+    private int IDduenio;
 
     ///todo.CONSTRUCTORES///
     public Lobo(String nombre, double vida, double danio, boolean esBebe, TipoAlimentacion tipoAlimentacion, boolean domesticado, int IDduenio) {

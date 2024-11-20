@@ -7,10 +7,10 @@ import com.github.freva.asciitable.AsciiTable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Creeper extends Mob implements IConversionJSON, ITabla, IFila {
+public final class Creeper extends Mob implements IConversionJSON, ITabla, IFila {
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     //todo ATRIBUTOS
-    protected boolean esElectrico;
+    private boolean esElectrico;
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     //todo CONSTRUCTORES
