@@ -770,9 +770,8 @@ public class Menu {
 
         System.out.print("Ingrese el nombre de la oveja: ");
         nombre = s.next().toUpperCase();
-        if (s.next().isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
+        if (nombre.isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
         o.setNombre(nombre);
-
 
         System.out.print("Ingrese el tipo de alimentación que tiene su oveja [CARNIVORO, HERVIVORO, OMNIVORO]: ");
         tipoAlimentacion = s.next();
