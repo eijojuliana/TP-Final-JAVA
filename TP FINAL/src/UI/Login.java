@@ -34,10 +34,10 @@ public class Login {
             }
 
         } catch (JSONException e) {
-            System.out.println("No existe el archivo jugadores.");
-            e.printStackTrace();
+            System.out.println(e.getMessage());
+
         } catch (IOException e) {
-            System.out.println("Archivo de usuarios no encontrado. Usando credenciales por defecto.");
+            System.out.println(e.getMessage());
             if (usuario.equals("admin") && contrasenia.equals("admin") ){
                 tipoUsuario = "OP";
             }
