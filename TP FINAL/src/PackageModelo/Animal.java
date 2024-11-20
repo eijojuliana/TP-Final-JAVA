@@ -32,9 +32,9 @@ public abstract class Animal extends Mob implements IConversionJSON, IFila {
             throw new Atributo_vacio_Exception("El tipo de alimentación no puede estar vacío.");
         }
 
-        if (  tipoAlimentacion.equals(TipoAlimentacion.CARNIVORO.name()) ||
-                        tipoAlimentacion.equals(TipoAlimentacion.HERBIVORO.name()) ||
-                        tipoAlimentacion.equals(TipoAlimentacion.OMNIVORO.name())
+        if (    tipoAlimentacion.equalsIgnoreCase(TipoAlimentacion.CARNIVORO.name()) ||
+                tipoAlimentacion.equalsIgnoreCase(TipoAlimentacion.HERBIVORO.name()) ||
+                tipoAlimentacion.equalsIgnoreCase(TipoAlimentacion.OMNIVORO.name())
         ) this.tipoAlimentacion = TipoAlimentacion.valueOf(tipoAlimentacion);
     }
 

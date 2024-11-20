@@ -33,11 +33,11 @@ public class Zombie extends Mob implements IConversionJSON, ITabla, IFila {
     }
     public void setTipoZombie(String tipoZombie) {
         if (
-                tipoZombie.equals(TipoZombie.COMUN.name()) ||
-                tipoZombie.equals(TipoZombie.MOMIFICADO.name()) ||
-                tipoZombie.equals(TipoZombie.CHIQUITO.name()) ||
-                tipoZombie.equals(TipoZombie.ALDEANO.name()) ||
-                tipoZombie.equals(TipoZombie.AHOGADO.name())
+                tipoZombie.equalsIgnoreCase(TipoZombie.COMUN.name()) ||
+                tipoZombie.equalsIgnoreCase(TipoZombie.MOMIFICADO.name()) ||
+                tipoZombie.equalsIgnoreCase(TipoZombie.CHIQUITO.name()) ||
+                tipoZombie.equalsIgnoreCase(TipoZombie.ALDEANO.name()) ||
+                tipoZombie.equalsIgnoreCase(TipoZombie.AHOGADO.name())
         ) this.tipoZombie = TipoZombie.valueOf(tipoZombie);
     }
 

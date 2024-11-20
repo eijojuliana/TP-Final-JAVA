@@ -33,19 +33,19 @@ public class Aldeano extends Mob implements IConversionJSON, ITabla, IFila {
 
     public void setProfesion(String profesion) {
         if (
-                profesion.equals(Profesion.DESEMPLEADO.name()) ||
-                        profesion.equals(Profesion.VAGO.name()) ||
-                        profesion.equals(Profesion.ALBANIL.name()) ||
-                        profesion.equals(Profesion.HERRERO.name()) ||
-                        profesion.equals(Profesion.BIBLIOTECARIO.name()) ||
-                        profesion.equals(Profesion.CARNICERO.name()) ||
-                        profesion.equals(Profesion.CARTOGRAFO.name()) ||
-                        profesion.equals(Profesion.CLERIGO.name()) ||
-                        profesion.equals(Profesion.FLECHERO.name()) ||
-                        profesion.equals(Profesion.GRANJERO.name()) ||
-                        profesion.equals(Profesion.PASTOR.name()) ||
-                        profesion.equals(Profesion.PELETERO.name()) ||
-                        profesion.equals(Profesion.PESCADOR.name())
+                profesion.equalsIgnoreCase(Profesion.DESEMPLEADO.name()) ||
+                profesion.equalsIgnoreCase(Profesion.VAGO.name()) ||
+                profesion.equalsIgnoreCase(Profesion.ALBANIL.name()) ||
+                profesion.equalsIgnoreCase(Profesion.HERRERO.name()) ||
+                profesion.equalsIgnoreCase(Profesion.BIBLIOTECARIO.name()) ||
+                profesion.equalsIgnoreCase(Profesion.CARNICERO.name()) ||
+                profesion.equalsIgnoreCase(Profesion.CARTOGRAFO.name()) ||
+                profesion.equalsIgnoreCase(Profesion.CLERIGO.name()) ||
+                profesion.equalsIgnoreCase(Profesion.FLECHERO.name()) ||
+                profesion.equalsIgnoreCase(Profesion.GRANJERO.name()) ||
+                profesion.equalsIgnoreCase(Profesion.PASTOR.name()) ||
+                profesion.equalsIgnoreCase(Profesion.PELETERO.name()) ||
+                profesion.equalsIgnoreCase(Profesion.PESCADOR.name())
         ) this.profesion = Profesion.valueOf(profesion);
         else throw new Valor_de_atributo_no_valido_Exception("Profesión ingresada inválida.");
     }
