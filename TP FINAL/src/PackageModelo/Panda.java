@@ -77,6 +77,7 @@ public final class Panda extends Animal implements IConversionJSON, ITabla {
         try {
             j = super.toJSON();
             j.put("gen", gen);
+            j.put("Tipo","Panda");
 
         } catch (JSONException e) {
             throw new RuntimeException(e);

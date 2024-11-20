@@ -83,6 +83,7 @@ public final class Lobo extends Animal implements IConversionJSON, ITabla {
             j = super.toJSON();
             j.put("domesticado", domesticado);
             j.put("IDduenio", IDduenio);
+            j.put("Tipo","Lobo");
 
         } catch (JSONException e) {
             throw new RuntimeException(e);

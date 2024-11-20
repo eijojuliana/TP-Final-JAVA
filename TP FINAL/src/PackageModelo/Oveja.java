@@ -80,6 +80,7 @@ public final class Oveja extends Animal implements IConversionJSON, ITabla {
             j = super.toJSON();
             j.put("color", color);
             j.put("tieneLana", tieneLana);
+            j.put("Tipo","Oveja");
 
         } catch (JSONException e) {
             throw new RuntimeException(e);

@@ -73,6 +73,7 @@ public final class Creeper extends Mob implements IConversionJSON, ITabla, IFila
         try {
             j = super.toJSON();
             j.put("esElectrico",esElectrico);
+            j.put("Tipo","Creeper");
 
         } catch (JSONException e) {
             throw new RuntimeException(e);

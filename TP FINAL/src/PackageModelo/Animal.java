@@ -66,6 +66,7 @@ public abstract class Animal extends Mob implements IConversionJSON, IFila {
         try {
             j = super.toJSON();
             j.put("tipoAlimentacion", tipoAlimentacion);
+            j.put("Tipo","Animal");
 
         } catch (JSONException e) {
             throw new RuntimeException(e);
