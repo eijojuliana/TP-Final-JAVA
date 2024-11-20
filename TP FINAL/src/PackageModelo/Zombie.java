@@ -75,6 +75,7 @@ public final class Zombie extends Mob implements IConversionJSON, ITabla, IFila 
     public String[] aFila(){
         return new String[]{
                 String.format("%d" ,getId()),
+                getTipo(),
                 getNombre(),
                 String.format("%.2f", getVida()),
                 String.format("%.2f", getDanio()),

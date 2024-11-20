@@ -145,8 +145,8 @@ public class Aldea {
             throw new Atributo_vacio_Exception("La lista de animales está vacía.");
         }
 
-        String[][] data = new String[animales.size() + 1][6];
-        data[0] = new String[]{"ID", "Nombre", "Vida", "Daño", "¿Es bebé?", "Tipo Alimentacion"};
+        String[][] data = new String[animales.size() + 1][7];
+        data[0] = new String[]{"ID", "Mob","Nombre", "Vida", "Daño", "¿Es bebé?", "Tipo Alimentacion"};
 
         for (int i = 0; i < animales.size(); i++) {
             Animal animal = animales.get(i);
@@ -193,8 +193,8 @@ public class Aldea {
             throw new Atributo_vacio_Exception("La lista de hostiles está vacía.");
         }
 
-        String[][] data = new String[hostiles.size() + 1][5];
-        data[0] = new String[]{"ID", "Nombre", "Vida", "Daño", "¿Es bebé?"}; //Pero no pueden ser bebe ninguno de los dos
+        String[][] data = new String[hostiles.size() + 1][6];
+        data[0] = new String[]{"ID", "Mob","Nombre", "Vida", "Daño", "¿Es bebé?"}; //Pero no pueden ser bebe ninguno de los dos
 
         for (int i = 0; i < hostiles.size(); i++) {
             if(hostiles.get(i) instanceof Zombie) {
