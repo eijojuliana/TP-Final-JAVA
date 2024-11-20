@@ -28,6 +28,7 @@ public class Celda implements IConversionJSON, IFila, ITabla {
         numeroCelda = ++idIncremental;
     }
     public Celda() {
+        numeroCelda=++idIncremental;
     }
 
     //Get y set
@@ -43,6 +44,10 @@ public class Celda implements IConversionJSON, IFila, ITabla {
     public int getNumeroCelda() {
         return numeroCelda;
     }
+    public static int getIdIncremental() {
+        return idIncremental;
+    }
+
 
     public void setMob(Entidad mob) {
         this.mob = mob;

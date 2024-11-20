@@ -1,6 +1,8 @@
 package PackageContenedores;
+import PackageExceptions.Atributo_vacio_Exception;
 import PackageExceptions.Entidad_inexistente_Exception;
 import PackageExceptions.Entidad_repetida_Exception;
+import PackageExceptions.Valor_de_atributo_no_valido_Exception;
 import PackageInterfaces.IConversionJSON;
 import PackageJSON.JSONUtiles;
 import PackageModelo.Celda;
@@ -69,35 +71,73 @@ public class Carcel implements IConversionJSON{
         return exito;
     }
 
-    /*
+
     /// todo.METODOS///
-   public boolean imponerCondena(int id,LocalDate fechaCondena ) throws Entidad_inexistente_Exception
-   {
-       boolean condenado;
-       if (id<=0){
-           throw new Entidad_inexistente_Exception("La entidad ingresada no existe");
-       }
-       condenajeje.put(id,fechaCondena);
-       condenado=true;
+ public boolean encarcelar(Entidad mob,LocalDate fechaEntrada,LocalDate fechaSalida,int id) throws Entidad_inexistente_Exception,Entidad_repetida_Exception
+ {
+     boolean encarcelado=false;
+     try{
+         if (mob!=null){
+             if (!(carcel.containsKey(id))){
+                 Celda nuevaCelda=new Celda(mob,fechaEntrada,fechaSalida);
+                 carcel.put(nuevaCelda.getNumeroCelda(),nuevaCelda);
+                 encarcelado=true;
+             }
+         }
+     } catch (Entidad_inexistente_Exception e){
+         System.out.println(e.getMessage());
+     }
+     return encarcelado;
+ }
 
-       return condenado;
-   }
+ public boolean liberarMob(int numeroCelda) throws Valor_de_atributo_no_valido_Exception {
+        boolean liberado = false;
+        try {
+            if (carcel.containsKey(numeroCelda)) {
+                carcel.remove(numeroCelda);
+                liberado = true;
+            } else {
+                throw new Valor_de_atributo_no_valido_Exception("Número de celda no válido o inexistente.");
+            }
+        } catch (Valor_de_atributo_no_valido_Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return liberado;
+ }
 
-   public boolean liberarMob(int id)throws Entidad_inexistente_Exception
-   {
-       boolean liberado;
-       if (!condenajeje.containsKey(id)){
-           throw new Entidad_inexistente_Exception("El id proporcionado no corresponde a un mob encarcelado tontito");
-       }
-       condenajeje.remove(id);
-       JSONUtiles.grabarUnJson(this.toJSON(),"condenas");
-       liberado=true;
 
-       return liberado;
+ public Celda obtenerInfoCelda(int numeroCelda){
+     return carcel.get(numeroCelda);
+ }
 
-   }
+ public ArrayList<Celda> verTodasLasCeldas() {
+        return new ArrayList<>(carcel.values());
+ }
 
-     */
+
+ public ArrayList<Entidad> verMobsEncarcelados() {
+        ArrayList<Entidad> mobs = new ArrayList<>();
+        for (Celda celda : carcel.values()) {
+            mobs.add(celda.getMob());
+        }
+        return mobs;
+ }
+
+ public int contarCeldasDesocupadas() {
+        int maxNumeroCelda = Celda.getIdIncremental(); // Obtiene el último ID generado.
+        int celdasDesocupadas = 0;
+
+        for (int i = 1; i <= maxNumeroCelda; i++) {
+            if (!carcel.containsKey(i)) {
+                celdasDesocupadas++;
+            }
+        }
+        return celdasDesocupadas;
+ }
+
+
+
+
 
 
 }
