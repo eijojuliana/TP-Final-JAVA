@@ -53,6 +53,9 @@ public class Entidad implements IConversionJSON, ITabla, IFila {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+    public static void setAutoincremental(int autoincremental) {
+        Entidad.autoincremental = autoincremental;
+    }
 
     public String getNombre() {
         return nombre;

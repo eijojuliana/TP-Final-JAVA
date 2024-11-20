@@ -342,7 +342,7 @@ public class Aldea {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
+        actualizarIDIncremental();
     }
     public void guardarCambios(String archivo) throws Valor_de_atributo_no_valido_Exception{
         switch (archivo) {
@@ -353,6 +353,27 @@ public class Aldea {
             case "ArchivoCarcel" -> JSONUtiles.grabarUnJson(carcel.toJSON(), archivo);
             default -> throw new Valor_de_atributo_no_valido_Exception("Archivo no existente.");
         }
+    }
+
+    private void actualizarIDIncremental(){
+        ArrayList<Entidad> todos = new ArrayList<>();
+
+        for (int i = 0; i<aldeanos.size() ; i++) todos.add( aldeanos.get(i));
+        for (int i = 0; i<animales.size() ; i++) todos.add(animales.get(i));
+        for (int i = 0; i<jugadores.size() ; i++) todos.add(jugadores.get(i));
+        for (int i = 0; i<hostiles.size() ; i++) todos.add(hostiles.get(i));
+
+        Comparator<Entidad> comparator = new Comparator<Entidad>() {
+            @Override
+            public int compare(Entidad o1, Entidad o2) {
+                return Integer.compare(o1.getId(),o2.getId());
+            }
+        };
+        Collections.sort(todos,comparator);
+
+        Entidad.setAutoincremental(todos.getLast().getId());
+        /* Esté metodo lo creamos porque al eliminar un mob del JSON genera que al reiniciar el programa,
+        el idIncremental esté desincronizado al ultimo id. Entonces genera que al intentar crear otro mob se rompa el programa. */
     }
 
     /// todo.METODOS CARCEL
