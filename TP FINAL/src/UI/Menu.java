@@ -81,7 +81,10 @@ public class Menu {
                                     int id;
                                     System.out.print("Ingrese el id del aldeano a eliminar: ");
                                     id = s.nextInt();
-                                    if (aldea.eliminarAldeano(id)) System.out.println("Se eliminó el aldeanito :c .");
+                                    if (aldea.eliminarAldeano(id)){
+                                        System.out.println("Se eliminó el aldeanito :c .");
+                                        aldea.guardarCambios("ArchivoAldeanos");
+                                    }
                                     else System.out.println("No se pudo eliminar el aldeano.");
 
                                 } else System.out.println("Opción no permitida.");
@@ -125,7 +128,10 @@ public class Menu {
                                     int id;
                                     System.out.print("Ingrese el id del animalito a eliminar: ");
                                     id = s.nextInt();
-                                    if (aldea.eliminarAnimal(id)) System.out.println("Se eliminó el animalito :c .");
+                                    if (aldea.eliminarAnimal(id)){
+                                        System.out.println("Se eliminó el animalito :c .");
+                                        aldea.guardarCambios("ArchivoAnimales");
+                                    }
                                     else System.out.println("No se pudo eliminar el animal.");
 
                                 } else System.out.println("Opción no permitida.");
@@ -180,7 +186,10 @@ public class Menu {
                                     int id;
                                     System.out.print("Ingrese el id del mob a eliminar: ");
                                     id = s.nextInt();
-                                    if (aldea.eliminarHostiles(id)) System.out.println("Se eliminó el mob.");
+                                    if (aldea.eliminarHostiles(id)) {
+                                        System.out.println("Se eliminó el mob.");
+                                        aldea.guardarCambios("ArchivoHostiles");
+                                    }
                                     else System.out.println("No se pudo eliminar el mob.");
 
                                 } else System.out.println("Opción no permitida.");
@@ -237,7 +246,10 @@ public class Menu {
                                         System.out.print("Ingrese el id de la celda: ");
                                         int idCelda = s.nextInt();
 
-                                        if ( aldea.liberaMob(idCelda) ) System.out.println("Se liberó el mob correctamente!");
+                                        if ( aldea.liberaMob(idCelda) ) {
+                                            System.out.println("Se liberó el mob correctamente!");
+                                            aldea.guardarCambios("ArchivoCarcel");
+                                        }
                                         else System.out.println("No se pudo liberar el mob.");
 
 
@@ -268,7 +280,10 @@ public class Menu {
                                 if (tipoUsuario.equalsIgnoreCase("OP")) {
                                     System.out.print("Ingrese el id del jugador a eliminar: ");
                                     int id = s.nextInt();
-                                    if ( aldea.eliminarPlayer(id) ) System.out.println("Se eliminó el jugador de la whitelist.");
+                                    if ( aldea.eliminarPlayer(id) ) {
+                                        System.out.println("Se eliminó el jugador de la whitelist.");
+                                        aldea.guardarCambios("ArchivoUsuarios");
+                                    }
                                     else System.out.println("No se pudo eliminar el jugador de la whitelist.");
 
                                 } else System.out.println("Opción no permitida.");
@@ -278,7 +293,7 @@ public class Menu {
                                 if (tipoUsuario.equalsIgnoreCase("OP")) {
                                     System.out.print("Ingrese el id del jugador: ");
                                     int id = s.nextInt();
-                                    System.out.println(aldea.buscarPlayer(id));
+                                    System.out.println(aldea.buscarPlayer(id).aTabla());
 
                                 } else System.out.println("Opción no permitida.");
                                 break;
