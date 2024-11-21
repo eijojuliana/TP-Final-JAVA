@@ -629,9 +629,10 @@ public class Menu {
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     //todo CARGAR
+    /*Se movieron los new al final para que el id incremental no se rompa al lanzar una exception.*/
     //Aldeano
     private Aldeano crearAldeano() throws Atributo_vacio_Exception, Valor_de_atributo_no_valido_Exception, InputMismatchException{
-        Aldeano a = new Aldeano();
+
         Scanner s = new Scanner(System.in);
 
         String nombre, tipoAldeano;
@@ -640,13 +641,10 @@ public class Menu {
         System.out.print("Ingrese el nombre del aldeano: ");
         nombre = s.next();
         if (nombre.isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
-        a.setNombre(nombre);
 
         System.out.print("El Aldeano es bebé?: 1-Si  2-No: ");
         opcion=s.nextInt();
-        if (opcion == 1) a.setEsBebe(true);
-        else if (opcion == 2) a.setEsBebe(false);
-        else throw new Valor_de_atributo_no_valido_Exception("Valor cargado no válido.");
+        if (!(opcion == 1 || opcion == 2)) throw new Valor_de_atributo_no_valido_Exception("Valor cargado no válido.");
 
         System.out.print("""
             - DESEMPLEADO
@@ -665,7 +663,12 @@ public class Menu {
             Ingrese la profesión:""");
         System.out.print(" ");
         tipoAldeano = s.next().toUpperCase();
+
+
+        Aldeano a = new Aldeano();
+        a.setNombre(nombre);
         a.setProfesion(tipoAldeano);
+        a.setEsBebe(opcion == 1);
 
         s.close();
         return a;
@@ -695,27 +698,31 @@ public class Menu {
         return m;
     }
     private Creeper crearCreeper() throws Atributo_vacio_Exception, Formato_no_valido_Exception {
-        Creeper c = new Creeper();
         Scanner s = new Scanner(System.in);
 
         String nombre, opcion;
+        boolean booleano;
 
         System.out.print("Ingrese el nombre del creeper: ");
         nombre = s.next();
         if (nombre.isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
-        c.setNombre(nombre);
+
 
         System.out.print("Está cargado? [Y - N]: ");
         opcion = s.next().toUpperCase();
-        if(opcion.charAt(0) == 'Y') c.setEsElectrico(true);
-        else if (opcion.charAt(0) == 'N') c.setEsElectrico(false);
+        if(opcion.charAt(0) == 'Y') booleano = true;
+        else if (opcion.charAt(0) == 'N') booleano = false;
         else throw new Formato_no_valido_Exception("Caracter ingresado incorrecto.");
+
+        Creeper c = new Creeper();
+        c.setNombre(nombre);
+        c.setEsElectrico(booleano);
 
         s.close();
         return c;
     }
     private Zombie crearZombie() throws Atributo_vacio_Exception, Valor_de_atributo_no_valido_Exception{
-        Zombie z = new Zombie();
+
         Scanner s = new Scanner(System.in);
 
         String nombre, opcion, tipoZombie;
@@ -723,11 +730,13 @@ public class Menu {
         System.out.print("Ingrese el nombre del zombie: ");
         nombre = s.nextLine();
         if (nombre.isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
-        z.setNombre(nombre);
 
         System.out.print("Ingrese el tipo de zombie [Chiquito,Ahogado,Momificado,Comun,Aldeano]: ");
         tipoZombie = s.nextLine().toUpperCase();
+
+        Zombie z = new Zombie();
         z.setTipoZombie(tipoZombie);
+        z.setNombre(nombre);
 
         s.close();
         return z;
@@ -763,59 +772,66 @@ public class Menu {
         return a;
     }
     private Panda crearPanda() throws Atributo_vacio_Exception, Valor_de_atributo_no_valido_Exception, InputMismatchException {
-        Panda p=new Panda();
+
         Scanner s=new Scanner(System.in);
 
         String nombre, tipoAlimentacion;
         int opcion;
+        boolean booleano;
 
         System.out.print("Ingrese el nombre del panda: ");
         nombre = s.next();
         if (nombre.isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
-        p.setNombre(nombre);
+
 
         System.out.print("El oveja es bebé? [1] SIIII :3 ,[0]-No. Está grande ya: ");
         opcion=s.nextInt();
-        if (opcion == 1) p.setEsBebe(true);
-        else if (opcion == 0) p.setEsBebe(false);
+        if (opcion == 1) booleano = true;
+        else if (opcion == 0) booleano = false;
         else throw new Valor_de_atributo_no_valido_Exception("Valor cargado no válido.");
 
         System.out.print("Ingrese el tipo de alimentación que tiene su panda [CARNIVORO, HERBIVORO, OMNIVORO]: ");
         tipoAlimentacion = s.next().toUpperCase();
-        p.setTipoAlimentacion(tipoAlimentacion);
+
 
         int num = (int) (Math.random() * 8);//Un numero aleatorio entre 0 y 7. Esto porq en el juego el "caracter" del panda es alatorio.
         Gen_Panda[] genPandas = Gen_Panda.values();
+
+        Panda p = new Panda();
+        p.setNombre(nombre);
+        p.setTipoAlimentacion(tipoAlimentacion);
+        p.setEsBebe(booleano);
         p.setGen( genPandas[num] );
 
         s.close();
         return p;
     }
     private Lobo crearLobo() throws Atributo_vacio_Exception, Valor_de_atributo_no_valido_Exception, InputMismatchException {
-        Lobo l= new Lobo();
+
         Scanner s=new Scanner(System.in);
 
         String nombre, tipoAlimentacion;
         int opcion;
+        boolean booleano;
 
         System.out.print("Ingrese el nombre del lobo: ");
         nombre = s.next();
         if (nombre.isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
-        l.setNombre(nombre);
+
 
         System.out.print("El panda es bebé? [1] SIIII :3 ,[0]-No. Está grande ya: ");
         opcion=s.nextInt();
-        if (opcion == 1) l.setEsBebe(true);
-        else if (opcion == 0) l.setEsBebe(false);
+        if (opcion == 1) booleano = true;
+        else if (opcion == 0) booleano = false;
         else throw new Valor_de_atributo_no_valido_Exception("Valor cargado no válido.");
 
         System.out.print("Ingrese el tipo de alimentación que tiene su lobo [CARNIVORO, HERBIVORO, OMNIVORO]: ");
         tipoAlimentacion = s.next().toUpperCase();
-        l.setTipoAlimentacion(tipoAlimentacion);
 
         System.out.println("Desea domesticar al lobo? : \n 1-SIP \n 0-NOP ");
         int decision =s.nextInt();
 
+        Lobo l= new Lobo();
         if (decision ==1 ){
             System.out.println("Ingrese su id :");
             int id=s.nextInt();
@@ -823,43 +839,44 @@ public class Menu {
             else System.out.println("No se pudo domesticar el lobo.");
         } else {
             l.setDomesticado(false);
-            l.setIDduenio(0);
+            l.setIDduenio(-1);
         }
+        l.setTipoAlimentacion(tipoAlimentacion);
+        l.setNombre(nombre);
+        l.setEsBebe(booleano);
 
         s.close();
         return l;
     }
     private Oveja crearOveja() throws Atributo_vacio_Exception, Valor_de_atributo_no_valido_Exception, InputMismatchException {
-        Oveja o= new Oveja();
         Scanner s=new Scanner(System.in);
 
         String mensaje, nombre, color, tipoAlimentacion;
         int opcion;
+        boolean booleano;
 
         System.out.print("Ingrese el nombre de la oveja: ");
         nombre = s.next();
         if (nombre.isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
-        o.setNombre(nombre);
 
         System.out.print("Ingrese el tipo de alimentación que tiene su oveja [CARNIVORO, HERBIVORO, OMNIVORO]: ");
         tipoAlimentacion = s.next().toUpperCase();
-        o.setTipoAlimentacion(tipoAlimentacion);
         System.out.println("El tipo de alimentación fue asignado correctamente.");
 
         System.out.print("Ingrese el color: ");
         color = s.next();
         if (color.isBlank()) throw new Atributo_vacio_Exception("El color está vacio");
-        o.setColor(color);
 
         System.out.print("El panda es bebé? [1] SIIII :3 ,[0]-No. Está grande ya: ");
         opcion=s.nextInt();
-        if (opcion == 1) o.setEsBebe(true);
-        else if (opcion == 0) o.setEsBebe(false);
+        if (opcion == 1) booleano = true;
+        else if (opcion == 0) booleano = false;
         else throw new Valor_de_atributo_no_valido_Exception("Valor cargado no válido.");
 
         System.out.println("Desea esquilar a la ovejita?: \n 1-SIP \n 0-NOP");
         opcion=s.nextInt();
 
+        Oveja o= new Oveja();
         if (opcion==1){
             mensaje=o.esquilar();
             System.out.println(mensaje);
@@ -869,36 +886,49 @@ public class Menu {
             System.out.println(mensaje);
         } else throw new Valor_de_atributo_no_valido_Exception("Valor cargado no válido.");
 
+
+        o.setNombre(nombre);
+        o.setTipoAlimentacion(tipoAlimentacion);
+        o.setColor(color);
+        o.setEsBebe(true);
+
         s.close();
         return o;
     }
 
     //Jugador
     private Player crearPlayer() throws Atributo_vacio_Exception, Valor_de_atributo_no_valido_Exception, InputMismatchException {
-        Player p = new Player();
         Scanner s = new Scanner(System.in);
 
         String nombre, contrasenia;
         char eleccion; // Y o N
+        boolean booleano;
+        String tipoPlayer;
 
         System.out.print("Ingrese el nombre del usuario: ");
         nombre = s.next();
         if (nombre.isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
-        p.setNombre(nombre);
+
 
         System.out.print("Ingrese la contrasenia: ");
         contrasenia = s.next();
         if (contrasenia.isBlank()) throw new Atributo_vacio_Exception("La contrasenia esta vacia");
-        p.setContrasenia(contrasenia);
+
 
         System.out.print("Es premium? [Y-N]: ");
         eleccion = s.next().charAt(0);
-        if(eleccion == 'Y' || eleccion == 'y') p.setEsPremium(true);
-        else if (eleccion == 'N' || eleccion == 'n') p.setEsPremium(false);
+        if(eleccion == 'Y' || eleccion == 'y') booleano = true;
+        else if (eleccion == 'N' || eleccion == 'n') booleano = false;
         else throw new Formato_no_valido_Exception("Carácter ingresado no válido.");
 
         System.out.print("Ingrese el gamemode [Survival-Creativo-Espectador-OP]: ");
-        if ( !p.setTipoPlayer(s.next()) ) throw new Valor_de_atributo_no_valido_Exception("Tipo de player no valido.");
+        tipoPlayer = s.next().toUpperCase();
+
+        Player p = new Player();
+        p.setNombre(nombre);
+        p.setContrasenia(contrasenia);
+        p.setEsPremium(booleano);
+        p.setTipoPlayer(tipoPlayer);
 
         s.close();
         return p;
