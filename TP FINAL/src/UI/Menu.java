@@ -546,6 +546,7 @@ public class Menu {
         Scanner s = new Scanner(System.in);
         System.out.print("Presione enter para continuar... ");
         s.nextLine();
+        s.close();
     }
 
     private void MINECRAFT() {
@@ -605,6 +606,7 @@ public class Menu {
         tipoAldeano = s.next().toUpperCase();
         a.setProfesion(tipoAldeano);
 
+        s.close();
         return a;
     }
 
@@ -648,6 +650,7 @@ public class Menu {
         else if (opcion.charAt(0) == 'N') c.setEsElectrico(false);
         else throw new Formato_no_valido_Exception("Caracter ingresado incorrecto.");
 
+        s.close();
         return c;
     }
     private Zombie crearZombie() throws Atributo_vacio_Exception, Valor_de_atributo_no_valido_Exception{
@@ -665,6 +668,7 @@ public class Menu {
         tipoZombie = s.nextLine().toUpperCase();
         z.setTipoZombie(tipoZombie);
 
+        s.close();
         return z;
     }
 
@@ -694,6 +698,7 @@ public class Menu {
             }
         }
 
+
         return a;
     }
     private Panda crearPanda() throws Atributo_vacio_Exception, Valor_de_atributo_no_valido_Exception, InputMismatchException {
@@ -722,6 +727,7 @@ public class Menu {
         Gen_Panda[] genPandas = Gen_Panda.values();
         p.setGen( genPandas[num] );
 
+        s.close();
         return p;
     }
     private Lobo crearLobo() throws Atributo_vacio_Exception, Valor_de_atributo_no_valido_Exception, InputMismatchException {
@@ -759,6 +765,7 @@ public class Menu {
             l.setIDduenio(0);
         }
 
+        s.close();
         return l;
     }
     private Oveja crearOveja() throws Atributo_vacio_Exception, Valor_de_atributo_no_valido_Exception, InputMismatchException {
@@ -801,6 +808,7 @@ public class Menu {
             System.out.println(mensaje);
         } else throw new Valor_de_atributo_no_valido_Exception("Valor cargado no válido.");
 
+        s.close();
         return o;
     }
 
@@ -831,6 +839,7 @@ public class Menu {
         System.out.print("Ingrese el gamemode [Survival-Creativo-Espectador-OP]: ");
         if ( !p.setTipoPlayer(s.next()) ) throw new Valor_de_atributo_no_valido_Exception("Tipo de player no valido.");
 
+        s.close();
         return p;
     }
 
