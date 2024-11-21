@@ -380,7 +380,12 @@ public class Aldea {
         };
         Collections.sort(todos,comparator);
 
-        Entidad.setAutoincremental(todos.getLast().getId());
+        try {
+            Entidad.setAutoincremental(todos.getLast().getId());
+        } catch (Exception e){
+            Entidad.setAutoincremental(0);
+        }
+
         /* Esté metodo lo creamos porque al eliminar un mob del JSON genera que al reiniciar el programa,
         el idIncremental esté desincronizado al ultimo id. Entonces genera que al intentar crear otro mob se rompa el programa. */
     }

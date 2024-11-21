@@ -19,7 +19,7 @@ public class Menu {
 
     public void iniciarMenu(String tipoUsuario){
         boolean bucle = true;
-        Scanner s = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         int menu1 = 0, menu2 = 0;
         final String ANSI_RED = "\u001B[31m";
@@ -34,12 +34,12 @@ public class Menu {
             printMenu();
             while (true){
                 try{
-                    menu1 = s.nextInt();
+                    menu1 = scanner.nextInt();
                     break;
 
                 } catch (InputMismatchException e){
+                    scanner.nextLine();
                     System.out.println(ANSI_RED + "Solo numeros." + ANSI_RESET );
-                    s.nextLine();
                 }
             }
 
@@ -49,12 +49,12 @@ public class Menu {
                 printMenu2(menu1, tipoUsuario);
                 while (true){
                     try {
-                        menu2 = s.nextInt();
+                        menu2 = scanner.nextInt();
                         break;
 
                     } catch (InputMismatchException e){
+                        scanner.nextLine();
                         System.out.println(ANSI_RED + "Solo numeros." + ANSI_RESET );
-                        s.nextLine();
                     }
                 }
                 System.out.println();
@@ -87,7 +87,7 @@ public class Menu {
                                 if (!tipoUsuario.equalsIgnoreCase("Espectador")) {
                                     int id;
                                     System.out.print("Ingrese el id del aldeano a eliminar: ");
-                                    id = s.nextInt();
+                                    id = scanner.nextInt();
                                     if (aldea.eliminarAldeano(id)){
                                         System.out.println(colorize("Se elimino al aldeanito", GREEN_TEXT()));
                                         System.out.println("\n");
@@ -102,16 +102,18 @@ public class Menu {
                             case 4: {
                                 int id;
                                 System.out.print("Ingrese el id del aldeano a buscar: ");
-                                id = s.nextInt();
+                                id = scanner.nextInt();
                                 Aldeano a = aldea.buscarAldeano(id);
                                 System.out.println(colorize("Se encontro al aldeanito", GREEN_TEXT()));
                                 System.out.println("\n");
                                 System.out.println(a.aTabla());
                                 break;
+                            } case 0:{
+
                             }
                             default: {
                                 System.out.println("Error al cargar una opción intente nuevamente.");
-                                s.nextLine();
+                                scanner.nextLine();
                                 break;
                             }
                         }
@@ -125,7 +127,7 @@ public class Menu {
                                     tipoUsuario.equalsIgnoreCase("OP")) {
                                         // CARGAR ANIMAL
                                         System.out.print("[1] Oveja \n[2] Panda \n[3] Lobo\nIngrese un mob: ");
-                                        Animal a = crearAnimal(s.nextInt());
+                                        Animal a = crearAnimal(scanner.nextInt());
                                         if (aldea.agregarAnimal(a)) {
                                             System.out.println(colorize("Se agrego al animalito.", GREEN_TEXT()));
                                             System.out.println("\n");
@@ -144,7 +146,7 @@ public class Menu {
                                 if (!tipoUsuario.equalsIgnoreCase("Espectador")) {
                                     int id;
                                     System.out.print("Ingrese el id del animalito a eliminar: ");
-                                    id = s.nextInt();
+                                    id = scanner.nextInt();
                                     if (aldea.eliminarAnimal(id)){
                                         System.out.println(colorize("Se elimino al animalito", GREEN_TEXT()));
                                         System.out.println("\n");
@@ -159,7 +161,7 @@ public class Menu {
                             case 4: {
                                 int id;
                                 System.out.print("Ingrese el id del animal a buscar: ");
-                                id = s.nextInt();
+                                id = scanner.nextInt();
                                 Animal a = aldea.buscarAnimal(id);
                                 System.out.println(colorize("\nSe encontro al animalito", GREEN_TEXT()));
                                 System.out.println("\n");
@@ -170,19 +172,21 @@ public class Menu {
                                 if (!tipoUsuario.equalsIgnoreCase("Espectador")) {
                                     int id;
                                     System.out.print("Ingrese el id del lobo a buscar: ");
-                                    id = s.nextInt();
+                                    id = scanner.nextInt();
                                     System.out.print("Ingrese su id: ");
-                                    if ( aldea.domesticarLobito(id, s.nextInt()) )  System.out.println(colorize("Se agrego al aldeanito", GREEN_TEXT()));
+                                    if ( aldea.domesticarLobito(id, scanner.nextInt()) )  System.out.println(colorize("Se agrego al aldeanito", GREEN_TEXT()));
 
                                     else  System.out.println(colorize("No se pudo domesticar el animalito", GREEN_TEXT()));
                                     System.out.println("\n");
 
                                 } else System.out.println("Opción no permitida.");
                                 break;
+                            }  case 0: {
+
                             }
                             default: {
                                 System.out.println("Error al cargar una opción intente nuevamente.");
-                                s.nextLine();
+                                scanner.nextLine();
                                 break;
                             }
                         }
@@ -196,7 +200,7 @@ public class Menu {
                                     tipoUsuario.equalsIgnoreCase("OP")) {
                                         //AGREGAR MOB
                                         System.out.print("[1] Creeper \n[2] Zombie \nIngrese un mob: ");
-                                        Mob m = crearMobHostil(s.nextInt());
+                                        Mob m = crearMobHostil(scanner.nextInt());
                                         if (aldea.agregarHostil(m)) {
                                             System.out.println(colorize("Se agrego al mob", GREEN_TEXT()));
                                             System.out.println("\n");
@@ -213,7 +217,7 @@ public class Menu {
                                 if (!tipoUsuario.equalsIgnoreCase("Espectador")) {
                                     int id;
                                     System.out.print("Ingrese el id del mob a eliminar: ");
-                                    id = s.nextInt();
+                                    id = scanner.nextInt();
                                     if (aldea.eliminarHostiles(id)) {
                                         System.out.println(colorize("Se elimino el mob", GREEN_TEXT()));
                                         System.out.println("\n");
@@ -228,15 +232,17 @@ public class Menu {
                             case 4: {
                                 int id;
                                 System.out.print("Ingrese el id del mob a buscar: ");
-                                id = s.nextInt();
+                                id = scanner.nextInt();
                                 Mob m = aldea.buscarMobHostil(id);
                                 System.out.println("\nSe encontró el mob:");
                                 System.out.println(m.aTabla());
                                 break;
+                            }  case 0:{
+
                             }
                             default: {
                                 System.out.println("Error al cargar una opción intente nuevamente.");
-                                s.nextLine();
+                                scanner.nextLine();
                                 break;
                             }
                         }
@@ -249,9 +255,9 @@ public class Menu {
                                 if (tipoUsuario.equalsIgnoreCase("Creativo") ||
                                     tipoUsuario.equalsIgnoreCase("OP")) {
                                         System.out.print("Ingrese el id del mob que desea meter preso: ");
-                                        int id = s.nextInt();
+                                        int id = scanner.nextInt();
                                         System.out.print("Ingrese la fecha de liberación (dd/MM/yyyy): ");
-                                        LocalDate fechaSalida = Celda.stringToLocalDate(s.next());
+                                        LocalDate fechaSalida = Celda.stringToLocalDate(scanner.next());
 
                                         if ( aldea.encarcelar(id, LocalDate.now(), fechaSalida ) ){
                                             System.out.println(colorize("El mob se fue en cana.", GREEN_TEXT()));
@@ -271,7 +277,7 @@ public class Menu {
                             }
                             case 3: {
                                 System.out.print("Ingrese el id de la celda: ");
-                                int id = s.nextInt();
+                                int id = scanner.nextInt();
                                 System.out.println(aldea.infoCelda(id));
                                 break;
                             }
@@ -283,7 +289,7 @@ public class Menu {
                                 if (tipoUsuario.equalsIgnoreCase("Creativo") ||
                                     tipoUsuario.equalsIgnoreCase("OP")) {
                                         System.out.print("Ingrese el id de la celda: ");
-                                        int idCelda = s.nextInt();
+                                        int idCelda = scanner.nextInt();
 
                                         if ( aldea.liberaMob(idCelda) ) {
                                             System.out.println(colorize("Se libero al mob", GREEN_TEXT()));
@@ -300,10 +306,12 @@ public class Menu {
                             case 6:{
                                 System.out.println("Cantidad de celdas desocupadas: " + aldea.cantCeldasDesocupadas() );
                                 break;
+                            }  case 0:{
+
                             }
                             default: {
                                 System.out.println("Error al cargar una opción intente nuevamente.");
-                                s.nextLine();
+                                scanner.nextLine();
                                 break;
                             }
                         }
@@ -331,7 +339,7 @@ public class Menu {
                             case 3: {
                                 if (tipoUsuario.equalsIgnoreCase("OP")) {
                                     System.out.print("Ingrese el id del jugador a eliminar: ");
-                                    int id = s.nextInt();
+                                    int id = scanner.nextInt();
                                     if ( aldea.eliminarPlayer(id) ) {
                                         System.out.println(colorize("Se elimino al jugador de la whitelist", GREEN_TEXT()));
                                         System.out.println("\n");
@@ -346,15 +354,17 @@ public class Menu {
                             case 4: {
                                 if (tipoUsuario.equalsIgnoreCase("OP")) {
                                     System.out.print("Ingrese el id del jugador: ");
-                                    int id = s.nextInt();
+                                    int id = scanner.nextInt();
                                     System.out.println(aldea.buscarPlayer(id).aTabla());
 
                                 } else System.out.println("Opción no permitida.");
                                 break;
+                            }  case 0:{
+
                             }
                             default: {
                                 System.out.println("Error al cargar una opción intente nuevamente.");
-                                s.nextLine();
+                                scanner.nextLine();
                                 break;
                             }
                         }
@@ -369,7 +379,7 @@ public class Menu {
                     case 7: {
                         System.out.print("Ingrese el id a buscar: ");
                         int id;
-                        id = s.nextInt();
+                        id = scanner.nextInt();
                         Entidad e = aldea.buscarEntidad(id);
                         String tabla = e.aTabla();
                         System.out.println(tabla);
@@ -386,25 +396,24 @@ public class Menu {
                     }
                     default: {
                         System.out.println("Error al cargar una opción intente nuevamente.");
-                        s.nextLine();
+                        scanner.nextLine();
                         break;
                     }
                 }
             } catch (InputMismatchException e){
                 System.out.println(ANSI_RED + "Solo numeros." + ANSI_RESET );
-                s.nextLine();
             } catch (RuntimeException e) {
                 System.out.println(e.getMessage());
                 //e.printStackTrace();
             }
+            scanner.nextLine();
 
-            s.nextLine();
             if ( menu1 != 0 ){ //Si no eligió salir...
                 System.out.println("\n\n");
             }
 
         }
-        s.close();
+        scanner.close();
     }
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     //todo MENU
@@ -661,7 +670,6 @@ public class Menu {
         a.setProfesion(tipoAldeano);
         a.setEsBebe(opcion == 1);
 
-        s.close();
         return a;
     }
 
@@ -685,7 +693,6 @@ public class Menu {
                 throw new Formato_no_valido_Exception("Opcion ingresada incorrecta.");
             }
         }
-
         return m;
     }
     private Creeper crearCreeper() throws Atributo_vacio_Exception, Formato_no_valido_Exception {
@@ -709,7 +716,6 @@ public class Menu {
         c.setNombre(nombre);
         c.setEsElectrico(booleano);
 
-        s.close();
         return c;
     }
     private Zombie crearZombie() throws Atributo_vacio_Exception, Valor_de_atributo_no_valido_Exception{
@@ -723,13 +729,12 @@ public class Menu {
         if (nombre.isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
 
         System.out.print("Ingrese el tipo de zombie [Chiquito,Ahogado,Momificado,Comun,Aldeano]: ");
-        tipoZombie = s.nextLine().toUpperCase();
+        tipoZombie = s.next().toUpperCase();
 
         Zombie z = new Zombie();
         z.setTipoZombie(tipoZombie);
         z.setNombre(nombre);
 
-        s.close();
         return z;
     }
 
@@ -775,7 +780,7 @@ public class Menu {
         if (nombre.isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
 
 
-        System.out.print("El oveja es bebé? [1] SIIII :3 ,[0]-No. Está grande ya: ");
+        System.out.print("El panda es bebé? [1] SIIII :3 ,[0]-No. Está grande ya: ");
         opcion=s.nextInt();
         if (opcion == 1) booleano = true;
         else if (opcion == 0) booleano = false;
@@ -794,7 +799,6 @@ public class Menu {
         p.setEsBebe(booleano);
         p.setGen( genPandas[num] );
 
-        s.close();
         return p;
     }
     private Lobo crearLobo() throws Atributo_vacio_Exception, Valor_de_atributo_no_valido_Exception, InputMismatchException {
@@ -810,7 +814,7 @@ public class Menu {
         if (nombre.isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
 
 
-        System.out.print("El panda es bebé? [1] SIIII :3 ,[0]-No. Está grande ya: ");
+        System.out.print("El lobo es bebé? [1] SIIII :3 ,[0]-No. Está grande ya: ");
         opcion=s.nextInt();
         if (opcion == 1) booleano = true;
         else if (opcion == 0) booleano = false;
@@ -836,7 +840,6 @@ public class Menu {
         l.setNombre(nombre);
         l.setEsBebe(booleano);
 
-        s.close();
         return l;
     }
     private Oveja crearOveja() throws Atributo_vacio_Exception, Valor_de_atributo_no_valido_Exception, InputMismatchException {
@@ -858,7 +861,7 @@ public class Menu {
         color = s.next();
         if (color.isBlank()) throw new Atributo_vacio_Exception("El color está vacio");
 
-        System.out.print("El panda es bebé? [1] SIIII :3 ,[0]-No. Está grande ya: ");
+        System.out.print("La oveja es bebé? [1] SIIII :3 ,[0]-No. Está grande ya: ");
         opcion=s.nextInt();
         if (opcion == 1) booleano = true;
         else if (opcion == 0) booleano = false;
@@ -883,7 +886,6 @@ public class Menu {
         o.setColor(color);
         o.setEsBebe(true);
 
-        s.close();
         return o;
     }
 
@@ -921,7 +923,6 @@ public class Menu {
         p.setEsPremium(booleano);
         p.setTipoPlayer(tipoPlayer);
 
-        s.close();
         return p;
     }
 

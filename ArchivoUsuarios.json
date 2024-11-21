@@ -1,62 +1,10 @@
-[
-    {
-        "tipo": "Player",
-        "tipoPlayer": "ESPECTADOR",
-        "vida": 10,
-        "danio": 2,
-        "contrasenia": "1",
-        "id": 1,
-        "nombre": "1",
-        "esPremium": true
-    },
-    {
-        "tipo": "Player",
-        "tipoPlayer": "OP",
-        "vida": 10,
-        "danio": 2,
-        "contrasenia": "a",
-        "id": 2,
-        "nombre": "a",
-        "esPremium": true
-    },
-    {
-        "tipo": "Player",
-        "tipoPlayer": "CREATIVO",
-        "vida": 10,
-        "danio": 2,
-        "contrasenia": "pepe",
-        "id": 3,
-        "nombre": "pepe",
-        "esPremium": true
-    },
-    {
-        "tipo": "Player",
-        "tipoPlayer": "SURVIVAL",
-        "vida": 10,
-        "danio": 2,
-        "contrasenia": "123",
-        "id": 4,
-        "nombre": "ruperto",
-        "esPremium": true
-    },
-    {
-        "tipo": "Player",
-        "tipoPlayer": "OP",
-        "vida": 10,
-        "danio": 2,
-        "contrasenia": "b",
-        "id": 5,
-        "nombre": "b",
-        "esPremium": true
-    },
-    {
-        "tipo": "Player",
-        "tipoPlayer": "SURVIVAL",
-        "vida": 10,
-        "danio": 2,
-        "contrasenia": "Ol",
-        "id": 11,
-        "nombre": "Dy",
-        "esPremium": true
-    }
-]
+[{
+    "tipo": "Player",
+    "tipoPlayer": "OP",
+    "vida": 10,
+    "danio": 2,
+    "contrasenia": "a",
+    "id": 10,
+    "nombre": "a",
+    "esPremium": true
+}]
