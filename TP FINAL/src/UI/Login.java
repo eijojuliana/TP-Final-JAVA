@@ -24,6 +24,8 @@ public class Login {
         try {
             JSONArray jArray = new JSONArray( JSONUtiles.leer2("ArchivoUsuarios") );
 
+            if (jArray.isEmpty() || jArray.isNull(0)) throw new IOException("Archivo usuarios vacio.");
+
             for (int i=0; i<jArray.length() ; i++){
                 JSONObject jObject = jArray.getJSONObject(i);
 

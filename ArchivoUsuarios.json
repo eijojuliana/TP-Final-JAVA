@@ -1,10 +1,1 @@
-[{
-    "tipo": "Player",
-    "tipoPlayer": "OP",
-    "vida": 10,
-    "danio": 2,
-    "contrasenia": "a",
-    "id": 10,
-    "nombre": "a",
-    "esPremium": true
-}]
+[]
