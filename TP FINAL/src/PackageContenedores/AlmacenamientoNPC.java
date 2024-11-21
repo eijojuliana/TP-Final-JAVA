@@ -3,6 +3,7 @@ package PackageContenedores;
 import PackageExceptions.Atributo_vacio_Exception;
 import PackageExceptions.Entidad_inexistente_Exception;
 import PackageExceptions.Entidad_repetida_Exception;
+import PackageExceptions.Valor_de_atributo_no_valido_Exception;
 import PackageInterfaces.IConversionJSON;
 import PackageModelo.Entidad;
 import org.json.JSONArray;
@@ -26,7 +27,9 @@ public class AlmacenamientoNPC<T extends IConversionJSON> {
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
     //todo.METODOS
 
-    public T buscarXid (int id) throws Entidad_inexistente_Exception {
+    public T buscarXid (int id) throws Entidad_inexistente_Exception, Valor_de_atributo_no_valido_Exception {
+        if (id < 0) throw new Valor_de_atributo_no_valido_Exception("ID negativo.");
+
         Entidad e;
         for (T t : arrayNPC) {
             e = (Entidad) t;
@@ -38,9 +41,9 @@ public class AlmacenamientoNPC<T extends IConversionJSON> {
     }
 
     public boolean agregar(T NPC) throws Atributo_vacio_Exception, Entidad_repetida_Exception { // Boolean
-
         Entidad e = (Entidad) NPC;
-        if (NPC == null) throw new Atributo_vacio_Exception("El elemento vacio.");
+        if (e == null) throw new Atributo_vacio_Exception("El elemento vacio.");
+
         try{
             buscarXid(e.getId());
             throw new Entidad_repetida_Exception("Entidad repetida.");
@@ -49,10 +52,10 @@ public class AlmacenamientoNPC<T extends IConversionJSON> {
         }
     }
 
-
     public boolean eliminar(int id) throws Entidad_inexistente_Exception {
         boolean exito = false;
 
+        if (id < 0) throw new Valor_de_atributo_no_valido_Exception("ID negativo.");
         if (buscarXid(id) == null) throw new Entidad_inexistente_Exception("El elemento no ha sido encontrado.");
 
         exito = arrayNPC.remove(buscarXid(id));

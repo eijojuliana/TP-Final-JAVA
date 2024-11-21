@@ -70,54 +70,55 @@ public class Carcel implements IConversionJSON{
 
 
     /// todo.METODOS///
-    public boolean encarcelar(Entidad mob,LocalDate fechaEntrada,LocalDate fechaSalida,int id) throws Entidad_inexistente_Exception,Entidad_repetida_Exception
+    public boolean encarcelar(Entidad mob,LocalDate fechaEntrada,LocalDate fechaSalida,int id) throws Entidad_repetida_Exception, Atributo_vacio_Exception
     {
         boolean encarcelado=false;
-        try{
-            if (mob!=null){
-                if (!(carcel.containsKey(id))){
-                    Celda nuevaCelda=new Celda(mob,fechaEntrada,fechaSalida);
-                    carcel.put(nuevaCelda.getNumeroCelda(),nuevaCelda);
-                    encarcelado=true;
-                }
+
+        if (mob!=null){
+            if (!(carcel.containsKey(id))){
+                Celda nuevaCelda=new Celda(mob,fechaEntrada,fechaSalida);
+                carcel.put(nuevaCelda.getNumeroCelda(),nuevaCelda);
+                encarcelado=true;
             }
-        } catch (Entidad_inexistente_Exception e){
-            System.out.println(e.getMessage());
+            else throw new Entidad_repetida_Exception("El mob ya se encuentra en la carcel");
         }
+        else throw new Atributo_vacio_Exception("La entidad está vacía.");
+
         return encarcelado;
     }
 
     public boolean liberarMob(int numeroCelda) throws Valor_de_atributo_no_valido_Exception {
         boolean liberado = false;
-        try {
-            if (carcel.containsKey(numeroCelda)) {
-                Celda celda = carcel.get(numeroCelda);
-                LocalDate fechaSalida = celda.getFechaSalida();
-                LocalDate fechaActual = LocalDate.now();
 
-                // Verificar si la fecha de salida ya pasó o es igual a la fecha actual
-                if (!fechaActual.isBefore(fechaSalida)) {
-                    carcel.remove(numeroCelda); // Liberar la celda
-                    liberado = true;
-                } else {
-                    // Si la fecha actual es antes de la fecha de salida
-                    throw new Valor_de_atributo_no_valido_Exception("El mob aún no puede ser liberado. La fecha de salida no ha llegado.");
-                }
+        if (carcel.containsKey(numeroCelda)) {
+            Celda celda = carcel.get(numeroCelda);
+            LocalDate fechaSalida = celda.getFechaSalida();
+            LocalDate fechaActual = LocalDate.now();
+
+            // Verificar si la fecha de salida ya pasó o es igual a la fecha actual
+            if (!fechaActual.isBefore(fechaSalida)) {
+                carcel.remove(numeroCelda); // Liberar la celda
+                liberado = true;
             } else {
-                throw new Valor_de_atributo_no_valido_Exception("Número de celda no válido o inexistente.");
+                // Si la fecha actual es antes de la fecha de salida
+                throw new Valor_de_atributo_no_valido_Exception("El mob aún no puede ser liberado. La fecha de salida no ha llegado.");
             }
-        } catch (Valor_de_atributo_no_valido_Exception e) {
-            System.out.println(e.getMessage());
+        } else {
+            throw new Valor_de_atributo_no_valido_Exception("Número de celda no válido o inexistente.");
         }
+
         return liberado;
     }
 
-    public Celda obtenerInfoCelda(int numeroCelda){
+    public Celda obtenerInfoCelda(int numeroCelda) throws Entidad_inexistente_Exception, Valor_de_atributo_no_valido_Exception {
+        if (numeroCelda < 1) throw new Valor_de_atributo_no_valido_Exception("Numero de celda negativo");
         if ( carcel.get(numeroCelda) == null ) throw new Entidad_inexistente_Exception("No se encuentra la celda o está vacia");
         return carcel.get(numeroCelda);
     }
 
-    public int contarCeldasDesocupadas() {
+    public int contarCeldasDesocupadas() throws Atributo_vacio_Exception {
+        if (carcel.isEmpty()) throw new Atributo_vacio_Exception("La carcel esta vacia.");
+
         int maxNumeroCelda = Celda.getIdIncremental(); // Obtiene el último ID generado.
         int celdasDesocupadas = 0;
 
@@ -129,7 +130,9 @@ public class Carcel implements IConversionJSON{
         return celdasDesocupadas;
     }
 
-    public ArrayList<Integer> obtenerCeldasDesocupadas() {
+    public ArrayList<Integer> obtenerCeldasDesocupadas() throws Atributo_vacio_Exception {
+        if (carcel.isEmpty()) throw new Atributo_vacio_Exception("La carcel esta vacia.");
+
         ArrayList<Integer> celdasDesocupadas = new ArrayList<>();
         int maxNumeroCelda = Celda.getIdIncremental(); // Obtiene el último ID generado.
 

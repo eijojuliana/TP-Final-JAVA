@@ -79,36 +79,37 @@ public class Aldea {
                 .replace("╨", "╡");
     }
 
-    public boolean agregarAnimal (Animal a) { return animales.agregar(a);}
-    public Animal buscarAnimal (int id) {
+    public boolean agregarAnimal (Animal a) throws Atributo_vacio_Exception, Entidad_inexistente_Exception {
+        return animales.agregar(a);
+    }
+    public Animal buscarAnimal (int id) throws Entidad_inexistente_Exception, Valor_de_atributo_no_valido_Exception {
         return animales.buscarXid(id);
     }
 
-    public boolean domesticarLobito(int idLobo, int idDuenio) {
+    public boolean domesticarLobito(int idLobo, int idDuenio) throws Entidad_inexistente_Exception, Valor_de_atributo_no_valido_Exception, Entidad_repetida_Exception {
         boolean domesticado=false;
-        try {
-            Lobo lobo = (Lobo) animales.buscarXid(idLobo);
 
-            domesticado=lobo.domesticarLobo(idDuenio);
-        } catch (Entidad_inexistente_Exception | Valor_de_atributo_no_valido_Exception | Entidad_repetida_Exception e) {
-            System.out.println(e.getMessage());
-
-        }
+        Lobo lobo = (Lobo) animales.buscarXid(idLobo);
+        domesticado=lobo.domesticarLobo(idDuenio);
 
         return domesticado;
     }
 
 
-    public boolean agregarAldeano(Aldeano a){ return aldeanos.agregar(a);}
-    public Aldeano buscarAldeano(int id){
+    public boolean agregarAldeano(Aldeano a) throws Atributo_vacio_Exception, Entidad_repetida_Exception {
+        return aldeanos.agregar(a);
+    }
+    public Aldeano buscarAldeano(int id) throws Entidad_inexistente_Exception, Valor_de_atributo_no_valido_Exception {
         return aldeanos.buscarXid(id);
     }
 
-    public boolean agregarPlayer(Player p){return jugadores.agregar(p);}
-    public Player buscarPlayer(int id){
+    public boolean agregarPlayer(Player p) throws Atributo_vacio_Exception, Entidad_repetida_Exception {
+        return jugadores.agregar(p);
+    }
+    public Player buscarPlayer(int id) throws Entidad_inexistente_Exception, Valor_de_atributo_no_valido_Exception {
         return jugadores.buscarXid(id);
     }
-    public static boolean existePlayerEnArchivo(int id) throws Entidad_inexistente_Exception{
+    public static boolean existePlayerEnArchivo(int id) throws Entidad_inexistente_Exception {
         try {
             JSONArray jugadores = new JSONArray(JSONUtiles.leer2("ArchivoUsuarios"));
 
@@ -121,8 +122,10 @@ public class Aldea {
         }
     }
 
-    public boolean agregarHostil(Mob m) { return hostiles.agregar(m); }
-    public Mob buscarMobHostil(int id) throws Entidad_repetida_Exception {
+    public boolean agregarHostil(Mob m) throws Atributo_vacio_Exception, Entidad_repetida_Exception {
+        return hostiles.agregar(m);
+    }
+    public Mob buscarMobHostil(int id) throws Entidad_repetida_Exception, Valor_de_atributo_no_valido_Exception {
         return hostiles.buscarXid(id);
     }
 
@@ -350,7 +353,7 @@ public class Aldea {
         }
         actualizarIDIncremental();
     }
-    public void guardarCambios(String archivo) throws Valor_de_atributo_no_valido_Exception{
+    public void guardarCambios(String archivo) throws Valor_de_atributo_no_valido_Exception {
         switch (archivo) {
             case "ArchivoUsuarios" -> JSONUtiles.grabarUnJson(jugadores.toJSON(), archivo);
             case "ArchivoAnimales" -> JSONUtiles.grabarUnJson(animales.toJSON(), archivo);
@@ -383,7 +386,7 @@ public class Aldea {
     }
 
     /// todo.METODOS CARCEL
-    public boolean encarcelar(int id, LocalDate fechaEntrada, LocalDate fechaSalida){
+    public boolean encarcelar(int id, LocalDate fechaEntrada, LocalDate fechaSalida) throws Entidad_inexistente_Exception, Valor_de_atributo_no_valido_Exception, Atributo_vacio_Exception, Entidad_repetida_Exception{
         boolean encarcelado;
         Entidad entidad = buscarEntidad(id);
 
@@ -391,14 +394,14 @@ public class Aldea {
         return encarcelado;
     }
 
-    public boolean liberaMob (int numeroCelda){
+    public boolean liberaMob (int numeroCelda) throws Valor_de_atributo_no_valido_Exception {
         boolean liberado;
         liberado=carcel.liberarMob(numeroCelda);
 
         return liberado;
     }
 
-    public String carcelToTable(){
+    public String carcelToTable() throws Atributo_vacio_Exception {
         return carcel.carcelToTable();
     }
 
