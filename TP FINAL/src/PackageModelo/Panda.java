@@ -22,6 +22,7 @@ public final class Panda extends Animal implements IConversionJSON, ITabla {
     public Panda(){
         setVida(20);
         setDanio(0);
+        setTipo(Panda.class.getSimpleName());
     }
 
     ///todo.GET Y SET

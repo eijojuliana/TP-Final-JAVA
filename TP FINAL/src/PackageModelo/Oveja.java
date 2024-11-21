@@ -24,6 +24,7 @@ public final class Oveja extends Animal implements IConversionJSON, ITabla {
     public Oveja() {
         setVida(4);
         setDanio(0);
+        setTipo(Oveja.class.getSimpleName());
     }
 
 

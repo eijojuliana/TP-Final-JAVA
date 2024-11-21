@@ -31,6 +31,7 @@ public final class Lobo extends Animal implements IConversionJSON, ITabla {
         setVida(4);
         setDanio(4);
         setIDduenio(-1);
+        setTipo(Lobo.class.getSimpleName());
     }
 
     ///todo.GETS Y SETS///
