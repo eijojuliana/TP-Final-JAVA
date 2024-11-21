@@ -101,6 +101,11 @@ public class Menu {
                                 System.out.println(a.aTabla());
                                 break;
                             }
+                            default: {
+                                System.out.println("Error al cargar una opción intente nuevamente.");
+                                s.nextLine();
+                                break;
+                            }
                         }
                         break;
                     } //ALDEANOS
@@ -160,6 +165,11 @@ public class Menu {
                                 } else System.out.println("Opción no permitida.");
                                 break;
                             }
+                            default: {
+                                System.out.println("Error al cargar una opción intente nuevamente.");
+                                s.nextLine();
+                                break;
+                            }
                         }
                         break;
                     } //ANIMALES
@@ -204,6 +214,11 @@ public class Menu {
                                 Mob m = aldea.buscarMobHostil(id);
                                 System.out.println("\nSe encontró el mob:");
                                 System.out.println(m.aTabla());
+                                break;
+                            }
+                            default: {
+                                System.out.println("Error al cargar una opción intente nuevamente.");
+                                s.nextLine();
                                 break;
                             }
                         }
@@ -264,6 +279,11 @@ public class Menu {
                                 System.out.println("Cantidad de celdas desocupadas: " + aldea.cantCeldasDesocupadas() );
                                 break;
                             }
+                            default: {
+                                System.out.println("Error al cargar una opción intente nuevamente.");
+                                s.nextLine();
+                                break;
+                            }
                         }
                         break;
                     } //CARCEL
@@ -306,6 +326,11 @@ public class Menu {
                                 } else System.out.println("Opción no permitida.");
                                 break;
                             }
+                            default: {
+                                System.out.println("Error al cargar una opción intente nuevamente.");
+                                s.nextLine();
+                                break;
+                            }
                         }
                         break;
                     } //JUGADORES
@@ -324,7 +349,8 @@ public class Menu {
                         System.out.println(tabla);
 
                         break;
-                    } //Buscar por id general
+                    }
+                    //Buscar por id general
                     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
                     case 0: {
