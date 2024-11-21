@@ -7,12 +7,14 @@ import PackageExceptions.Formato_no_valido_Exception;
 import PackageExceptions.Valor_de_atributo_no_valido_Exception;
 
 import PackageModelo.*;
+import com.diogonunes.jcolor.Attribute;
 
 import java.time.LocalDate;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static com.diogonunes.jcolor.Ansi.colorize;
+import static com.diogonunes.jcolor.Attribute.BACK_COLOR;
 import static com.diogonunes.jcolor.Attribute.GREEN_TEXT;
 
 public class Menu {
@@ -288,15 +290,30 @@ public class Menu {
                             case 5: {
                                 if (tipoUsuario.equalsIgnoreCase("Creativo") ||
                                     tipoUsuario.equalsIgnoreCase("OP")) {
+                                        int tipoLiberacion;
+                                        System.out.println("Que tipo de liberación: \n[1]-Cancelar encarcelamiento\n[2]-Liberar mob");
+                                        tipoLiberacion = scanner.nextInt();
+
                                         System.out.print("Ingrese el id de la celda: ");
                                         int idCelda = scanner.nextInt();
 
-                                        if ( aldea.liberaMob(idCelda) ) {
-                                            System.out.println(colorize("Se libero al mob", GREEN_TEXT()));
-                                            System.out.println("\n");
-                                            aldea.guardarCambios("ArchivoCarcel");
+                                        if (tipoLiberacion == 2) {
+                                            if (aldea.liberaMob(idCelda)) {
+                                                System.out.println(colorize("Se libero al mob", GREEN_TEXT()));
+                                                System.out.println("\n");
+                                                aldea.guardarCambios("ArchivoCarcel");
+                                            } else
+                                                System.out.println(colorize("No se pudo liberar al mob", GREEN_TEXT()));
                                         }
-                                        else  System.out.println(colorize("No se pudo liberar al mob", GREEN_TEXT()));
+                                        else if (tipoLiberacion == 1){
+                                            if (aldea.liberacionAnticipada(idCelda)){
+                                                System.out.println(colorize("Se libero al mob", GREEN_TEXT()));
+                                                System.out.println("\n");
+                                                aldea.guardarCambios("ArchivoCarcel");
+                                            }  else
+                                                System.out.println(colorize("No se pudo liberar al mob", GREEN_TEXT()));
+                                        }
+
                                     System.out.println("\n");
 
 
@@ -446,9 +463,10 @@ public class Menu {
                 ██▓▒░⡷⠂𓆩𝔾𝕖𝕤𝕥𝕚𝕠𝕟""" + " " );
         switch (menu1){
             case 1: {
-                ALDEANO();
+
                 System.out.println(""" 
                                       𝔸𝕝𝕕𝕖𝕒𝕟𝕠𝕤𓆪⠐⢾░▒▓██""");
+                ALDEANO();
                 if (tipoUsuario.equalsIgnoreCase("Espectador")){
                     System.out.print("""   
             
@@ -481,9 +499,10 @@ public class Menu {
                 break;
             }
             case 2: {
-                OVEJA();
+
                 System.out.println("""
                                       𝔸ℕ𝕀𝕄𝔸𝕃𝔼𝕊:𓆪⠐⢾░▒▓██""");
+                OVEJA();
                 if (tipoUsuario.equalsIgnoreCase("Espectador")){
                     System.out.print("""   
             
@@ -519,9 +538,10 @@ public class Menu {
                 break;
             }
             case 3: {
-                CREEPER();
+
                 System.out.println("""
                                        ℍ𝕆𝕊𝕋𝕀𝕃𝔼𝕊:𓆪⠐⢾░▒▓██"""  );
+                CREEPER();
                 if (tipoUsuario.equalsIgnoreCase("Espectador")){
                     System.out.print("""   
             
@@ -698,7 +718,7 @@ public class Menu {
     //todo CARGAR
     /*Se movieron los new al final para que el id incremental no se rompa al lanzar una exception.*/
     //Aldeano
-    private Aldeano crearAldeano() throws Atributo_vacio_Exception, Valor_de_atributo_no_valido_Exception, InputMismatchException{
+    private Aldeano crearAldeano() throws Atributo_vacio_Exception, Valor_de_atributo_no_valido_Exception, InputMismatchException {
 
         Scanner s = new Scanner(System.in);
 
@@ -744,7 +764,7 @@ public class Menu {
     /// @param tipo
     /// [1] Creeper
     /// [2] Zombie
-    private Mob crearMobHostil(int tipo) throws Valor_de_atributo_no_valido_Exception, Formato_no_valido_Exception, Atributo_vacio_Exception{
+    private Mob crearMobHostil(int tipo) throws Valor_de_atributo_no_valido_Exception, Formato_no_valido_Exception, Atributo_vacio_Exception {
         Mob m;
 
         switch (tipo){

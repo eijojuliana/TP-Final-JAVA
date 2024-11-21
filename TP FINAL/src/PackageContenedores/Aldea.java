@@ -405,9 +405,9 @@ public class Aldea {
 
         return liberado;
     }
-    public boolean liberacionAnticipada(int decision,int numeroCelda){
+    public boolean liberacionAnticipada(int numeroCelda){
         boolean liberado;
-        liberado=carcel.liberacionAnticipada(decision,numeroCelda);
+        liberado=carcel.liberacionAnticipada(numeroCelda);
 
         return liberado;
     }

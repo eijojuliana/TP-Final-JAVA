@@ -62,5 +62,18 @@
         "tipoAlimentacion": "CARNIVORO",
         "id": 19,
         "nombre": "Shula"
+    },
+    {
+        "tipo": "Lobo",
+        "drops": [],
+        "domesticado": true,
+        "Tipo": "Animal",
+        "vida": 4,
+        "danio": 4,
+        "esBebe": true,
+        "IDduenio": 20,
+        "tipoAlimentacion": "CARNIVORO",
+        "id": 21,
+        "nombre": "pepe"
     }
 ]

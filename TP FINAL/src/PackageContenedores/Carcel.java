@@ -15,6 +15,7 @@ import org.json.JSONArray;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Carcel implements IConversionJSON{
     ///todo.Atributos///
@@ -70,21 +71,31 @@ public class Carcel implements IConversionJSON{
 
 
     /// todo.METODOS///
-    public boolean encarcelar(Entidad mob,LocalDate fechaEntrada,LocalDate fechaSalida,int id) throws Entidad_repetida_Exception, Atributo_vacio_Exception
+    public boolean encarcelar(Entidad mob,LocalDate fechaEntrada,LocalDate fechaSalida,int idMob) throws Entidad_repetida_Exception, Atributo_vacio_Exception
     {
         boolean encarcelado=false;
 
         if (mob!=null){
-            if (!(carcel.containsKey(id))){
+            //if (buscarCeldaPorIDMob(idMob) != -1){
                 Celda nuevaCelda=new Celda(mob,fechaEntrada,fechaSalida);
                 carcel.put(nuevaCelda.getNumeroCelda(),nuevaCelda);
                 encarcelado=true;
-            }
-            else throw new Entidad_repetida_Exception("El mob ya se encuentra en la carcel");
+            //}
+            //else throw new Entidad_repetida_Exception("El mob ya se encuentra en la carcel");
         }
         else throw new Atributo_vacio_Exception("La entidad está vacía.");
 
         return encarcelado;
+    }
+    public int buscarCeldaPorIDMob(int idMob){
+        int nroCelda;
+
+        for (Map.Entry<Integer, Celda> entry: carcel.entrySet()){
+            Celda c = entry.getValue();
+
+            if (c.getMob().getId() == idMob) return c.getNumeroCelda();
+        }
+        return -1;
     }
 
     public boolean liberarMob(int numeroCelda) throws Valor_de_atributo_no_valido_Exception {
@@ -106,21 +117,12 @@ public class Carcel implements IConversionJSON{
 
         return liberado;
     }
-    public boolean liberacionAnticipada(int decision,int numeroDeCelda) throws Valor_de_atributo_no_valido_Exception{
-        boolean liberacion;
-        if(decision != 1 || decision!=0){
-            throw new Valor_de_atributo_no_valido_Exception("Numero de decision invalida");
-        }
-        else{
-            if (decision==1){
-                carcel.remove(numeroDeCelda);
-                liberacion=true;
-            }
-            else{
-                liberacion=false;
-            }
+    public boolean liberacionAnticipada(int numeroDeCelda) throws Valor_de_atributo_no_valido_Exception{
+        boolean liberacion = false;
 
-        }
+        carcel.remove(numeroDeCelda);
+        liberacion = true;
+
         return liberacion;
     }
 

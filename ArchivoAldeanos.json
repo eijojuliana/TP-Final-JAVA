@@ -10,13 +10,23 @@
         "nombre": "lolito"
     },
     {
-        "drops": [],
         "tipo": "Aldeano",
+        "drops": [],
         "vida": 10,
         "danio": 0,
         "esBebe": true,
         "id": 7,
         "profesion": "FLECHERO",
         "nombre": "pablo"
+    },
+    {
+        "tipo": "Aldeano",
+        "drops": [],
+        "vida": 10,
+        "danio": 0,
+        "esBebe": false,
+        "id": 22,
+        "profesion": "VAGO",
+        "nombre": "Jose"
     }
 ]

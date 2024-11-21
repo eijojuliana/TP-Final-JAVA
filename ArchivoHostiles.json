@@ -48,5 +48,15 @@
         "tipoZombie": "CHIQUITO",
         "id": 16,
         "nombre": "Zombie2"
+    },
+    {
+        "tipo": "Zombie",
+        "drops": [],
+        "vida": 10,
+        "danio": 2.5,
+        "esBebe": false,
+        "tipoZombie": "CHIQUITO",
+        "id": 23,
+        "nombre": "Raul"
     }
 ]
