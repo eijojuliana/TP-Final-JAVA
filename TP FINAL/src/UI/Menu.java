@@ -605,9 +605,8 @@ public class Menu {
 
     private void pausa(){
         Scanner s = new Scanner(System.in);
-        System.out.print("Presione enter para continuar... ");
-        s.nextLine();
-        //s.close();
+        System.out.print("Ingrese un caracter para continuar... ");
+        s.next();
     }
 
     private void MINECRAFT() {
@@ -728,7 +727,7 @@ public class Menu {
         String nombre, opcion, tipoZombie;
 
         System.out.print("Ingrese el nombre del zombie: ");
-        nombre = s.nextLine();
+        nombre = s.next();
         if (nombre.isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
 
         System.out.print("Ingrese el tipo de zombie [Chiquito,Ahogado,Momificado,Comun,Aldeano]: ");
