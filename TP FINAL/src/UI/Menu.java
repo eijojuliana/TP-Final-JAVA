@@ -12,6 +12,9 @@ import java.time.LocalDate;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import static com.diogonunes.jcolor.Ansi.colorize;
+import static com.diogonunes.jcolor.Attribute.GREEN_TEXT;
+
 public class Menu {
 
     public void iniciarMenu(String tipoUsuario){
@@ -49,8 +52,8 @@ public class Menu {
                         menu2 = s.nextInt();
                         break;
 
-                    } catch (InputMismatchException e) {
-                        System.out.println("Solo numeros.");
+                    } catch (InputMismatchException e){
+                        System.out.println(ANSI_RED + "Solo numeros." + ANSI_RESET );
                         s.nextLine();
                     }
                 }
@@ -67,9 +70,11 @@ public class Menu {
                                         // CARGAR ALDEANO
                                         Aldeano a = crearAldeano();
                                         if (aldea.agregarAldeano(a)) {
-                                            System.out.println("Se agregó al aldeanito correctamente.");
+                                            System.out.println(colorize("Se agrego al aldeanito.", GREEN_TEXT()));
+                                            System.out.println("\n");
                                             aldea.guardarCambios("ArchivoAldeanos");
-                                        } else System.out.println("No se pudo agregar al aldeano.");
+                                        } else  System.out.println(colorize("No se pudo agregar al aldeano.", GREEN_TEXT()));
+                                    System.out.println("\n");
 
                                 } else System.out.println("Opción no permitida.");
                                 break;
@@ -84,10 +89,12 @@ public class Menu {
                                     System.out.print("Ingrese el id del aldeano a eliminar: ");
                                     id = s.nextInt();
                                     if (aldea.eliminarAldeano(id)){
-                                        System.out.println("Se eliminó el aldeanito :c .");
+                                        System.out.println(colorize("Se elimino al aldeanito", GREEN_TEXT()));
+                                        System.out.println("\n");
                                         aldea.guardarCambios("ArchivoAldeanos");
                                     }
-                                    else System.out.println("No se pudo eliminar el aldeano.");
+                                    else System.out.println(colorize("No se pudo eliminar al aldeano.", GREEN_TEXT()));
+                                    System.out.println("\n");;
 
                                 } else System.out.println("Opción no permitida.");
                                 break;
@@ -97,7 +104,8 @@ public class Menu {
                                 System.out.print("Ingrese el id del aldeano a buscar: ");
                                 id = s.nextInt();
                                 Aldeano a = aldea.buscarAldeano(id);
-                                System.out.println("\nSe encontró el aldeano:");
+                                System.out.println(colorize("Se encontro al aldeanito", GREEN_TEXT()));
+                                System.out.println("\n");
                                 System.out.println(a.aTabla());
                                 break;
                             }
@@ -119,9 +127,11 @@ public class Menu {
                                         System.out.print("[1] Oveja \n[2] Panda \n[3] Lobo\nIngrese un mob: ");
                                         Animal a = crearAnimal(s.nextInt());
                                         if (aldea.agregarAnimal(a)) {
-                                            System.out.println("Se agregó al animalito correctamente.");
+                                            System.out.println(colorize("Se agrego al animalito.", GREEN_TEXT()));
+                                            System.out.println("\n");
                                             aldea.guardarCambios("ArchivoAnimales");
-                                        } else System.out.println("No se pudo agregar al animal.");
+                                        } else  System.out.println(colorize("No se pudo agrego al animalito", GREEN_TEXT()));
+                                    System.out.println("\n");
 
                                 } else System.out.println("Opción no permitida.");
                                 break;
@@ -136,10 +146,12 @@ public class Menu {
                                     System.out.print("Ingrese el id del animalito a eliminar: ");
                                     id = s.nextInt();
                                     if (aldea.eliminarAnimal(id)){
-                                        System.out.println("Se eliminó el animalito :c .");
+                                        System.out.println(colorize("Se elimino al animalito", GREEN_TEXT()));
+                                        System.out.println("\n");
                                         aldea.guardarCambios("ArchivoAnimales");
                                     }
-                                    else System.out.println("No se pudo eliminar el animal.");
+                                    else  System.out.println(colorize("No se pudo eliminar al animalito", GREEN_TEXT()));
+                                    System.out.println("\n");
 
                                 } else System.out.println("Opción no permitida.");
                                 break;
@@ -149,7 +161,8 @@ public class Menu {
                                 System.out.print("Ingrese el id del animal a buscar: ");
                                 id = s.nextInt();
                                 Animal a = aldea.buscarAnimal(id);
-                                System.out.println("\nSe encontró el animal:");
+                                System.out.println(colorize("\nSe encontro al animalito", GREEN_TEXT()));
+                                System.out.println("\n");
                                 System.out.println(a.aTabla());
                                 break;
                             }
@@ -159,8 +172,10 @@ public class Menu {
                                     System.out.print("Ingrese el id del lobo a buscar: ");
                                     id = s.nextInt();
                                     System.out.print("Ingrese su id: ");
-                                    if ( aldea.domesticarLobito(id, s.nextInt()) ) System.out.println("HA ADOPTADO AL LOBO!!.");
-                                    else System.out.println("No se pudo domesticar al lobo.");
+                                    if ( aldea.domesticarLobito(id, s.nextInt()) )  System.out.println(colorize("Se agrego al aldeanito", GREEN_TEXT()));
+
+                                    else  System.out.println(colorize("No se pudo domesticar el animalito", GREEN_TEXT()));
+                                    System.out.println("\n");
 
                                 } else System.out.println("Opción no permitida.");
                                 break;
@@ -183,7 +198,8 @@ public class Menu {
                                         System.out.print("[1] Creeper \n[2] Zombie \nIngrese un mob: ");
                                         Mob m = crearMobHostil(s.nextInt());
                                         if (aldea.agregarHostil(m)) {
-                                            System.out.println("Se agregó al mob correctamente.");
+                                            System.out.println(colorize("Se agrego al mob", GREEN_TEXT()));
+                                            System.out.println("\n");
                                             aldea.guardarCambios("ArchivoHostiles");
                                         }
                                 } else System.out.println("Opción no permitida.");
@@ -199,10 +215,12 @@ public class Menu {
                                     System.out.print("Ingrese el id del mob a eliminar: ");
                                     id = s.nextInt();
                                     if (aldea.eliminarHostiles(id)) {
-                                        System.out.println("Se eliminó el mob.");
+                                        System.out.println(colorize("Se elimino el mob", GREEN_TEXT()));
+                                        System.out.println("\n");
                                         aldea.guardarCambios("ArchivoHostiles");
                                     }
-                                    else System.out.println("No se pudo eliminar el mob.");
+                                    else  System.out.println(colorize("No se pudo eliminar al mob", GREEN_TEXT()));
+                                    System.out.println("\n");
 
                                 } else System.out.println("Opción no permitida.");
                                 break;
@@ -236,10 +254,12 @@ public class Menu {
                                         LocalDate fechaSalida = Celda.stringToLocalDate(s.next());
 
                                         if ( aldea.encarcelar(id, LocalDate.now(), fechaSalida ) ){
-                                            System.out.println("El mob se fue en cana.");
+                                            System.out.println(colorize("El mob se fue en cana.", GREEN_TEXT()));
+                                            System.out.println("\n");
                                             aldea.guardarCambios("ArchivoCarcel");
                                         }
-                                        else System.out.println("No se pudo encarcelar el mob.");
+                                        else  System.out.println(colorize("No se pudo encarcelar al mob", GREEN_TEXT()));
+                                    System.out.println("\n");
 
                                         break;
                                 } else System.out.println("Opción no permitida.");
@@ -266,10 +286,12 @@ public class Menu {
                                         int idCelda = s.nextInt();
 
                                         if ( aldea.liberaMob(idCelda) ) {
-                                            System.out.println("Se liberó el mob correctamente!");
+                                            System.out.println(colorize("Se libero al mob", GREEN_TEXT()));
+                                            System.out.println("\n");
                                             aldea.guardarCambios("ArchivoCarcel");
                                         }
-                                        else System.out.println("No se pudo liberar el mob.");
+                                        else  System.out.println(colorize("No se pudo liberar al mob", GREEN_TEXT()));
+                                    System.out.println("\n");
 
 
                                 } else System.out.println("Opción no permitida.");
@@ -294,9 +316,11 @@ public class Menu {
                                 if (tipoUsuario.equalsIgnoreCase("OP")) {
                                     Player p = crearPlayer();
                                     if (aldea.agregarPlayer(p)) {
-                                        System.out.println("Se agregó el jugador correctamente.");
+                                        System.out.println(colorize("Se agrego al jugador", GREEN_TEXT()));
+                                        System.out.println("\n");
                                         aldea.guardarCambios("ArchivoUsuarios");
-                                    } else System.out.println("No se pudo agregar el jugador.");
+                                    } else  System.out.println(colorize("No se pudo agregar al jugador", GREEN_TEXT()));
+                                    System.out.println("\n");
                                 } else System.out.println("Opción no permitida.");
                                 break;
                             }
@@ -309,10 +333,12 @@ public class Menu {
                                     System.out.print("Ingrese el id del jugador a eliminar: ");
                                     int id = s.nextInt();
                                     if ( aldea.eliminarPlayer(id) ) {
-                                        System.out.println("Se eliminó el jugador de la whitelist.");
+                                        System.out.println(colorize("Se elimino al jugador de la whitelist", GREEN_TEXT()));
+                                        System.out.println("\n");
                                         aldea.guardarCambios("ArchivoUsuarios");
                                     }
-                                    else System.out.println("No se pudo eliminar el jugador de la whitelist.");
+                                    else  System.out.println(colorize("No se pudo eliminar al jugador de la whitelist", GREEN_TEXT()));
+                                    System.out.println("\n");
 
                                 } else System.out.println("Opción no permitida.");
                                 break;
@@ -365,7 +391,8 @@ public class Menu {
                     }
                 }
             } catch (InputMismatchException e){
-                System.out.println("Error. Ingresar numeros.");
+                System.out.println(ANSI_RED + "Solo numeros." + ANSI_RESET );
+                s.nextLine();
             } catch (RuntimeException e) {
                 System.out.println(e.getMessage());
                 //e.printStackTrace();
