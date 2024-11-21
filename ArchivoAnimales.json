@@ -1,7 +1,7 @@
 [
     {
-        "drops": [],
         "tipo": "Oveja",
+        "drops": [],
         "Tipo": "Animal",
         "color": "blanco",
         "tieneLana": true,
@@ -14,8 +14,8 @@
     },
     {
         "gen": "DEBIL",
-        "drops": [],
         "tipo": "Panda",
+        "drops": [],
         "Tipo": "Animal",
         "vida": 20,
         "danio": 0,
@@ -25,9 +25,9 @@
         "nombre": "POCHAKO"
     },
     {
+        "tipo": "Lobo",
         "drops": [],
         "domesticado": false,
-        "tipo": "Lobo",
         "Tipo": "Animal",
         "vida": 4,
         "danio": 4,
@@ -36,5 +36,31 @@
         "tipoAlimentacion": "CARNIVORO",
         "id": 14,
         "nombre": "Lobo"
+    },
+    {
+        "tipo": "Lobo",
+        "drops": [],
+        "domesticado": false,
+        "Tipo": "Animal",
+        "vida": 4,
+        "danio": 4,
+        "esBebe": false,
+        "IDduenio": -1,
+        "tipoAlimentacion": "CARNIVORO",
+        "id": 17,
+        "nombre": "Jose"
+    },
+    {
+        "tipo": "Lobo",
+        "drops": [],
+        "domesticado": false,
+        "Tipo": "Animal",
+        "vida": 4,
+        "danio": 4,
+        "esBebe": true,
+        "IDduenio": -1,
+        "tipoAlimentacion": "CARNIVORO",
+        "id": 19,
+        "nombre": "Shula"
     }
 ]

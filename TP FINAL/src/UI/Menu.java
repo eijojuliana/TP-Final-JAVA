@@ -802,11 +802,9 @@ public class Menu {
         return p;
     }
     private Lobo crearLobo() throws Atributo_vacio_Exception, Valor_de_atributo_no_valido_Exception, InputMismatchException {
-
         Scanner s=new Scanner(System.in);
 
         String nombre, tipoAlimentacion;
-        int opcion;
         boolean booleano;
 
         System.out.print("Ingrese el nombre del lobo: ");
@@ -814,8 +812,8 @@ public class Menu {
         if (nombre.isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
 
 
-        System.out.print("El lobo es bebé? [1] SIIII :3 ,[0]-No. Está grande ya: ");
-        opcion=s.nextInt();
+        System.out.print("El lobo es bebé? [1] SII :3 ,[0]-No");
+        int opcion = s.nextInt();
         if (opcion == 1) booleano = true;
         else if (opcion == 0) booleano = false;
         else throw new Valor_de_atributo_no_valido_Exception("Valor cargado no válido.");
@@ -824,7 +822,7 @@ public class Menu {
         tipoAlimentacion = s.next().toUpperCase();
 
         System.out.println("Desea domesticar al lobo? : \n 1-SIP \n 0-NOP ");
-        int decision =s.nextInt();
+        int decision = s.nextInt();
 
         Lobo l= new Lobo();
         if (decision ==1 ){
