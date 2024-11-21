@@ -382,11 +382,12 @@ public class Menu {
     }
     private void printMenu2(int menu1, String tipoUsuario){
 
-        System.out.print(" ██▓▒░⡷⠂𝙶𝚎𝚜𝚝𝚒𝚘𝚗⠐⢾░▒▓██");
+        System.out.print("""
+                ██▓▒░⡷⠂𓆩𝔾𝕖𝕤𝕥𝕚𝕠𝕟""" + " " );
         switch (menu1){
             case 1: {
                 System.out.println(""" 
-                                      \n𓆩𝔸𝕝𝕕𝕖𝕒𝕟𝕠𝕤𓆪""");
+                                      𝔸𝕝𝕕𝕖𝕒𝕟𝕠𝕤𓆪⠐⢾░▒▓██""");
                 if (tipoUsuario.equalsIgnoreCase("Espectador")){
                     System.out.print("""   
             
@@ -420,7 +421,7 @@ public class Menu {
             }
             case 2: {
                 System.out.println("""
-                                      \n𓆩𝔸ℕ𝕀𝕄𝔸𝕃𝔼𝕊:𓆪""");
+                                      𝔸ℕ𝕀𝕄𝔸𝕃𝔼𝕊:𓆪⠐⢾░▒▓██""");
                 if (tipoUsuario.equalsIgnoreCase("Espectador")){
                     System.out.print("""   
             
@@ -457,7 +458,7 @@ public class Menu {
             }
             case 3: {
                 System.out.println("""
-                                       𓆩ℍ𝕆𝕊𝕋𝕀𝕃𝔼𝕊:𓆪"""  );
+                                       ℍ𝕆𝕊𝕋𝕀𝕃𝔼𝕊:𓆪⠐⢾░▒▓██"""  );
                 if (tipoUsuario.equalsIgnoreCase("Espectador")){
                     System.out.print("""   
             
@@ -491,7 +492,7 @@ public class Menu {
             }
             case 4: {
                 System.out.println("""
-                                       𓆩ℂ𝔸ℝℂ𝔼𝕃𓆪""" );
+                                       ℂ𝔸ℝℂ𝔼𝕃𓆪⠐⢾░▒▓██""" );
                 if (tipoUsuario.equalsIgnoreCase("Espectador") ||
                         tipoUsuario.equalsIgnoreCase("Survival")){
                     System.out.print("""   
@@ -521,7 +522,7 @@ public class Menu {
             }
             case 5:{
                 System.out.println("""
-                                       𓆩𝕁𝕌𝔾𝔸𝔻𝕆ℝ𝔼𝕊:𓆪"""  );
+                                       𝕁𝕌𝔾𝔸𝔻𝕆ℝ𝔼𝕊:𓆪⠐⢾░▒▓██"""  );
                 if (tipoUsuario.equalsIgnoreCase("Espectador") ||
                         tipoUsuario.equalsIgnoreCase("Survival") ||
                         tipoUsuario.equalsIgnoreCase("Creativo") ){
