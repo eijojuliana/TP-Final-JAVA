@@ -7,6 +7,7 @@ import PackageInterfaces.IConversionJSON;
 import PackageJSON.JSONUtiles;
 import PackageModelo.Celda;
 import PackageModelo.Entidad;
+import PackageModelo.Player;
 import com.github.freva.asciitable.AsciiTable;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -56,9 +57,8 @@ public class Carcel implements IConversionJSON{
             for(int i=0;i< jsonArray.length();i++){
                 JSONObject jCelda = jsonArray.getJSONObject(i);
                 Celda celda = new Celda();
-                if (celda.fromJSON(jCelda)){
-                    carcel.put(celda.getNumeroCelda(), celda);
-                }
+                celda.fromJSON(jCelda);
+                carcel.put(celda.getNumeroCelda(), celda);
             }
             exito = true;
 
@@ -113,6 +113,7 @@ public class Carcel implements IConversionJSON{
     }
 
     public Celda obtenerInfoCelda(int numeroCelda){
+        if ( carcel.get(numeroCelda) == null ) throw new Entidad_inexistente_Exception("No se encuentra la celda o está vacia");
         return carcel.get(numeroCelda);
     }
 
@@ -143,13 +144,13 @@ public class Carcel implements IConversionJSON{
     public String carcelToTable() throws Atributo_vacio_Exception {
         if(carcel.isEmpty()) throw new Atributo_vacio_Exception("La carcel está vacía.");
 
-        String[][] data = new String[carcel.size() + 1][4];
-        data[0] = new String[]{"ID Celda", "Mob", "Fecha Entrada", "Fecha Salida"};
+        int i = 0;
+        String[][] data = new String[carcel.size() + 1][5];
+        data[0] = new String[]{"ID Celda", "Nombre", "ID", "Fecha Entrada", "Fecha Salida"};
 
-        for (int i = 1; i < carcel.size(); i++) {
-            Celda c = carcel.get(i);
-            data[i + 1] = c.aFila();
-
+        for (Celda c : carcel.values()){
+            data[i+1] = c.aFila();
+            i++;
         }
 
         return Aldea.tabla_modificada(AsciiTable.getTable(data));

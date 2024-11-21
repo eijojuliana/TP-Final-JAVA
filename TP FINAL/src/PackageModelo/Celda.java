@@ -67,8 +67,8 @@ public class Celda implements IConversionJSON, IFila, ITabla {
     public String aTabla() {
         return AsciiTable.getTable(new String[][] {
                 {"Numero de celda", String.format("%d", getNumeroCelda()) },
-                {"Mob", mob.getNombre() },
-                {"ID Mob", String.format("%d", mob.getId()) },
+                {"Nombre", mob.getNombre() },
+                {"ID", String.format("%d", mob.getId()) },
                 {"Fecha de ingreso", String.format("%1$td/%1$tm/%1$tY", getFechaEntrada()) },
                 {"Fecha de salida", String.format("%1$td/%1$tm/%1$tY", getFechaSalida()) },
         });
@@ -78,7 +78,7 @@ public class Celda implements IConversionJSON, IFila, ITabla {
     public String[] aFila() {
         return new String[]{
                 String.format("%d", getNumeroCelda()),
-                "Mob", mob.getNombre(),
+                mob.getNombre(),
                 String.format("%d", mob.getId()),
                 String.format("%1$td/%1$tm/%1$tY", getFechaEntrada()),
                 String.format("%1$td/%1$tm/%1$tY", getFechaSalida()),
@@ -105,7 +105,7 @@ public class Celda implements IConversionJSON, IFila, ITabla {
 
         try {
             j.put("numeroCelda",numeroCelda);
-            j.put("mob",mob);
+            j.put("mob",mob.toJSON());
             j.put("fechaIngreso",localDateToString( getFechaEntrada() ));
             j.put("fechaSalida",localDateToString( getFechaSalida() ));
 
@@ -121,7 +121,9 @@ public class Celda implements IConversionJSON, IFila, ITabla {
         boolean exito = false;
         try{
             setNumeroCelda(j.getInt("numeroCelda"));
-            mob.fromJSON(j);
+            Entidad mob = new Entidad();
+            mob.fromJSON(j.getJSONObject("mob"));
+            setMob(mob);
             setFechaEntrada(stringToLocalDate(j.getString("fechaIngreso")));
             setFechaSalida(stringToLocalDate(j.getString("fechaSalida")));
         } catch (JSONException e){

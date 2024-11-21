@@ -20,13 +20,33 @@
         "nombre": "EnUnMundoMuyCuadrado"
     },
     {
-        "drops": [],
         "tipo": "Zombie",
+        "drops": [],
         "vida": 10,
         "danio": 2.5,
         "esBebe": false,
         "tipoZombie": "MOMIFICADO",
         "id": 10,
         "nombre": "Zombiee"
+    },
+    {
+        "tipo": "Creeper",
+        "drops": [],
+        "esElectrico": true,
+        "vida": 10,
+        "danio": 21.5,
+        "esBebe": false,
+        "id": 15,
+        "nombre": "Creeper1"
+    },
+    {
+        "tipo": "Zombie",
+        "drops": [],
+        "vida": 10,
+        "danio": 2.5,
+        "esBebe": false,
+        "tipoZombie": "CHIQUITO",
+        "id": 16,
+        "nombre": "Zombie2"
     }
 ]

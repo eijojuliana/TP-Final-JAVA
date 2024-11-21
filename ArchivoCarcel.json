@@ -1,1 +1,29 @@
-{"celdas": []}
+{"celdas": [
+    {
+        "mob": {
+            "tipo": "Aldeano",
+            "vida": 10,
+            "danio": 0,
+            "id": 7,
+            "nombre": "pablo"
+        },
+        "fechaIngreso": "20/11/2024",
+        "numeroCelda": 1,
+        "fechaSalida": "21/11/2024"
+    },
+    {
+        "mob": {
+            "tipo": "Player",
+            "tipoPlayer": "SURVIVAL",
+            "vida": 10,
+            "danio": 2,
+            "contrasenia": "Ol",
+            "id": 11,
+            "nombre": "Dy",
+            "esPremium": true
+        },
+        "fechaIngreso": "20/11/2024",
+        "numeroCelda": 3,
+        "fechaSalida": "20/11/2024"
+    }
+]}

@@ -45,6 +45,11 @@ public class Aldea {
         carcel=new Carcel();
     }
 
+    //set
+    public void setCarcel(Carcel carcel) {
+        this.carcel = carcel;
+    } //Para el from json
+
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -335,6 +340,7 @@ public class Aldea {
             JSONObject Jcarcel = new JSONObject(JSONUtiles.leer2("ArchivoCarcel"));
             Carcel carcel = new Carcel();
             carcel.fromJSON(Jcarcel);
+            setCarcel(carcel);
 
         } catch (NoSuchFileException e){
             System.out.println("creando archivo carcel...");

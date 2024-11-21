@@ -704,17 +704,17 @@ public class Menu {
         int opcion;
 
         System.out.print("Ingrese el nombre del panda: ");
-        nombre = s.next().toUpperCase();
+        nombre = s.next();
         if (nombre.isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
         p.setNombre(nombre);
 
-        System.out.print("El panda es bebé? [1] SIIII :3 ,[0]-No. Está grande ya: ");
+        System.out.print("El oveja es bebé? [1] SIIII :3 ,[0]-No. Está grande ya: ");
         opcion=s.nextInt();
         if (opcion == 1) p.setEsBebe(true);
         else if (opcion == 0) p.setEsBebe(false);
         else throw new Valor_de_atributo_no_valido_Exception("Valor cargado no válido.");
 
-        System.out.print("Ingrese el tipo de alimentación que tiene su panda [CARNIVORO, HERVIVORO, OMNIVORO]: ");
+        System.out.print("Ingrese el tipo de alimentación que tiene su panda [CARNIVORO, HERBIVORO, OMNIVORO]: ");
         tipoAlimentacion = s.next().toUpperCase();
         p.setTipoAlimentacion(tipoAlimentacion);
 
@@ -742,7 +742,7 @@ public class Menu {
         else if (opcion == 0) l.setEsBebe(false);
         else throw new Valor_de_atributo_no_valido_Exception("Valor cargado no válido.");
 
-        System.out.print("Ingrese el tipo de alimentación que tiene su lobo [CARNIVORO, HERVIVORO, OMNIVORO]: ");
+        System.out.print("Ingrese el tipo de alimentación que tiene su lobo [CARNIVORO, HERBIVORO, OMNIVORO]: ");
         tipoAlimentacion = s.next().toUpperCase();
         l.setTipoAlimentacion(tipoAlimentacion);
 
@@ -769,12 +769,12 @@ public class Menu {
         int opcion;
 
         System.out.print("Ingrese el nombre de la oveja: ");
-        nombre = s.next().toUpperCase();
+        nombre = s.next();
         if (nombre.isBlank()) throw new Atributo_vacio_Exception("El nombre está vacio");
         o.setNombre(nombre);
 
-        System.out.print("Ingrese el tipo de alimentación que tiene su oveja [CARNIVORO, HERVIVORO, OMNIVORO]: ");
-        tipoAlimentacion = s.next();
+        System.out.print("Ingrese el tipo de alimentación que tiene su oveja [CARNIVORO, HERBIVORO, OMNIVORO]: ");
+        tipoAlimentacion = s.next().toUpperCase();
         o.setTipoAlimentacion(tipoAlimentacion);
         System.out.println("El tipo de alimentación fue asignado correctamente.");
 

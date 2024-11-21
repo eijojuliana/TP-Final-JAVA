@@ -1,1 +1,40 @@
-[]
+[
+    {
+        "drops": [],
+        "tipo": "Oveja",
+        "Tipo": "Animal",
+        "color": "blanco",
+        "tieneLana": true,
+        "vida": 4,
+        "danio": 0,
+        "esBebe": false,
+        "tipoAlimentacion": "HERBIVORO",
+        "id": 12,
+        "nombre": "OVEJA1"
+    },
+    {
+        "gen": "DEBIL",
+        "drops": [],
+        "tipo": "Panda",
+        "Tipo": "Animal",
+        "vida": 20,
+        "danio": 0,
+        "esBebe": true,
+        "tipoAlimentacion": "CARNIVORO",
+        "id": 13,
+        "nombre": "POCHAKO"
+    },
+    {
+        "drops": [],
+        "domesticado": false,
+        "tipo": "Lobo",
+        "Tipo": "Animal",
+        "vida": 4,
+        "danio": 4,
+        "esBebe": false,
+        "IDduenio": 0,
+        "tipoAlimentacion": "CARNIVORO",
+        "id": 14,
+        "nombre": "Lobo"
+    }
+]
