@@ -446,6 +446,7 @@ public class Menu {
                 ██▓▒░⡷⠂𓆩𝔾𝕖𝕤𝕥𝕚𝕠𝕟""" + " " );
         switch (menu1){
             case 1: {
+                ALDEANO();
                 System.out.println(""" 
                                       𝔸𝕝𝕕𝕖𝕒𝕟𝕠𝕤𓆪⠐⢾░▒▓██""");
                 if (tipoUsuario.equalsIgnoreCase("Espectador")){
@@ -480,6 +481,7 @@ public class Menu {
                 break;
             }
             case 2: {
+                OVEJA();
                 System.out.println("""
                                       𝔸ℕ𝕀𝕄𝔸𝕃𝔼𝕊:𓆪⠐⢾░▒▓██""");
                 if (tipoUsuario.equalsIgnoreCase("Espectador")){
@@ -517,6 +519,7 @@ public class Menu {
                 break;
             }
             case 3: {
+                CREEPER();
                 System.out.println("""
                                        ℍ𝕆𝕊𝕋𝕀𝕃𝔼𝕊:𓆪⠐⢾░▒▓██"""  );
                 if (tipoUsuario.equalsIgnoreCase("Espectador")){
@@ -625,6 +628,70 @@ public class Menu {
         System.out.println(espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(8) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(4) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(12) + espacio.repeat(2) + bloque.repeat(16) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(12) + bloque.repeat(6) + espacio.repeat(6));
         System.out.println(espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(8) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(4) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(12) + espacio.repeat(2) + bloque.repeat(16) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(2) + bloque.repeat(6) + espacio.repeat(12) + bloque.repeat(6) + espacio.repeat(6));
         System.out.println(espacio.repeat(144));
+    }
+
+    private void OVEJA() {
+        Attribute blanco= BACK_COLOR(254, 254, 254);
+        Attribute rosa= BACK_COLOR(216, 139, 139);
+        Attribute crema= BACK_COLOR(218, 165, 141);
+        Attribute negro= BACK_COLOR(0, 0, 0);
+
+        String bb = colorize("  ", blanco);
+        String br = colorize("  ", rosa);
+        String bn = colorize("  ", negro);
+        String bc = colorize("  ", crema);
+
+        System.out.println(bb.repeat(8));
+        System.out.println(bb.repeat(8));
+        System.out.println(bb + bc.repeat(6) + bb);
+        System.out.println(bb + bn + bb + bc.repeat(2) + bb + bn + bb);
+        System.out.println(bb + bc.repeat(6) + bb);
+        System.out.println(bb.repeat(2) + bc + br.repeat(2) + bc + bb.repeat(2));
+        System.out.println(bb.repeat(2) + bc + br.repeat(2) + bc + bb.repeat(2));
+        System.out.println(bb.repeat(8));
+    }
+
+    private void CREEPER() {
+        Attribute verdec= BACK_COLOR(80, 173, 92);
+        Attribute verdeosc= BACK_COLOR(159, 207, 98);
+        Attribute negro= BACK_COLOR(0, 0, 0);
+
+        String bvc = colorize("  ", verdec);
+        String bvo = colorize("  ", verdeosc);
+        String bn = colorize("  ", negro);
+
+        System.out.println(bvo.repeat(2) + bvc.repeat(2) + bvo.repeat(3) + bvc);
+        System.out.println(bvo.repeat(2) + bvc + bvo + bvc.repeat(2) + bvo.repeat(2));
+        System.out.println(bvc + bn.repeat(2) + bvo.repeat(2) + bn.repeat(2) + bvo);
+        System.out.println(bvo + bn.repeat(2) + bvc + bvo + bn.repeat(2) + bvo);
+        System.out.println(bvc + bvo.repeat(2) + bn.repeat(2) + bvc.repeat(2) + bvo);
+        System.out.println(bvo + bvc + bn.repeat(4) + bvo + bvc);
+        System.out.println(bvc + bvo + bn.repeat(4) + bvc + bvo);
+        System.out.println(bvo + bvc + bn + bvo.repeat(2) + bn + bvc + bvo);
+    }
+
+    private void ALDEANO() {
+        Attribute piel= BACK_COLOR(174, 124, 99);
+        Attribute pupila= BACK_COLOR(0, 151, 14);
+        Attribute ojo= BACK_COLOR(254, 254, 254);
+        Attribute ceja= BACK_COLOR(48, 38, 11);
+        Attribute nariz= BACK_COLOR(131, 94, 52);
+        Attribute labio= BACK_COLOR(114, 66, 46);
+
+        String bp = colorize("  ", piel);
+        String bpu = colorize("  ", pupila);
+        String bo = colorize("  ", ojo);
+        String bc = colorize("  ", ceja);
+        String bn = colorize("  ", nariz);
+        String bl = colorize("  ", labio);
+
+        System.out.println(bp.repeat(8));
+        System.out.println(bp.repeat(8));
+        System.out.println(bp + bc.repeat(6) + bp);
+        System.out.println(bp + bo + bpu + bp.repeat(2) + bpu + bo + bp);
+        System.out.println(bn + bp.repeat(2) + bn.repeat(2) + bp.repeat(2) + bn);
+        System.out.println(bn + bp + bl + bn.repeat(2) + bl + bp + bn);
+        System.out.println(bn + bp.repeat(2) + bn.repeat(2) + bp.repeat(2) + bn);
     }
 
     //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
