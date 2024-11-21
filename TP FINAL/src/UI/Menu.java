@@ -340,7 +340,7 @@ public class Menu {
                 System.out.println("Error. Ingresar numeros.");
             } catch (RuntimeException e) {
                 System.out.println(e.getMessage());
-                e.printStackTrace();
+                //e.printStackTrace();
             }
 
             s.nextLine();
@@ -546,7 +546,7 @@ public class Menu {
         Scanner s = new Scanner(System.in);
         System.out.print("Presione enter para continuar... ");
         s.nextLine();
-        s.close();
+        //s.close();
     }
 
     private void MINECRAFT() {
