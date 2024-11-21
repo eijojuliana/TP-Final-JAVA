@@ -400,9 +400,7 @@ public class Menu {
 
             s.nextLine();
             if ( menu1 != 0 ){ //Si no eligió salir...
-                System.out.println();
-                pausa();
-                System.out.println("\n");
+                System.out.println("\n\n");
             }
 
         }
@@ -601,12 +599,6 @@ public class Menu {
             }
         }
         System.out.print("[0] Volver \n \n" + "Ingrese una opción: ");
-    }
-
-    private void pausa(){
-        Scanner s = new Scanner(System.in);
-        System.out.print("Ingrese un caracter para continuar... ");
-        s.next();
     }
 
     private void MINECRAFT() {
