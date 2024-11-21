@@ -19,6 +19,8 @@ public class Menu {
         Scanner s = new Scanner(System.in);
 
         int menu1 = 0, menu2 = 0;
+        final String ANSI_RED = "\u001B[31m";
+        final String ANSI_RESET = "\u001B[0m";
 
         Aldea aldea = new Aldea();
 
@@ -33,7 +35,7 @@ public class Menu {
                     break;
 
                 } catch (InputMismatchException e){
-                    System.out.println("Solo numeros.");
+                    System.out.println(ANSI_RED + "Solo numeros." + ANSI_RESET );
                     s.nextLine();
                 }
             }
