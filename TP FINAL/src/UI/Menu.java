@@ -359,182 +359,187 @@ public class Menu {
     //todo MENU
     private void printMenu(){
         System.out.print("""
-                GESTIÓN MINECRAFT:
+                ██▓▒░⡷⠂𝙶𝚎𝚜𝚝𝚒𝚘𝚗 𝚍𝚎 𝙼𝚒𝚗𝚎𝚌𝚛𝚊𝚏𝚝⠐⢾░▒▓██
                 
-                --  ALDEA  --
-                [1] Aldeanos
-                [2] Animales
-                [3] Hostiles
-                [4] Carcel
+                𓆩--  𝔸𝕃𝔻𝔼𝔸  --𓆪
+                [𝟙] 𝔸𝕝𝕕𝕖𝕒𝕟𝕠𝕤
+                [𝟚] 𝔸𝕟𝕚𝕞𝕒𝕝𝕖𝕤
+                [𝟛] ℍ𝕠𝕤𝕥𝕚𝕝𝕖𝕤
+                [𝟜] ℂ𝕒𝕣𝕔𝕖𝕝
                 
-                -- USUARIOS --
-                [5] Jugadores
+                𓆩-- 𝕌𝕊𝕌𝔸ℝ𝕀𝕆𝕊 --𓆪
+                [𝟝] 𝕁𝕦𝕘𝕒𝕕𝕠𝕣𝕖𝕤
                 
-                --  TODOS  --
-                [6] Mostrar todo
-                [7] Buscar por id
+                𓆩--  𝕋𝕆𝔻𝕆𝕊  --𓆪
+                [𝟞] 𝕄𝕠𝕤𝕥𝕣𝕒𝕣 𝕥𝕠𝕕𝕠
+                [𝟟] 𝔹𝕦𝕤𝕔𝕒𝕣 𝕡𝕠𝕣 𝕚𝕕
                 
-                -- SISTEMA --
-                [0] Salir
+                𓆩--- 𝕊𝕀𝕊𝕋𝔼𝕄𝔸 --𓆪
+                [𝟘] 𝕊𝕒𝕝𝕚𝕣
                 
-                Ingrese una opción:""");
+                𝕀𝕟𝕘𝕣𝕖𝕤𝕖 𝕦𝕟𝕒 𝕠𝕡𝕔𝕚ó𝕟:""");
         System.out.print(" ");
     }
     private void printMenu2(int menu1, String tipoUsuario){
 
-        System.out.print(" GESTIÓN ");
+        System.out.print(" ██▓▒░⡷⠂𝙶𝚎𝚜𝚝𝚒𝚘𝚗⠐⢾░▒▓██");
         switch (menu1){
             case 1: {
-                System.out.println("ALDEANOS:");
+                System.out.println(""" 
+                                      \n𓆩𝔸𝕝𝕕𝕖𝕒𝕟𝕠𝕤𓆪""");
                 if (tipoUsuario.equalsIgnoreCase("Espectador")){
                     System.out.print("""   
             
-                        [̶̶̶1̶̶̶]̶̶̶ ̶̶̶C̶̶̶a̶̶̶r̶̶̶g̶̶̶a̶̶̶r̶̶̶ ̶̶̶u̶n̶ ̶a̶l̶d̶e̶a̶n̶o̶
-                        [2] Ver todos los aldeanos
-                        [̶3̶]̶ ̶E̶l̶i̶m̶i̶n̶a̶r̶ ̶u̶n̶ ̶a̶l̶d̶e̶a̶n̶o̶ ̶p̶o̶r̶ ̶i̶d̶
-                        [4] Buscar por id
+                            [̶̶̶𝟙]̶̶̶ ̶̶̶ℂ̶̶̶𝕒̶̶̶𝕣̶̶̶𝕘̶̶̶𝕒̶̶̶𝕣̶̶̶ ̶̶̶𝕦̶𝕟̶ ̶𝕒̶𝕝̶𝕕̶𝕖̶𝕒̶𝕟̶𝕠̶
+                            [𝟚] 𝕍𝕖𝕣 𝕥𝕠𝕕𝕠𝕤 𝕝𝕠𝕤 𝕒𝕝𝕕𝕖𝕒𝕟𝕠𝕤
+                            [̶𝟛]̶ ̶𝔼̶𝕝̶𝕚̶𝕞̶𝕚̶𝕟̶𝕒̶𝕣̶ ̶𝕦̶𝕟̶ ̶𝕒̶𝕝̶𝕕̶𝕖̶𝕒̶𝕟̶𝕠̶ ̶𝕡̶𝕠̶𝕣̶ ̶𝕚̶𝕕̶
+                            [𝟜] 𝔹𝕦𝕤𝕔𝕒𝕣 𝕡𝕠𝕣 𝕚𝕕
                         
                         """);
                 } else if (tipoUsuario.equalsIgnoreCase("Survival")) {
                     System.out.print("""   
                             
-                            [̶̶̶1̶̶̶]̶̶̶ ̶̶̶C̶̶̶a̶̶̶r̶̶̶g̶̶̶a̶̶̶r̶̶̶ ̶̶̶u̶n̶ ̶a̶l̶d̶e̶a̶n̶o̶
-                            [2] Ver todos los aldeanos
-                            [3] Eliminar un aldeano por id
-                            [4] Buscar por id
+                            [̶̶̶𝟙]̶̶̶ ̶̶̶ℂ̶̶̶𝕒̶̶̶𝕣̶̶̶𝕘̶̶̶𝕒̶̶̶𝕣̶̶̶ ̶̶̶𝕦̶𝕟̶ ̶𝕒̶𝕝̶𝕕̶𝕖̶𝕒̶𝕟̶𝕠̶
+                            [𝟚] 𝕍𝕖𝕣 𝕥𝕠𝕕𝕠𝕤 𝕝𝕠𝕤 𝕒𝕝𝕕𝕖𝕒𝕟𝕠𝕤
+                            [𝟛] 𝔼𝕝𝕚𝕞𝕚𝕟𝕒𝕣 𝕦𝕟 𝕒𝕝𝕕𝕖𝕒𝕟𝕠 𝕡𝕠𝕣 𝕚𝕕
+                            [𝟜] 𝔹𝕦𝕤𝕔𝕒𝕣 𝕡𝕠𝕣 𝕚𝕕
                             
                             """);
                 } else if ( tipoUsuario.equalsIgnoreCase("Creativo") ||
-                            tipoUsuario.equalsIgnoreCase("OP") ) {
+                        tipoUsuario.equalsIgnoreCase("OP") ) {
                     System.out.print("""   
                             
-                            [1] Cargar un aldeano
-                            [2] Ver todos los aldeanos
-                            [3] Eliminar un aldeano por id
-                            [4] Buscar por id
+                            [𝟙] ℂ𝕒𝕣𝕘𝕒𝕣 𝕦𝕟 𝕒𝕝𝕕𝕖𝕒𝕟𝕠
+                            [𝟚] 𝕍𝕖𝕣 𝕥𝕠𝕕𝕠𝕤 𝕝𝕠𝕤 𝕒𝕝𝕕𝕖𝕒𝕟𝕠𝕤
+                            [𝟛] 𝔼𝕝𝕚𝕞𝕚𝕟𝕒𝕣 𝕦𝕟 𝕒𝕝𝕕𝕖𝕒𝕟𝕠 𝕡𝕠𝕣 𝕚𝕕
+                            [𝟜] 𝔹𝕦𝕤𝕔𝕒𝕣 𝕡𝕠𝕣 𝕚𝕕
                             
                             """);
                 }
                 break;
             }
             case 2: {
-                System.out.println("ANIMALES:");
+                System.out.println("""
+                                      \n𓆩𝔸ℕ𝕀𝕄𝔸𝕃𝔼𝕊:𓆪""");
                 if (tipoUsuario.equalsIgnoreCase("Espectador")){
                     System.out.print("""   
             
-                        [̶̶̶1̶̶̶]̶ ̶̶̶C̶̶̶a̶̶̶r̶̶̶g̶̶̶a̶̶̶r̶̶̶ ̶̶̶u̶n̶ ̶a̶n̶i̶m̶a̶l̶
-                        [2] Ver todos los animales
-                        [̶3̶]̶ ̶E̶l̶i̶m̶i̶n̶a̶r̶ ̶u̶n̶ ̶a̶n̶i̶m̶a̶l̶ ̶p̶o̶r̶ ̶i̶d̶
-                        [4] Buscar por id
-                        [̶5̶]̶ ̶D̶o̶m̶e̶s̶t̶i̶c̶a̶r̶ ̶l̶o̶b̶o̶
+                        [̶̶̶𝟙]̶ ̶̶̶ℂ̶̶̶𝕒̶̶̶𝕣̶̶̶𝕘̶̶̶𝕒̶̶̶𝕣̶̶̶ ̶̶̶𝕦̶𝕟̶ ̶𝕒̶𝕟̶𝕚̶𝕞̶𝕒̶𝕝̶
+                        [𝟚] 𝕍𝕖𝕣 𝕥𝕠𝕕𝕠𝕤 𝕝𝕠𝕤 𝕒𝕟𝕚𝕞𝕒𝕝𝕖𝕤
+                        [̶𝟛]̶ ̶𝔼̶𝕝̶𝕚̶𝕞̶𝕚̶𝕟̶𝕒̶𝕣̶ ̶𝕦̶𝕟̶ ̶𝕒̶𝕟̶𝕚̶𝕞̶𝕒̶𝕝̶ ̶𝕡̶𝕠̶𝕣̶ ̶𝕚̶𝕕̶
+                        [𝟜] 𝔹𝕦𝕤𝕔𝕒𝕣 𝕡𝕠𝕣 𝕚𝕕
+                        [̶𝟝]̶ ̶𝔻̶𝕠̶𝕞̶𝕖̶𝕤̶𝕥̶𝕚̶𝕔̶𝕒̶𝕣̶ ̶𝕝̶𝕠̶𝕓̶𝕠̶
                         
                         """);
                 } else if (tipoUsuario.equalsIgnoreCase("Survival")){
                     System.out.print("""   
             
-                        [̶̶̶1̶̶̶]̶ ̶̶̶C̶̶̶a̶̶̶r̶̶̶g̶̶̶a̶̶̶r̶̶̶ ̶̶̶u̶n̶ ̶a̶n̶i̶m̶a̶l̶
-                        [2] Ver todos los animales
-                        [3] Eliminar un animal por id
-                        [4] Buscar por id
-                        [5] Domesticar lobo
-                        
-                        """);
-                } else if ( tipoUsuario.equalsIgnoreCase("Creativo") ||
-                            tipoUsuario.equalsIgnoreCase("OP") ) {
-                    System.out.print("""   
-                            
-                            [1] Cargar un animal
-                            [2] Ver todos los animales
-                            [3] Eliminar un animal por id
-                            [4] Buscar por id
-                            [5] Domesticar lobo
-                            
-                            """);
-                }
-                break;
-            }
-            case 3: {
-                System.out.println("HOSTILES:");
-                if (tipoUsuario.equalsIgnoreCase("Espectador")){
-                    System.out.print("""   
-            
-                        [̶̶̶1̶̶̶]̶̶̶ ̶̶̶C̶a̶r̶g̶a̶r̶ ̶u̶n̶ ̶m̶o̶b̶ ̶h̶o̶s̶t̶i̶l̶
-                        [2] Ver todos los mobs hostiles
-                        [̶3̶]̶ ̶E̶l̶i̶m̶i̶n̶a̶r̶ ̶u̶n̶ ̶m̶o̶b̶ ̶p̶o̶r̶ ̶i̶d̶
-                        [4] Buscar por id
-                        
-                        """);
-                } else if (tipoUsuario.equalsIgnoreCase("Survival")){
-                    System.out.print("""   
-            
-                        [̶̶̶1̶̶̶]̶̶̶ ̶̶̶C̶a̶r̶g̶a̶r̶ ̶u̶n̶ ̶m̶o̶b̶ ̶h̶o̶s̶t̶i̶l̶
-                        [2] Ver todos los mob hostiles
-                        [3] Eliminar un mob por id
-                        [4] Buscar por id
-                        
-                        """);
-                } else if ( tipoUsuario.equalsIgnoreCase("Creativo") ||
-                            tipoUsuario.equalsIgnoreCase("OP") ) {
-                    System.out.print("""   
-                            
-                            [1] Cargar un mob hostil
-                            [2] Ver todos los mob hostiles
-                            [3] Eliminar un mob por id
-                            [4] Buscar por id
-                            
-                            """);
-                }
-                break;
-            }
-            case 4: {
-                System.out.println("CARCEL:");
-                if (tipoUsuario.equalsIgnoreCase("Espectador") ||
-                    tipoUsuario.equalsIgnoreCase("Survival")){
-                    System.out.print("""   
-            
-                        [̶1̶]̶ ̶A̶g̶r̶e̶g̶a̶r̶ ̶m̶o̶b̶ ̶a̶ ̶l̶a̶ ̶c̶a̶r̶c̶e̶l̶
-                        [2] Ver todas las celdas
-                        [3] Ver info mob encarcelado
-                        [4] Ver celdas libres
-                        [̶5̶]̶̶ ̶L̶i̶b̶e̶r̶a̶r̶ ̶m̶o̶b̶
-                        [6] Contar cantidad de celdas desocupadas
+                        [̶̶̶𝟙]̶ ̶̶̶ℂ̶̶̶𝕒̶̶̶𝕣̶̶̶𝕘̶̶̶𝕒̶̶̶𝕣̶̶̶ ̶̶̶𝕦̶𝕟̶ ̶𝕒̶𝕟̶𝕚̶𝕞̶𝕒̶𝕝̶
+                        [𝟚] 𝕍𝕖𝕣 𝕥𝕠𝕕𝕠𝕤 𝕝𝕠𝕤 𝕒𝕟𝕚𝕞𝕒𝕝𝕖𝕤
+                        [𝟛] 𝔼𝕝𝕚𝕞𝕚𝕟𝕒𝕣 𝕦𝕟 𝕒𝕟𝕚𝕞𝕒𝕝 𝕡𝕠𝕣 𝕚𝕕
+                        [𝟜] 𝔹𝕦𝕤𝕔𝕒𝕣 𝕡𝕠𝕣 𝕚𝕕
+                        [𝟝] 𝔻𝕠𝕞𝕖𝕤𝕥𝕚𝕔𝕒𝕣 𝕝𝕠𝕓𝕠
                         
                         """);
                 } else if ( tipoUsuario.equalsIgnoreCase("Creativo") ||
                         tipoUsuario.equalsIgnoreCase("OP") ) {
                     System.out.print("""   
                             
-                            [1] Agregar un mob a la carcel
-                            [2] Ver todas las celdas
-                            [3] Ver info mob encarcelado
-                            [4] Ver celdas libres
-                            [5] Liberar mob
-                            [6] Contar cantidad de celdas desocupadas
+                            [𝟙] ℂ𝕒𝕣𝕘𝕒𝕣 𝕦𝕟 𝕒𝕟𝕚𝕞𝕒𝕝
+                            [𝟚] 𝕍𝕖𝕣 𝕥𝕠𝕕𝕠𝕤 𝕝𝕠𝕤 𝕒𝕟𝕚𝕞𝕒𝕝𝕖𝕤
+                            [𝟛] 𝔼𝕝𝕚𝕞𝕚𝕟𝕒𝕣 𝕦𝕟 𝕒𝕟𝕚𝕞𝕒𝕝 𝕡𝕠𝕣 𝕚𝕕
+                            [𝟜] 𝔹𝕦𝕤𝕔𝕒𝕣 𝕡𝕠𝕣 𝕚𝕕
+                            [𝟝] 𝔻𝕠𝕞𝕖𝕤𝕥𝕚𝕔𝕒𝕣 𝕝𝕠𝕓𝕠
+                            
+                            """);
+                }
+                break;
+            }
+            case 3: {
+                System.out.println("""
+                                       𓆩ℍ𝕆𝕊𝕋𝕀𝕃𝔼𝕊:𓆪"""  );
+                if (tipoUsuario.equalsIgnoreCase("Espectador")){
+                    System.out.print("""   
+            
+                        [̶̶̶𝟙]̶̶̶ ̶̶̶ℂ̶𝕒̶𝕣̶𝕘̶𝕒̶𝕣̶ ̶𝕦̶𝕟̶ ̶𝕞̶𝕠̶𝕓̶ ̶𝕙̶𝕠̶𝕤̶𝕥̶𝕚̶𝕝̶
+                        [𝟚] 𝕍𝕖𝕣 𝕥𝕠𝕕𝕠𝕤 𝕝𝕠𝕤 𝕞𝕠𝕓𝕤 𝕙𝕠𝕤𝕥𝕚𝕝𝕖𝕤
+                        [̶𝟛]̶ ̶𝔼̶𝕝̶𝕚̶𝕞̶𝕚̶𝕟̶𝕒̶𝕣̶ ̶𝕦̶𝕟̶ ̶𝕞̶𝕠̶𝕓̶ ̶𝕡̶𝕠̶𝕣̶ ̶𝕚̶𝕕̶
+                        [𝟜] 𝔹𝕦𝕤𝕔𝕒𝕣 𝕡𝕠𝕣 𝕚𝕕
+                        
+                        """);
+                } else if (tipoUsuario.equalsIgnoreCase("Survival")){
+                    System.out.print("""   
+            
+                        [̶̶̶𝟙]̶̶̶ ̶̶̶ℂ̶𝕒̶𝕣̶𝕘̶𝕒̶𝕣̶ ̶𝕦̶𝕟̶ ̶𝕞̶𝕠̶𝕓̶ ̶𝕙̶𝕠̶𝕤̶𝕥̶𝕚̶𝕝̶
+                        [𝟚] 𝕍𝕖𝕣 𝕥𝕠𝕕𝕠𝕤 𝕝𝕠𝕤 𝕞𝕠𝕓 𝕙𝕠𝕤𝕥𝕚𝕝𝕖𝕤
+                        [𝟛] 𝔼𝕝𝕚𝕞𝕚𝕟𝕒𝕣 𝕦𝕟 𝕞𝕠𝕓 𝕡𝕠𝕣 𝕚𝕕
+                        [𝟜] 𝔹𝕦𝕤𝕔𝕒𝕣 𝕡𝕠𝕣 𝕚𝕕
+                        
+                        """);
+                } else if ( tipoUsuario.equalsIgnoreCase("Creativo") ||
+                        tipoUsuario.equalsIgnoreCase("OP") ) {
+                    System.out.print("""   
+                            
+                            [𝟙] ℂ𝕒𝕣𝕘𝕒𝕣 𝕦𝕟 𝕞𝕠𝕓 𝕙𝕠𝕤𝕥𝕚𝕝
+                            [𝟚] 𝕍𝕖𝕣 𝕥𝕠𝕕𝕠𝕤 𝕝𝕠𝕤 𝕞𝕠𝕓 𝕙𝕠𝕤𝕥𝕚𝕝𝕖𝕤
+                            [𝟛] 𝔼𝕝𝕚𝕞𝕚𝕟𝕒𝕣 𝕦𝕟 𝕞𝕠𝕓 𝕡𝕠𝕣 𝕚𝕕
+                            [𝟜] 𝔹𝕦𝕤𝕔𝕒𝕣 𝕡𝕠𝕣 𝕚𝕕
+                            
+                            """);
+                }
+                break;
+            }
+            case 4: {
+                System.out.println("""
+                                       𓆩ℂ𝔸ℝℂ𝔼𝕃𓆪""" );
+                if (tipoUsuario.equalsIgnoreCase("Espectador") ||
+                        tipoUsuario.equalsIgnoreCase("Survival")){
+                    System.out.print("""   
+            
+                        [̶𝟙]̶ ̶𝔸̶𝕘̶𝕣̶𝕖̶𝕘̶𝕒̶𝕣̶ ̶𝕞̶𝕠̶𝕓̶ ̶𝕒̶ ̶𝕝̶𝕒̶ ̶𝕔̶𝕒̶𝕣̶𝕔̶𝕖̶𝕝̶
+                        [𝟚] 𝕍𝕖𝕣 𝕥𝕠𝕕𝕒𝕤 𝕝𝕒𝕤 𝕔𝕖𝕝𝕕𝕒𝕤
+                        [𝟛] 𝕍𝕖𝕣 𝕚𝕟𝕗𝕠 𝕞𝕠𝕓 𝕖𝕟𝕔𝕒𝕣𝕔𝕖𝕝𝕒𝕕𝕠
+                        [𝟜] 𝕍𝕖𝕣 𝕔𝕖𝕝𝕕𝕒𝕤 𝕝𝕚𝕓𝕣𝕖𝕤
+                        [̶𝟝]̶̶ ̶𝕃̶𝕚̶𝕓̶𝕖̶𝕣̶𝕒̶𝕣̶ ̶𝕞̶𝕠̶𝕓̶
+                        [𝟞] ℂ𝕠𝕟𝕥𝕒𝕣 𝕔𝕒𝕟𝕥𝕚𝕕𝕒𝕕 𝕕𝕖 𝕔𝕖𝕝𝕕𝕒𝕤 𝕕𝕖𝕤𝕠𝕔𝕦𝕡𝕒𝕕𝕒𝕤
+                        
+                        """);
+                } else if ( tipoUsuario.equalsIgnoreCase("Creativo") ||
+                        tipoUsuario.equalsIgnoreCase("OP") ) {
+                    System.out.print("""   
+                            
+                            [𝟙] 𝔸𝕘𝕣𝕖𝕘𝕒𝕣 𝕦𝕟 𝕞𝕠𝕓 𝕒 𝕝𝕒 𝕔𝕒𝕣𝕔𝕖𝕝
+                            [𝟚] 𝕍𝕖𝕣 𝕥𝕠𝕕𝕒𝕤 𝕝𝕒𝕤 𝕔𝕖𝕝𝕕𝕒𝕤
+                            [𝟛] 𝕍𝕖𝕣 𝕚𝕟𝕗𝕠 𝕞𝕠𝕓 𝕖𝕟𝕔𝕒𝕣𝕔𝕖𝕝𝕒𝕕𝕠
+                            [𝟜] 𝕍𝕖𝕣 𝕔𝕖𝕝𝕕𝕒𝕤 𝕝𝕚𝕓𝕣𝕖𝕤
+                            [𝟝] 𝕃𝕚𝕓𝕖𝕣𝕒𝕣 𝕞𝕠𝕓
+                            [𝟞] ℂ𝕠𝕟𝕥𝕒𝕣 𝕔𝕒𝕟𝕥𝕚𝕕𝕒𝕕 𝕕𝕖 𝕔𝕖𝕝𝕕𝕒𝕤 𝕕𝕖𝕤𝕠𝕔𝕦𝕡𝕒𝕕𝕒𝕤
                             
                             """);
                 }
                 break;
             }
             case 5:{
-                System.out.println("JUGADORES:");
+                System.out.println("""
+                                       𓆩𝕁𝕌𝔾𝔸𝔻𝕆ℝ𝔼𝕊:𓆪"""  );
                 if (tipoUsuario.equalsIgnoreCase("Espectador") ||
-                    tipoUsuario.equalsIgnoreCase("Survival") ||
-                    tipoUsuario.equalsIgnoreCase("Creativo") ){
+                        tipoUsuario.equalsIgnoreCase("Survival") ||
+                        tipoUsuario.equalsIgnoreCase("Creativo") ){
                     System.out.print("""   
             
-                        [̶1̶]̶ ̶A̶g̶r̶e̶g̶a̶r̶ ̶j̶u̶g̶a̶d̶o̶r̶ ̶a̶ ̶l̶a̶ ̶w̶h̶i̶t̶e̶l̶i̶s̶t̶
-                        [2] Ver todos los jugadores.
-                        [̶3̶]̶ ̶E̶l̶i̶m̶i̶n̶a̶r̶ ̶j̶u̶g̶a̶d̶o̶r̶ ̶d̶e̶ ̶l̶a̶ ̶w̶h̶i̶t̶e̶l̶i̶s̶t̶
-                        [̶̶̶4̶]̶̶ ̶̶̶B̶u̶s̶c̶a̶r̶ ̶p̶o̶r̶ ̶i̶d̶
+                        [̶𝟙]̶ ̶𝔸̶𝕘̶𝕣̶𝕖̶𝕘̶𝕒̶𝕣̶ ̶𝕛̶𝕦̶𝕘̶𝕒̶𝕕̶𝕠̶𝕣̶ ̶𝕒̶ ̶𝕝̶𝕒̶ ̶𝕨̶𝕙̶𝕚̶𝕥̶𝕖̶𝕝̶𝕚̶𝕤̶𝕥̶
+                        [𝟚] 𝕍𝕖𝕣 𝕥𝕠𝕕𝕠𝕤 𝕝𝕠𝕤 𝕛𝕦𝕘𝕒𝕕𝕠𝕣𝕖𝕤.
+                        [̶𝟛]̶ ̶𝔼̶𝕝̶𝕚̶𝕞̶𝕚̶𝕟̶𝕒̶𝕣̶ ̶𝕛̶𝕦̶𝕘̶𝕒̶𝕕̶𝕠̶𝕣̶ ̶𝕕̶𝕖̶ ̶𝕝̶𝕒̶ ̶𝕨̶𝕙̶𝕚̶𝕥̶𝕖̶𝕝̶𝕚̶𝕤̶𝕥̶
+                        [̶̶̶𝟜]̶̶ ̶̶̶𝔹̶𝕦̶𝕤̶𝕔̶𝕒̶𝕣̶ ̶𝕡̶𝕠̶𝕣̶ ̶𝕚̶𝕕̶
                         
                         """);
                 } else if (tipoUsuario.equalsIgnoreCase("OP")){
                     System.out.print("""   
             
-                        [1] Agregar jugador a la whitelist
-                        [2] Ver todos los jugadores.
-                        [3] Eliminar jugador de la whitelist
-                        [4] Buscar por id
+                        [𝟙] 𝔸𝕘𝕣𝕖𝕘𝕒𝕣 𝕛𝕦𝕘𝕒𝕕𝕠𝕣 𝕒 𝕝𝕒 𝕨𝕙𝕚𝕥𝕖𝕝𝕚𝕤𝕥
+                        [𝟚] 𝕍𝕖𝕣 𝕥𝕠𝕕𝕠𝕤 𝕝𝕠𝕤 𝕛𝕦𝕘𝕒𝕕𝕠𝕣𝕖𝕤.
+                        [𝟛] 𝔼𝕝𝕚𝕞𝕚𝕟𝕒𝕣 𝕛𝕦𝕘𝕒𝕕𝕠𝕣 𝕕𝕖 𝕝𝕒 𝕨𝕙𝕚𝕥𝕖𝕝𝕚𝕤𝕥
+                        [𝟜] 𝔹𝕦𝕤𝕔𝕒𝕣 𝕡𝕠𝕣 𝕚𝕕
                         
                         """);
                 }
