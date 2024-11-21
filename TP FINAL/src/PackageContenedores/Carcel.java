@@ -94,13 +94,10 @@ public class Carcel implements IConversionJSON{
             Celda celda = carcel.get(numeroCelda);
             LocalDate fechaSalida = celda.getFechaSalida();
             LocalDate fechaActual = LocalDate.now();
-
-            // Verificar si la fecha de salida ya pasó o es igual a la fecha actual
             if (!fechaActual.isBefore(fechaSalida)) {
-                carcel.remove(numeroCelda); // Liberar la celda
+                carcel.remove(numeroCelda);
                 liberado = true;
             } else {
-                // Si la fecha actual es antes de la fecha de salida
                 throw new Valor_de_atributo_no_valido_Exception("El mob aún no puede ser liberado. La fecha de salida no ha llegado.");
             }
         } else {
@@ -108,6 +105,23 @@ public class Carcel implements IConversionJSON{
         }
 
         return liberado;
+    }
+    public boolean liberacionAnticipada(int decision,int numeroDeCelda) throws Valor_de_atributo_no_valido_Exception{
+        boolean liberacion;
+        if(decision != 1 || decision!=0){
+            throw new Valor_de_atributo_no_valido_Exception("Numero de decision invalida");
+        }
+        else{
+            if (decision==1){
+                carcel.remove(numeroDeCelda);
+                liberacion=true;
+            }
+            else{
+                liberacion=false;
+            }
+
+        }
+        return liberacion;
     }
 
     public Celda obtenerInfoCelda(int numeroCelda) throws Entidad_inexistente_Exception, Valor_de_atributo_no_valido_Exception {

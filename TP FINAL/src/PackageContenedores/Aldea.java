@@ -405,6 +405,12 @@ public class Aldea {
 
         return liberado;
     }
+    public boolean liberacionAnticipada(int decision,int numeroCelda){
+        boolean liberado;
+        liberado=carcel.liberacionAnticipada(decision,numeroCelda);
+
+        return liberado;
+    }
 
     public String carcelToTable() throws Atributo_vacio_Exception {
         return carcel.carcelToTable();
